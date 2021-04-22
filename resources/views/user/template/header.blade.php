@@ -36,35 +36,59 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-7">
+                <div class="col-xl-9 col-lg-10">
                     <div class="main-menu  d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a class="active" href="index.html">home</a></li>
-                                <li><a href="Department.html">Department</a></li>
-                                <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                <li><a class="active" href="index.html">Profil</a></li>
+                                <li><a href="#">Klinik Spesialis</a>
                                     <ul class="submenu">
                                         <li><a href="blog.html">blog</a></li>
                                         <li><a href="single-blog.html">single-blog</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
-                                        <li><a href="elements.html">elements</a></li>
-                                        <li><a href="about.html">about</a></li>
+                                <li><a href="#">Produk Unggulan <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu" id="produk_unggulan_submenu">
                                     </ul>
                                 </li>
-                                <li><a href="Doctors.html">Doctors</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="#">Layanan <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="single-blog.html">single-blog</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Pendaftaran Pasien <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="single-blog.html">single-blog</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Kualitas Mutu <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="single-blog.html">single-blog</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Tim Medis <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="single-blog.html">single-blog</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Promosi Kesehatan <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="single-blog.html">single-blog</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Kontak <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="single-blog.html">single-blog</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </nav>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                    <div class="Appointment">
-                        <div class="book_btn d-none d-lg-block">
-                            <a class="popup-with-form" href="#test-form">Make an Appointment</a>
-                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -74,3 +98,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    const URL = {
+        produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}"
+    }
+    fetch("{{ route('getHeaderData') }}")
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log($("#produk_unggulan_submenu").html());
+            data.featuredProduct.forEach(item => {
+                let tmpUrl = URL.produkUnggulan.replace('id', item.id)
+                tmpUrl = tmpUrl.replace('title', item.title)
+                console.log(tmpUrl);
+                $("#produk_unggulan_submenu").html(
+                    $("#produk_unggulan_submenu").html() + '<li><a href="' + tmpUrl +
+                    '">' + item.title + '</a></li>')
+            })
+            console.log($("#produk_unggulan_submenu").html());
+        })
+
+</script>

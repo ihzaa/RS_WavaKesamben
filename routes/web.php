@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\HeaderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('clear-cache', function() {
+Route::get('clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     echo 'ok';
 });
 
-Route::get('generate', function (){
+Route::get('generate', function () {
     \Illuminate\Support\Facades\Artisan::call('storage:link');
     echo 'ok';
 });
 
+Route::get('getUserHeader', [HeaderController::class, 'getAllData'])->name('getHeaderData');

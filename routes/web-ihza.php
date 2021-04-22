@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\testingController;
+use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,8 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('add', [FeaturedProductController::class, 'getAdd'])->name('add');
         Route::post('add', [FeaturedProductController::class, 'postAdd'])->name('add.post');
     });
+});
+
+Route::name('user.')->group(function () {
+    Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 });
