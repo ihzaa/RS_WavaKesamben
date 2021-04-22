@@ -43,9 +43,10 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td class="d-flex">
-                                                <button class="btn btn-sm btn-success mx-auto" data-toggle="tooltip"
-                                                    data-placement="top" title="Lihat atau Edit"><i
-                                                        class="far fa-eye"></i></button>
+                                                <a class="btn btn-sm btn-success mx-auto"
+                                                    href="{{ route('admin.profile.edit', ['id' => $item->id]) }}"
+                                                    data-toggle="tooltip" data-placement="top" title="Lihat atau Edit"><i
+                                                        class="far fa-eye"></i></a>
                                                 <button class="btn btn-sm btn-danger btn-hapus mx-auto"
                                                     data-id="{{ $item->id }}" data-name="{{ $item->title }}"
                                                     data-toggle="tooltip" data-placement="top" title="Hapus Artikel"><i

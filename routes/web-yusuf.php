@@ -19,6 +19,8 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('/', [ProfileController::class, 'index'])->name('index');
         Route::get('add', [ProfileController::class, 'getAdd'])->name('add');
         Route::post('add', [ProfileController::class, 'postAdd'])->name('add.post');
+        Route::get('edit/{id}', [ProfileController::class, 'getEdit'])->name('edit');
+        Route::post('edit/{id}', [ProfileController::class, 'postEdit'])->name('edit.post');
         Route::get('delete/{id}', [ProfileController::class, 'delete'])->name('delete');
     });
 });

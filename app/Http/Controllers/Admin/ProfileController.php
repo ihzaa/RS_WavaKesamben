@@ -35,6 +35,28 @@ class ProfileController extends Controller
         return redirect(route('admin.profile.index'))->with('icon', 'success')->with('title', 'Berhasil!')->with('text', 'Artikel baru telah ditambahkan pada menu profil');
     }
 
+    public function getEdit($id)
+    {
+        $data['profile'] = Profile::find($id);
+
+        return view('admin.profile.edit', compact('data'));
+    }
+
+    public function postEdit($id, Request $request)
+    {
+        $validated = $request->validate([
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        Profile::find($id)->update([
+            'title' => $request->judul,
+            'description' => $request->deskripsi,
+        ]);
+
+        return redirect(route('admin.profile.index'))->with('icon', 'success')->with('title', 'Berhasil!')->with('text', 'Berhasil merubah artikel.');
+    }
+
     public function delete($id)
     {
         Profile::find($id)->delete();
