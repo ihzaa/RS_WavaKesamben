@@ -42,10 +42,12 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td class="d-flex">
-                                                <button class="btn btn-sm btn-success mx-auto" data-toggle="tooltip"
+                                            <td class="text-center">
+                                                <button class="btn btn-sm btn-success mr-1" data-toggle="tooltip"
                                                     data-placement="top" title="Lihat atau Edit"><i
                                                         class="far fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-danger ml-1" data-toggle="tooltip"
+                                                    data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
