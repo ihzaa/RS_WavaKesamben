@@ -30,20 +30,28 @@
                 <form action="{{ route('admin.login.post') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username"
+                            placeholder="Username" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
+                        @error('username')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" placeholder="Password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
+                        @error('Password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col-8">
@@ -74,16 +82,7 @@
     <script src="{{ asset('admin') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('admin') }}/dist/js/adminlte.min.js"></script>
-    @if (Session::get('icon'))
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script>
-            Swal.fire({
-                icon: "{{ Session::get('icon') }}",
-                title: "{{ Session::get('title') }}",
-                text: "{{ Session::get('text') }}",
-            });
-        </script>
-    @endif
+    @include('admin.template.alert')
 </body>
 
 </html>

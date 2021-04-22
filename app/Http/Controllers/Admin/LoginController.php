@@ -18,6 +18,10 @@ class LoginController extends Controller
 
     public function postLogin(Request $request)
     {
+        $validated = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
         $admin = Admin::where('username', $request->username)->first();
         // kondisi salah
         if ($admin == []) {

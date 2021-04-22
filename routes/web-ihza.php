@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\testingController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,10 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
     Route::get('/', function () {
         return view('admin.template.master');
     })->name('dashboard');
+
+    Route::name('featuredproduct.')->prefix('produk-unggulan')->group(function () {
+        Route::get('/', [FeaturedProductController::class, 'index'])->name('index');
+        Route::get('add', [FeaturedProductController::class, 'getAdd'])->name('add');
+        Route::post('add', [FeaturedProductController::class, 'postAdd'])->name('add.post');
+    });
 });

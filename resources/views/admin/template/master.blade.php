@@ -18,6 +18,11 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{ asset('admin') }}/dist/img/user2-160x160.jpg" alt="AdminLTELogo"
+            height="60" width="60">
+    </div>
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -28,8 +33,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="../../index3.html" class="brand-link">
-                <img src=".{{ asset('admin') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                {{-- <img src="{{ asset('admin') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+                <i class="fas fa-user img-circle ml-3"></i>
                 <span class="brand-text font-weight-light">{{ env('APP_NAME') }}</span>
             </a>
 
@@ -49,7 +55,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                                 @yield('breadcrumb')
                                 {{-- Contoh breadcrumb --}}
                                 {{-- <li class="breadcrumb-item"><a href="#">Home</a></li> --}}
@@ -95,6 +101,18 @@
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="{{asset('admin')}}/dist/js/demo.js"></script> --}}
     @yield('js_after')
+    @if (Session::get('icon'))
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>
+            Swal.fire({
+                icon: "{{ Session::get('icon') }}",
+                title: "{{ Session::get('title') }}",
+                text: "{{ Session::get('text') }}",
+            });
+
+        </script>
+    @endif
+
 </body>
 
 </html>
