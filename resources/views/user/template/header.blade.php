@@ -1,3 +1,8 @@
+<style>
+#navigation li a {
+    font-size: 12px;
+}
+</style>
 <div class="header-area ">
     <div class="header-top_area">
         <div class="container">
@@ -27,16 +32,16 @@
         </div>
     </div>
     <div id="sticky-header" class="main-header-area">
-        <div class="container">
+        <div class="container-fluid px-5">
             <div class="row align-items-center">
-                <div class="col-xl-3 col-lg-2">
+                <div class="col-xl-2 col-lg-2">
                     <div class="logo">
                         <a href="index.html">
                             <img src="{{ asset('user') }}/img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-9 col-lg-10">
+                <div class="col-xl-10 col-lg-10">
                     <div class="main-menu  d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
