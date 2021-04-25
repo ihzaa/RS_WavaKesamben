@@ -35,6 +35,9 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('/', [FeaturedProductController::class, 'index'])->name('index');
         Route::get('add', [FeaturedProductController::class, 'getAdd'])->name('add');
         Route::post('add', [FeaturedProductController::class, 'postAdd'])->name('add.post');
+        Route::get('edit/{id}', [FeaturedProductController::class, 'getEdit'])->name('edit');
+        Route::post('edit/{id}', [FeaturedProductController::class, 'postEdit'])->name('edit.post');
+        Route::post('delete', [FeaturedProductController::class, 'delete'])->name('delete');
     });
 });
 

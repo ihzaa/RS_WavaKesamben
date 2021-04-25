@@ -16,7 +16,7 @@ class CreateProfileImagesTable extends Migration
         Schema::create('profile_images', function (Blueprint $table) {
             $table->id();
             $table->text('path');
-            $table->foreignId('profile_id')->constrained();
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

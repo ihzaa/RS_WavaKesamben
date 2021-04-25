@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ env('APP_NAME') }} | @yield('page_title')</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('css_before')
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -20,8 +20,11 @@
 <body class="hold-transition sidebar-mini">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('admin') }}/dist/img/user2-160x160.jpg" alt="AdminLTELogo"
-            height="60" width="60">
+        <div>
+            <img class="animation__shake" src="{{ asset('admin') }}/dist/img/user2-160x160.jpg" alt="AdminLTELogo"
+                height="60" width="60">
+            Loading...
+        </div>
     </div>
     <!-- Site wrapper -->
     <div class="wrapper">
@@ -100,6 +103,13 @@
     <script src="{{ asset('admin') }}/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="{{asset('admin')}}/dist/js/demo.js"></script> --}}
+    <script>
+        function showLoader() {
+            $('.preloader').css('height', '100%');
+            $('.preloader').children().show();
+        }
+
+    </script>
     @yield('js_after')
     @if (Session::get('icon'))
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

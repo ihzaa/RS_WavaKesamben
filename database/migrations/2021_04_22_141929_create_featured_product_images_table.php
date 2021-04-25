@@ -16,7 +16,7 @@ class CreateFeaturedProductImagesTable extends Migration
         Schema::create('featured_product_images', function (Blueprint $table) {
             $table->id();
             $table->text('path');
-            $table->foreignId('featured_product_id')->constrained();
+            $table->foreignId('featured_product_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

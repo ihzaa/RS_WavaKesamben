@@ -16,7 +16,7 @@ class CreateDepartmentDoctorImagesTable extends Migration
         Schema::create('department_doctor_images', function (Blueprint $table) {
             $table->id();
             $table->text('path');
-            $table->foreignId('department_doctor_id')->constrained();
+            $table->foreignId('department_doctor_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

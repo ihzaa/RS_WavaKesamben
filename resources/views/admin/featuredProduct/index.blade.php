@@ -43,11 +43,13 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-sm btn-success mr-1" data-toggle="tooltip"
-                                                    data-placement="top" title="Lihat atau Edit"><i
-                                                        class="far fa-eye"></i></button>
-                                                <button class="btn btn-sm btn-danger ml-1" data-toggle="tooltip"
-                                                    data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>
+                                                <a class="btn btn-sm btn-success mr-1" data-toggle="tooltip"
+                                                    data-placement="top" title="Lihat atau Edit"
+                                                    href="{{ route('admin.featuredproduct.edit', [$item->id]) }}"><i
+                                                        class="far fa-eye"></i></a>
+                                                <button class="btn btn-sm btn-danger ml-1 btn_delete" data-toggle="tooltip"
+                                                    data-placement="top" title="Hapus" data-id="{{ $item->id }}"><i
+                                                        class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -79,6 +81,13 @@
     <script src="{{ asset('admin') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        const URL = {
+            delete: "{{ route('admin.featuredproduct.delete') }}"
+        }
+
+    </script>
     <script>
         $('#main_table').DataTable({
             "paging": true,
@@ -92,6 +101,37 @@
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
+        $(document).on('click', '.btn_delete', function() {
+            const id = $(this).data('id');
+            Swal.fire({
+                title: 'Yakin menghapus?',
+                text: "Anda tidak dapat mengembalikan setelah dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal.'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    showLoader();
+                    fetch(URL.delete, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            body: JSON.stringify({
+                                id: id
+                            })
+                        })
+                        .then((resp) => resp.json())
+                        .finally(() => {
+                            location.reload();
+                        })
+                }
+            })
+        });
 
     </script>
 @endsection

@@ -1,10 +1,10 @@
 @extends('admin.template.master')
 
-@section('page_title', 'Tambah Produk Unggulan')
+@section('page_title', 'Edit Produk Unggulan')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('admin.featuredproduct.index') }}">Produk Unggulan</a></li>
-    <li class="breadcrumb-item active">Tambah Produk Unggulan</li>
+    <li class="breadcrumb-item active">Edit Produk Unggulan</li>
 @endsection
 
 @section('css_after')
@@ -18,11 +18,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tambah Produk Unggulan Baru</h3>
+                            <h3 class="card-title">Edit Produk Unggulan</h3>
                             <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
-                        <form action="{{ route('admin.featuredproduct.add.post') }}" method="POST">
+                        <form action="{{ route('admin.featuredproduct.edit.post',[$data['item']->id]) }}" method="POST">
                             <div class="card-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -36,11 +36,14 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Judul</label>
-                                    <input type="text" class="form-control" placeholder="Judul" name="judul">
+                                    <input type="text" class="form-control" placeholder="Judul" name="judul"
+                                        value="{{ $data['item']->title }}">
                                     <small class="form-text text-muted">Disarankan kurang dari 100 karakter.</small>
                                 </div>
                                 <label for="">Deskripsi</label>
-                                <textarea id="summernote" name="deskripsi"></textarea>
+                                <textarea id="summernote" name="deskripsi">@php
+                                    echo $data['item']->description;
+                                @endphp</textarea>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">
