@@ -32,7 +32,7 @@
                             <table id="main_table" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width: 5%">No</th>
                                         <th>Nama</th>
                                         <th>aksi</th>
                                     </tr>

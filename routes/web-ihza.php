@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\FeaturedProductController;
+use App\Http\Controllers\Admin\Home\CarouselController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\testingController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
@@ -38,6 +39,15 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('edit/{id}', [FeaturedProductController::class, 'getEdit'])->name('edit');
         Route::post('edit/{id}', [FeaturedProductController::class, 'postEdit'])->name('edit.post');
         Route::post('delete', [FeaturedProductController::class, 'delete'])->name('delete');
+    });
+
+    Route::name('home.')->prefix('home')->group(function () {
+        Route::name('carousel.')->prefix('carousel')->group(function () {
+            Route::get('/', [CarouselController::class, 'index'])->name('index');
+            Route::post('/add', [CarouselController::class, 'add'])->name('add.post');
+            Route::post('/edit/{id}', [CarouselController::class, 'edit'])->name('edit.post');
+            Route::post('delete', [CarouselController::class, 'delete'])->name('delete');
+        });
     });
 });
 

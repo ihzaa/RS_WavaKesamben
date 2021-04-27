@@ -66,6 +66,47 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <p>
+                        Halaman Home
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.home.carousel.index') }}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Banner</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index2.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Sambutan Direktur</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index3.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Angket</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index2.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Galeri</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index3.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Galeri Instagram</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('admin.featuredproduct.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>

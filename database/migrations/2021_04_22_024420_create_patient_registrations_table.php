@@ -18,6 +18,7 @@ class CreatePatientRegistrationsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->boolean('isActive')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
