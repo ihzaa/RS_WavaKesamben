@@ -65,8 +65,8 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
+            <li class="nav-item {{ str_contains(Route::currentRouteName(), 'home') ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ str_contains(Route::currentRouteName(), 'home') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-home"></i>
                     <p>
                         Halaman Home
@@ -75,13 +75,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('admin.home.carousel.index') }}" class="nav-link">
+                        <a href="{{ route('admin.home.carousel.index') }}" class="nav-link {{ str_contains(Route::currentRouteName(), 'carousel') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Banner</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index2.html" class="nav-link">
+                        <a href="{{ route('admin.home.sambutanDirektur.index') }}" class="nav-link {{ str_contains(Route::currentRouteName(), 'sambutanDirektur') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Sambutan Direktur</p>
                         </a>
