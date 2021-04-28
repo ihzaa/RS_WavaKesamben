@@ -159,6 +159,10 @@
             title: "Gagal",
             text: "{{ $message }}",
             });
+
+            $("#judul").val("{{old('judul')}}")
+            $("#deskripsi").val("{{old('deskripsi')}}")
+            $("#main_modal").modal("show");
         @enderror
         const URL = {
             add: "{{ route('admin.home.carousel.add.post') }}",
