@@ -43,9 +43,9 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>
-                                                <a class="btn btn-sm btn-primary mx-auto" data-toggle="tooltip"
-                                                    data-placement="top" title="Lihat"><i class="far fa-eye"></i>
+                                            <td class="text-center">
+                                                <a class="btn btn-sm btn-warning text-light" data-toggle="tooltip"
+                                                    data-placement="top" title="Lihat">Lihat
                                                 </a>
                                             </td>
                                             <td class="d-flex">

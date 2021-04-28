@@ -30,7 +30,6 @@ class DepartmentController extends Controller
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'deskripsi' => 'required',
         ]);
-        dd($request->hasFile('logo'));
 
         $input = Department::create([
             'title' => $request->nama,
@@ -41,11 +40,9 @@ class DepartmentController extends Controller
 
         //UPLOAD LOGO
         $extension = $request->file('logo')->getClientOriginalExtension();
-        $location = 'images/department/';
+        $location = 'images/department';
         $nameUpload = $input->id . '-' . $input->title . '.' . $extension;
-        // $request->file('logo')->move('assets/' . $location, $nameUpload);
-        File::put($location . $nameUpload, $request->file('logo'));
-        // dd($request->file('logo'));
+        $request->file('logo')->move($location, $nameUpload);
         $filepath = $location . "/" . $nameUpload;
         $input->image = $filepath;
 
@@ -100,11 +97,9 @@ class DepartmentController extends Controller
             File::delete($department->image);
             //UPLOAD FOTO SAMPUL
             $extension = $request->file('logo')->getClientOriginalExtension();
-            $location = 'images/department/';
+            $location = 'images/department';
             $nameUpload = $department->id . '-' . $department->title . '.' . $extension;
-// $request->file('logo')->move('assets/' . $location, $nameUpload);
-            File::put($location . $nameUpload, $request->file('logo'));
-// dd($request->file('logo'));
+            $request->file('logo')->move($location, $nameUpload);
             $filepath = $location . "/" . $nameUpload;
             $department->image = $filepath;
         }
@@ -141,12 +136,13 @@ class DepartmentController extends Controller
 
     public function delete($id)
     {
-        $product = Department::find($id);
+        $department = Department::find($id);
+        File::delete($department->image);
         $foto = DepartmentImage::where('department_id', $id)->get();
         foreach ($foto as $f) {
             File::delete(substr($f->path, 1));
         }
-        $product->delete();
+        $department->delete();
         // Session::flash('icon', 'success');
         // Session::flash('title', 'Berhasil');
         // Session::flash('text', 'Berhasil Menghapus!');
