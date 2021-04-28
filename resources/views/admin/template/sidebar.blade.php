@@ -75,19 +75,22 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('admin.home.carousel.index') }}" class="nav-link {{ str_contains(Route::currentRouteName(), 'carousel') ? 'active' : '' }}">
+                        <a href="{{ route('admin.home.carousel.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'carousel') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Banner</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.home.sambutanDirektur.index') }}" class="nav-link {{ str_contains(Route::currentRouteName(), 'sambutanDirektur') ? 'active' : '' }}">
+                        <a href="{{ route('admin.home.sambutanDirektur.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'sambutanDirektur') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Sambutan Direktur</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html" class="nav-link">
+                        <a href="{{ route('admin.home.angket.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'angket') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Angket</p>
                         </a>

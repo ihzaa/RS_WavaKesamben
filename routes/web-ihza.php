@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\FeaturedProductController;
+use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\testingController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
+use App\Models\Angket;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +55,17 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::name('sambutanDirektur.')->prefix('sambutan-direktur')->group(function () {
             Route::get('/', [SambutanDirekturController::class, 'index'])->name('index');
             Route::post('edit', [SambutanDirekturController::class, 'edit'])->name('edit');
+        });
+
+        Route::name('angket.')->prefix('angket')->group(function () {
+            Route::get('/', [AngketController::class, 'index'])->name('index');
+            Route::post('add/question', [AngketController::class, 'addQuestion'])->name('add.question');
+            Route::post('edit/{id}/question', [AngketController::class, 'editQuestion'])->name('edit.question');
+            Route::get('delete/{id}/question', [AngketController::class, 'deleteQuestion'])->name('delete.question');
+
+            Route::get('answare/{id}', [AngketController::class, 'getAnswarePerQuestion'])->name('get.answare');
+            Route::post('answare/add/{id}', [AngketController::class, 'addAnsware'])->name('add.answare');
+            Route::get('{question}/answare/{id}/delete', [AngketController::class, 'deleteAnsware'])->name('delete.answare');
         });
     });
 });

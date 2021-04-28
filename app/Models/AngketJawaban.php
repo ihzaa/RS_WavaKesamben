@@ -9,4 +9,9 @@ class AngketJawaban extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function jawabanPengguna()
+    {
+        return $this->hasMany(AngketJawabanPengguna::class);
+    }
 }
