@@ -103,9 +103,8 @@
                     <div class="modal-body">
                         @csrf
                         <div class="form-group">
-                            <label for="judul">Judul <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="judul" name="judul" required
-                                placeholder="Masukkan Judul">
+                            <label for="judul">Judul</label>
+                            <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul">
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
@@ -160,8 +159,8 @@
             text: "{{ $message }}",
             });
 
-            $("#judul").val("{{old('judul')}}")
-            $("#deskripsi").val("{{old('deskripsi')}}")
+            $("#judul").val("{{ old('judul') }}")
+            $("#deskripsi").val("{{ old('deskripsi') }}")
             $("#main_modal").modal("show");
         @enderror
         const URL = {
@@ -202,7 +201,7 @@
             readURL(this);
         });
 
-        $("#btn_tambah").click(function() {
+        $(document).on('click', "#btn_tambah", function() {
             $("#modal_title").html('Tambah Banner');
             $('#blah').attr('src', URL.defaultImage);
             $("#imgInp").attr('required', '')
@@ -214,7 +213,7 @@
             $("#main_modal").modal("show");
         });
 
-        $(".btn_edit").click(function() {
+        $(document).on('click', ".btn_edit", function() {
             let id = $(this).data('id')
             let img = $(this).data('img')
             $("#modal_title").html('Edit Banner');

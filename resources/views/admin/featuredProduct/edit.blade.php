@@ -47,8 +47,8 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">
-                                <a class="btn btn-warning" href="{{ route('admin.featuredproduct.index') }}">Kembali</a>
-                                <button class="ml-auto btn btn-primary" type="submit">Simpan</button>
+                                <a class="btn btn-warning text-light" href="{{ route('admin.featuredproduct.index') }}"><i class="fas fa-arrow-left    "></i> Kembali</a>
+                                <button class="ml-auto btn btn-primary" type="submit"><i class="fas fa-save"></i> Simpan</button>
                             </div>
                         </form>
                     </div>

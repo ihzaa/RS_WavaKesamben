@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
 use App\Http\Controllers\Admin\Home\GaleriController;
+use App\Http\Controllers\Admin\Home\InstagramController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\testingController;
@@ -73,6 +74,15 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('/', [GaleriController::class, 'index'])->name('index');
             Route::post('add/{id}', [GaleriController::class, 'add'])->name('add');
             Route::get('remove/{id}', [GaleriController::class, 'remove'])->name('remove');
+        });
+
+        Route::name('instagram.')->prefix('instagram')->group(function () {
+            Route::get('/', [InstagramController::class, 'index'])->name('index');
+            Route::get('add', [InstagramController::class, 'getAdd'])->name('add');
+            Route::post('add', [InstagramController::class, 'postAdd'])->name('add.post');
+            Route::get('edit/{id}', [InstagramController::class, 'getEdit'])->name('edit');
+            Route::post('edit/{id}', [InstagramController::class, 'postEdit'])->name('edit.post');
+            Route::get('delete/{id}', [InstagramController::class, 'delete'])->name('delete');
         });
     });
 });
