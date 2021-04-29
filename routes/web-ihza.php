@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
+use App\Http\Controllers\Admin\Home\GaleriController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\testingController;
@@ -68,7 +69,11 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('{question}/answare/{id}/delete', [AngketController::class, 'deleteAnsware'])->name('delete.answare');
         });
 
-        
+        Route::name('galeri.')->prefix('galeri')->group(function () {
+            Route::get('/', [GaleriController::class, 'index'])->name('index');
+            Route::post('add/{id}', [GaleriController::class, 'add'])->name('add');
+            Route::get('remove/{id}', [GaleriController::class, 'remove'])->name('remove');
+        });
     });
 });
 

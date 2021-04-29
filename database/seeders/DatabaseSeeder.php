@@ -26,5 +26,15 @@ class DatabaseSeeder extends Seeder
             'image' => 'images/default/picture.svg',
             'description' => 'tesss'
         ]);
+
+        DB::table('galeris')->insert([
+            'link' => ''
+        ]);
+        DB::table('galeris')->insert([
+            'link' => ''
+        ]);
+        DB::table('galeris')->insert([
+            'link' => ''
+        ]);
     }
 }

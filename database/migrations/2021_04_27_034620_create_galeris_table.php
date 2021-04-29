@@ -15,7 +15,7 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->id();
-            $table->text('link');
+            $table->text('link')->nullable();
             $table->timestamps();
         });
     }
