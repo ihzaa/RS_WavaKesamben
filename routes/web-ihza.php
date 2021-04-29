@@ -67,6 +67,8 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::post('answare/add/{id}', [AngketController::class, 'addAnsware'])->name('add.answare');
             Route::get('{question}/answare/{id}/delete', [AngketController::class, 'deleteAnsware'])->name('delete.answare');
         });
+
+        
     });
 });
 
