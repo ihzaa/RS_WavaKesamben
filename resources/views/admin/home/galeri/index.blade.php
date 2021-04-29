@@ -20,7 +20,7 @@
                             Galeri
                         </div>
                         <div class="card-body">
-                            <h3>Tata Cara Menginputkan Link Video Youtube</h3>
+                            <h3>Tata Cara Menginputkan Video Youtube</h3>
                             <ol>
                                 <li>Buka video yang ingin ditampilkan</li>
                                 <li>Klik bagikan dibawah video</li>
