@@ -1,10 +1,13 @@
 @extends('admin.template.master')
 
-@section('page_title', 'Tambah Klinik Spesialis')
+@section('page_title', 'Edit Dokter')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('admin.department.index') }}">Spesialis</a></li>
-    <li class="breadcrumb-item active">Tambah</li>
+    <li class="breadcrumb-item"><a
+            href="{{ route('admin.department.doctor.index', ['id' => $data['department']->id]) }}">Dokter</a>
+    </li>
+    <li class="breadcrumb-item active">Edit</li>
 @endsection
 
 @section('css_after')
@@ -18,12 +21,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tambah Klinik Spesialis</h3>
+                            <h3 class="card-title">Edit Dokter Spesialis {{ $data['department']->title }}</h3>
                             <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
-                        <form action="{{ route('admin.department.add.post') }}" enctype="multipart/form-data"
-                            method="POST">
+                        <form
+                            action="{{ route('admin.department.doctor.edit', ['id' => $data['department']->id, 'dokter_id' => $data['doctor']->id]) }}"
+                            enctype="multipart/form-data" method="POST">
                             <div class="card-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -36,44 +40,42 @@
                                 @endif
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <label>Nama Klinik Spesialis</label>
-                                            <input type="text" class="form-control" placeholder="Nama" name="nama">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="quotes">Kutipan</label>
-                                            <textarea class="form-control" name="quotes"></textarea>
-                                        </div>
+                                    <div class="col-md-6 d-flex">
+                                        <img id="blah" class="img-fluid" src="{{ asset($data['doctor']->image) }}"
+                                            alt="your image" />
                                     </div>
-                                    <div class="col-md-7 d-flex">
-                                        <div class="col-md-6">
-                                            <img id="blah" class="img-fluid" src="{{ asset('images/picture.svg') }}"
-                                                alt="your image" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group col-md-12 my-auto">
-                                                <label>Logo Klinik Spesialis</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="imgInp" required
-                                                        name="logo">
-                                                    <label class="custom-file-label" for="imgInp">Logo Spesialis</label>
-                                                    <small class="form-text text-muted">- Ukuran max 256KB</small>
-                                                    <small class="form-text text-muted">- Harus berupa gambar (format: jpg,
-                                                        jpeg, svg,
-                                                        png , dll)</small>
-                                                </div>
+                                    <div class="col-md-6 d-flex">
+                                        <div class="form-group col-md-12 my-auto">
+                                            <label>Foto</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="imgInp" name="image">
+                                                <label class="custom-file-label" for="imgInp">Foto Dokter</label>
+                                                <small class="form-text text-muted">- Ukuran max 256KB</small>
+                                                <small class="form-text text-muted">- Harus berupa gambar (format: jpg,
+                                                    jpeg, svg,
+                                                    png , dll)</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nama</label>
+                                                <input type="text" class="form-control"
+                                                    value="{{ $data['doctor']->name }}" placeholder="Nama" name="nama">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Cuti?</label><br>
+                                                <input type="checkbox" @if ($data['doctor']->isLeave == 1) checked @endif name="isLeave" data-bootstrap-switch
+                                                    data-off-color="danger" data-off-text="Tidak" data-on-text="Ya"
+                                                    data-on-color="success">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <label for="deskripsi">Deskripsi</label>
-                                <textarea id="summernote" name="deskripsi"></textarea>
+                                <textarea id="summernote" name="deskripsi">{{ $data['doctor']->description }}</textarea>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">
                                 <a class="btn btn-warning text-light"
-                                    href="{{ route('admin.department.index') }}">Kembali</a>
+                                    href="{{ route('admin.department.doctor.index', ['id' => $data['department']->id]) }}">Kembali</a>
                                 <button class="ml-auto btn btn-primary" type="submit">Simpan</button>
                             </div>
                         </form>
@@ -88,6 +90,7 @@
 @section('js_after')
     <script src="{{ asset('admin') }}/plugins/summernote/summernote-bs4.min.js"></script>
     <script src="{{ asset('admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -100,7 +103,7 @@
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture']],
+                    ['insert', ['link']],
                     ['view', ['fullscreen', 'codeview', 'help']],
                 ],
             });
@@ -122,6 +125,10 @@
         $("#imgInp").change(function() {
             readURL(this);
         });
+
+        $("input[data-bootstrap-switch]").each(function() {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
 
     </script>
 @endsection

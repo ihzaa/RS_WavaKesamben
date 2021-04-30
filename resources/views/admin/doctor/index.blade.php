@@ -1,6 +1,6 @@
 @extends('admin.template.master')
 
-@section('page_title', 'Profil')
+@section('page_title', 'Dokter')
 
 @section('css_after')
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -8,7 +8,8 @@
 @endsection
 
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Profil</li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.department.index') }}">Spesialis</a></li>
+    <li class="breadcrumb-item active">Dokter</li>
 @endsection
 
 @section('content')
@@ -18,11 +19,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">List Artikel Menu Profil</h3>
+                            <h3 class="card-title">List Dokter Spesialis {{ $data['department']->title }}</h3>
                             <div class="card-tools">
                                 <!-- Buttons, labels, and many other things can be placed here! -->
                                 <!-- Here is a label for example -->
-                                <a class="btn btn-primary btn-sm" href="{{ route('admin.profile.add') }}"><i
+                                <a class="btn btn-primary btn-sm"
+                                    href="{{ route('admin.department.doctor.add', ['id' => $data['department']->id]) }}"><i
                                         class="fas fa-plus"></i> Tambah</a>
                             </div>
 
@@ -33,7 +35,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Judul</th>
+                                        <th>Nama</th>
                                         <th>aksi</th>
                                     </tr>
                                 </thead>
@@ -41,14 +43,15 @@
                                     @foreach ($data['list'] as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->title }}</td>
+                                            <td>{{ $item->name }}</td>
                                             <td class="d-flex">
                                                 <a class="btn btn-sm btn-success mx-auto"
-                                                    href="{{ route('admin.profile.edit', ['id' => $item->id]) }}"
+                                                    href="{{ route('admin.department.doctor.edit', ['id' => $data['department']->id, 'dokter_id' => $item->id]) }}"
                                                     data-toggle="tooltip" data-placement="top" title="Lihat atau Edit"><i
                                                         class="far fa-eye"></i></a>
                                                 <button class="btn btn-sm btn-danger btn-hapus mx-auto"
-                                                    data-id="{{ $item->id }}" data-name="{{ $item->title }}"
+                                                    data-id="{{ $data['department']->id }}"
+                                                    data-dokter="{{ $item->id }}" data-name="{{ $item->name }}"
                                                     data-toggle="tooltip" data-placement="top" title="Hapus Artikel"><i
                                                         class="fa fa-trash"></i></button>
                                             </td>
@@ -58,7 +61,7 @@
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Judul</th>
+                                        <th>Nama</th>
                                         <th>aksi</th>
 
                                     </tr>
@@ -98,7 +101,7 @@
         })
 
         const url = {
-            hapus: "{{ route('admin.profile.delete', ['id' => 'sementara']) }}"
+            hapus: "{{ route('admin.department.doctor.delete', ['id' => 'sementara', 'dokter_id' => 'dokter_id']) }}"
         };
 
         //Sweet Alert Hapus Artikel
@@ -106,7 +109,7 @@
             function() {
                 let parent = $(this).parent().parent().find(".jumlah").html();
                 Swal.fire({
-                    title: 'Yakin ingin menghapus Artikel ' + $(this).data('name') + '?',
+                    title: 'Yakin ingin menghapus ' + $(this).data('name') + '?',
                     text: "Anda tidak dapat mengembalikan setelah dihapus!",
                     icon: 'question',
                     showCancelButton: true,
@@ -115,8 +118,9 @@
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
-                        let temp = url.hapus
-                        window.location.replace(temp.replace('sementara', $(this).data('id')))
+                        let temp = url.hapus;
+                        window.location.replace(temp.replace('sementara', $(this).data('id')).replace(
+                            'dokter_id', $(this).data('dokter')))
                     }
                 })
             }

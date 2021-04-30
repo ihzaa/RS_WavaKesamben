@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,14 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('edit/{id}', [DepartmentController::class, 'getEdit'])->name('edit');
         Route::post('edit/{id}', [DepartmentController::class, 'postEdit'])->name('edit.post');
         Route::get('delete/{id}', [DepartmentController::class, 'delete'])->name('delete');
+
+        //Route dokter spesialis
+        Route::get('{id}/dokter', [DoctorController::class, 'index'])->name('doctor.index');
+        Route::get('{id}/dokter/add', [DoctorController::class, 'getAdd'])->name('doctor.add');
+        Route::post('{id}/dokter/add', [DoctorController::class, 'postAdd'])->name('doctor.add.post');
+        Route::get('{id}/dokter/edit/{dokter_id}', [DoctorController::class, 'getEdit'])->name('doctor.edit');
+        Route::post('{id}/dokter/edit/{dokter_id}', [DoctorController::class, 'postEdit'])->name('doctor.edit.post');
+        Route::get('{id}/dokter/delete/{dokter_id}', [DoctorController::class, 'delete'])->name('doctor.delete');
     });
 
 });

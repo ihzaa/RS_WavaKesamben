@@ -74,6 +74,8 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">
+                                <a class="btn btn-warning text-light"
+                                    href="{{ route('admin.department.index') }}">Kembali</a>
                                 <button class="ml-auto btn btn-primary" type="submit">Simpan</button>
                             </div>
                         </form>

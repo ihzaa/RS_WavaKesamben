@@ -44,8 +44,9 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td class="text-center">
-                                                <a class="btn btn-sm btn-warning text-light" data-toggle="tooltip"
-                                                    data-placement="top" title="Lihat">Lihat
+                                                <a class="btn btn-sm btn-warning text-light"
+                                                    href="{{ route('admin.department.doctor.index', ['id' => $item->id]) }}"
+                                                    data-toggle="tooltip" data-placement="top" title="Lihat">Lihat
                                                 </a>
                                             </td>
                                             <td class="d-flex">
@@ -113,7 +114,8 @@
             function() {
                 let parent = $(this).parent().parent().find(".jumlah").html();
                 Swal.fire({
-                    title: 'Yakin mau menghapus Artikel ' + $(this).data('name') + '?',
+                    title: 'Yakin ingin menghapus klinik spesialis ' + $(this).data('name') + '?',
+                    text: "Anda tidak dapat mengembalikan setelah dihapus!",
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonText: `Ya`,
