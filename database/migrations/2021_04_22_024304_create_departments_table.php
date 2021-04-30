@@ -19,6 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->longText('description')->nullable();
             $table->string('quotes');
             $table->string('image');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

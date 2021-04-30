@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class healty_info_image extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

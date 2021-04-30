@@ -17,7 +17,7 @@ class CreatePatientRegistrationFormsTable extends Migration
             $table->id();
             $table->string('name');
             $table->enum('type', ['text', 'email', 'number', 'file']);
-            $table->foreignId('patient_registration_id')->constrained();
+            $table->foreignId('patient_registration_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

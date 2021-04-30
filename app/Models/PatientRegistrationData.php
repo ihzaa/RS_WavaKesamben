@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class agenda_activity_image extends Model
+class PatientRegistrationData extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
 }

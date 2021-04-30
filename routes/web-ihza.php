@@ -4,8 +4,11 @@ use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
 use App\Http\Controllers\Admin\Home\GaleriController;
+use App\Http\Controllers\Admin\Home\InstagramController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\testingController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
 use App\Models\Angket;
@@ -24,6 +27,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('u', [testingController::class, 'user']);
 Route::get('a', [testingController::class, 'admin']);
+
+Route::get('email/pasien/acc', function () {
+    return view('admin.email.patientRegistration.accepted');
+});
+Route::get('email/pasien/rej', function () {
+    return view('admin.email.patientRegistration.rejected');
+});
 
 Route::get('4dm1n/login', [LoginController::class, 'getLogin'])->name('admin.login.get')->middleware('guest');
 Route::post('4dm1n/login', [LoginController::class, 'postLogin'])->name('admin.login.post')->middleware('guest');
@@ -73,6 +83,32 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('/', [GaleriController::class, 'index'])->name('index');
             Route::post('add/{id}', [GaleriController::class, 'add'])->name('add');
             Route::get('remove/{id}', [GaleriController::class, 'remove'])->name('remove');
+        });
+
+        Route::name('instagram.')->prefix('instagram')->group(function () {
+            Route::get('/', [InstagramController::class, 'index'])->name('index');
+            Route::get('add', [InstagramController::class, 'getAdd'])->name('add');
+            Route::post('add', [InstagramController::class, 'postAdd'])->name('add.post');
+            Route::get('edit/{id}', [InstagramController::class, 'getEdit'])->name('edit');
+            Route::post('edit/{id}', [InstagramController::class, 'postEdit'])->name('edit.post');
+            Route::get('delete/{id}', [InstagramController::class, 'delete'])->name('delete');
+        });
+    });
+
+    Route::name('services.')->prefix('layanan')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('index');
+        Route::get('add', [ServiceController::class, 'getAdd'])->name('add');
+        Route::post('add', [ServiceController::class, 'postAdd'])->name('add.post');
+        Route::get('edit/{id}', [ServiceController::class, 'getEdit'])->name('edit');
+        Route::post('edit/{id}', [ServiceController::class, 'postEdit'])->name('edit.post');
+        Route::get('delete/{id}', [ServiceController::class, 'delete'])->name('delete');
+    });
+
+    Route::name('patientRegistration.')->prefix('pendaftaran-pasien')->group(function () {
+        Route::name('listPatient.')->prefix('pasien')->group(function () {
+            Route::get('/', [PasienController::class, 'index'])->name('index');
+            Route::get('/registration/accept/{id}', [PasienController::class, 'acceptRegistration'])->name('accept.registration');
+            Route::get('/registration/reject/{id}', [PasienController::class, 'rejectRegistration'])->name('reject.registration');
         });
     });
 });

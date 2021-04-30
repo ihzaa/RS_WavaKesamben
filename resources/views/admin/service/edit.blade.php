@@ -1,10 +1,10 @@
 @extends('admin.template.master')
 
-@section('page_title', 'Tambah Produk Unggulan')
+@section('page_title', 'Edit Layanan')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('admin.featuredproduct.index') }}">Produk Unggulan</a></li>
-    <li class="breadcrumb-item active">Tambah Produk Unggulan</li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.services.index') }}">Layanan</a></li>
+    <li class="breadcrumb-item active">Edit Layanan</li>
 @endsection
 
 @section('css_after')
@@ -18,11 +18,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tambah Produk Unggulan Baru</h3>
+                            <h3 class="card-title">Edit Layanan</h3>
                             <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
-                        <form action="{{ route('admin.featuredproduct.add.post') }}" method="POST">
+                        <form action="{{ route('admin.services.edit.post', [$data['item']->id]) }}" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
@@ -35,17 +35,20 @@
                                 @endif
                                 @csrf
                                 <div class="form-group">
-                                    <label>Judul</label>
-                                    <input type="text" class="form-control" placeholder="Judul" name="judul">
-                                    <small class="form-text text-muted">Disarankan kurang dari 100 karakter.</small>
+                                    <label>Judul <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="Judul" name="judul" required
+                                        value="{{ $data['item']->title }}">
+                                    {{-- <small class="form-text text-muted">Disarankan kurang dari 100 karakter.</small> --}}
                                 </div>
-                                <label for="">Deskripsi</label>
-                                <textarea id="summernote" name="deskripsi"></textarea>
+                                <label for="">Deskripsi <span class="text-danger">*</span></label>
+                                <textarea id="summernote" name="deskripsi">{{ $data['item']->description }}</textarea>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">
-                                <a class="btn btn-warning text-light" href="{{ route('admin.featuredproduct.index') }}"><i class="fas fa-arrow-left    "></i> Kembali</a>
-                                <button class="ml-auto btn btn-primary" type="submit"><i class="fas fa-save"></i> Simpan</button>
+                                <a class="btn btn-warning text-light" href="{{ route('admin.services.index') }}"><i
+                                        class="fas fa-arrow-left    "></i> Kembali</a>
+                                <button class="ml-auto btn btn-primary" type="submit"><i class="fas fa-save"></i>
+                                    Simpan</button>
                             </div>
                         </form>
                     </div>
