@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Home\GaleriController;
 use App\Http\Controllers\Admin\Home\InstagramController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\testingController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
@@ -26,6 +27,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('u', [testingController::class, 'user']);
 Route::get('a', [testingController::class, 'admin']);
+
+Route::get('email/pasien/acc', function () {
+    return view('admin.email.patientRegistration.accepted');
+});
+Route::get('email/pasien/rej', function () {
+    return view('admin.email.patientRegistration.rejected');
+});
 
 Route::get('4dm1n/login', [LoginController::class, 'getLogin'])->name('admin.login.get')->middleware('guest');
 Route::post('4dm1n/login', [LoginController::class, 'postLogin'])->name('admin.login.post')->middleware('guest');
@@ -94,6 +102,14 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('edit/{id}', [ServiceController::class, 'getEdit'])->name('edit');
         Route::post('edit/{id}', [ServiceController::class, 'postEdit'])->name('edit.post');
         Route::get('delete/{id}', [ServiceController::class, 'delete'])->name('delete');
+    });
+
+    Route::name('patientRegistration.')->prefix('pendaftaran-pasien')->group(function () {
+        Route::name('listPatient.')->prefix('pasien')->group(function () {
+            Route::get('/', [PasienController::class, 'index'])->name('index');
+            Route::get('/registration/accept/{id}', [PasienController::class, 'acceptRegistration'])->name('accept.registration');
+            Route::get('/registration/reject/{id}', [PasienController::class, 'rejectRegistration'])->name('reject.registration');
+        });
     });
 });
 

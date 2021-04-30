@@ -20,7 +20,7 @@ class CreateDepartmentDoctorsTable extends Migration
             $table->longText('description');
             $table->boolean('isLeave')->default(0);
             $table->foreignId('department_id')->constrained();
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -15,11 +15,13 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('unique_id');
-            $table->text('answare');
-            $table->foreignId('patient_registration_id')->constrained();
-            $table->foreignId('patient_registration_form_id')->constrained();
-
+            $table->string('nomer');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('email');
+            $table->text('ktp');
+            $table->text('kk');
+            $table->boolean('accepted')->default(0);
             $table->timestamps();
         });
     }

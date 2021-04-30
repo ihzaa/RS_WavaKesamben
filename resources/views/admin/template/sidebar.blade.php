@@ -135,12 +135,45 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.services.index') }}" class="nav-link {{ str_contains(Route::currentRouteName(), 'service') ? 'active' : '' }}">
+                <a href="{{ route('admin.services.index') }}"
+                    class="nav-link {{ str_contains(Route::currentRouteName(), 'service') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-smile-beam "></i>
                     <p>
                         Layanan
                     </p>
                 </a>
+            </li>
+            <li
+                class="nav-item {{ str_contains(Route::currentRouteName(), 'patientRegistration') ? 'menu-open' : '' }}">
+                <a href="#"
+                    class="nav-link {{ str_contains(Route::currentRouteName(), 'patientRegistration') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-procedures"></i>
+                    <p>
+                        Pendaftaran Pasien
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.patientRegistration.listPatient.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'listPatient') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pasien</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index2.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Menu Pendaftaran</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index3.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pendaftar Masuk</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav>

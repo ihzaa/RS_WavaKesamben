@@ -18,8 +18,8 @@ class CreateDoctorSchedulesTable extends Migration
             $table->json('days');
             $table->time('start');
             $table->time('end');
-            $table->foreignId('department_doctor_id')->constrained();
-
+            $table->foreignId('department_doctor_id')->nullable()->constrained()->onDelete('set null');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
