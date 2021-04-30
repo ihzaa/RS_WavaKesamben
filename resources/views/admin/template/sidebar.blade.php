@@ -52,6 +52,15 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.dashboard') }}"
+                    class="nav-link {{ str_contains(Route::currentRouteName(), 'dashboard') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-tachometer-alt "></i>
+                    <p>
+                        Dashboard
+                    </p>
+                </a>
+            </li>
             <li class="nav-item {{ str_contains(Route::currentRouteName(), 'home') ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ str_contains(Route::currentRouteName(), 'home') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-home"></i>
@@ -122,6 +131,14 @@
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Klinik Spesialis
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.services.index') }}" class="nav-link {{ str_contains(Route::currentRouteName(), 'service') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-smile-beam "></i>
+                    <p>
+                        Layanan
                     </p>
                 </a>
             </li>
