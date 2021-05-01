@@ -45,6 +45,10 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td class="d-flex">
+                                                <a class="btn btn-sm btn-warning mx-auto text-light"
+                                                    href="{{ route('admin.jadwal.index', ['dokter_id' => $item->id]) }}"
+                                                    data-toggle="tooltip" data-placement="top" title="Jadwal Praktek"><i
+                                                        class="far fa-clock"></i></a>
                                                 <a class="btn btn-sm btn-success mx-auto"
                                                     href="{{ route('admin.department.doctor.edit', ['id' => $data['department']->id, 'dokter_id' => $item->id]) }}"
                                                     data-toggle="tooltip" data-placement="top" title="Lihat atau Edit"><i
@@ -104,7 +108,7 @@
             hapus: "{{ route('admin.department.doctor.delete', ['id' => 'sementara', 'dokter_id' => 'dokter_id']) }}"
         };
 
-        //Sweet Alert Hapus Artikel
+        //Sweet Alert Hapus Dokter
         $(document).on('click', '.btn-hapus',
             function() {
                 let parent = $(this).parent().parent().find(".jumlah").html();

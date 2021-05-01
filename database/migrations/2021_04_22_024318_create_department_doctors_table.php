@@ -17,7 +17,7 @@ class CreateDepartmentDoctorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->boolean('isLeave')->default(0);
             $table->foreignId('department_id')->constrained();
             $table->softDeletes();

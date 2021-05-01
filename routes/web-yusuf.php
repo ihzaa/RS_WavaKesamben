@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,14 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::get('{id}/dokter/edit/{dokter_id}', [DoctorController::class, 'getEdit'])->name('doctor.edit');
         Route::post('{id}/dokter/edit/{dokter_id}', [DoctorController::class, 'postEdit'])->name('doctor.edit.post');
         Route::get('{id}/dokter/delete/{dokter_id}', [DoctorController::class, 'delete'])->name('doctor.delete');
+    });
+
+    //Route Jadwal Dokter
+    Route::name('jadwal.')->prefix('jadwal')->group(function () {
+        Route::get('{dokter_id}/', [ScheduleController::class, 'index'])->name('index');
+        Route::post('add', [ScheduleController::class, 'add'])->name('add');
+        Route::post('edit/{id}', [ScheduleController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [ScheduleController::class, 'delete'])->name('delete');
     });
 
 });
