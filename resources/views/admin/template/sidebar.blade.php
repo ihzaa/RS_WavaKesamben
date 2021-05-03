@@ -162,7 +162,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index2.html" class="nav-link">
+                        <a href="{{ route('admin.patientRegistration.registrationMenu.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'registrationMenu') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Menu Pendaftaran</p>
                         </a>

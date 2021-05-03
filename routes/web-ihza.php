@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Home\InstagramController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
+use App\Http\Controllers\Admin\PendaftaranPasien\RegistrationMenuController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\testingController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
@@ -109,6 +110,16 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('/', [PasienController::class, 'index'])->name('index');
             Route::get('/registration/accept/{id}', [PasienController::class, 'acceptRegistration'])->name('accept.registration');
             Route::get('/registration/reject/{id}', [PasienController::class, 'rejectRegistration'])->name('reject.registration');
+        });
+
+        Route::name('registrationMenu.')->prefix('menu-registrasi')->group(function () {
+            Route::get('/', [RegistrationMenuController::class, 'index'])->name('index');
+            Route::get('add', [RegistrationMenuController::class, 'getAdd'])->name('add');
+            Route::post('add', [RegistrationMenuController::class, 'postAdd'])->name('add');
+            Route::get('change/status/{id}', [RegistrationMenuController::class, 'changeStatus'])->name('changeStatus');
+            Route::get('delete/{id}', [RegistrationMenuController::class, 'delete'])->name('delete');
+            Route::get('edit/{id}', [RegistrationMenuController::class, 'getEdit'])->name('edit');
+            Route::post('edit/{id}', [RegistrationMenuController::class, 'postEdit'])->name('edit.post');
         });
     });
 });
