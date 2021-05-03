@@ -19,6 +19,11 @@ class ScheduleController extends Controller
 
     public function add(Request $request)
     {
+        $validated = $request->validate([
+            'days' => 'required',
+            'start' => 'required',
+        ]);
+
         DoctorSchedule::create([
             'days' => $request->days,
             'start' => $request->start,
@@ -31,6 +36,11 @@ class ScheduleController extends Controller
 
     public function edit($id, Request $request)
     {
+        $validated = $request->validate([
+            'days' => 'required',
+            'start' => 'required',
+        ]);
+
         DoctorSchedule::find($id)->update([
             'days' => $request->days,
             'start' => $request->start,

@@ -11,7 +11,11 @@
 @section('css_after')
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="{{ asset('admin') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <style>
+    </style>
 @endsection
 
 @section('content')
@@ -27,6 +31,7 @@
                                 <!-- Here is a label for example -->
                                 <button class="btn btn-block btn-primary" id="btn_tambah_jadwal"><i
                                         class="fas fa-plus"></i>Tambah</button>
+
                             </div>
 
                         </div>
@@ -112,21 +117,52 @@
                             @enderror
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="start">Mulai<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('start') is-invalid @enderror" id="start"
-                                        name="start" required placeholder="contoh: 20.00">
-                                    @error('start')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label>Mulai</label>
+                                            <span class="text-danger">*</span>
+                                            <div class="input-group date" id="timepicker" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" @error('start')
+                                                    is-invalid @enderror" id="start" name="start" required
+                                                    data-target="#timepicker" placeholder="Masukkan jam mulai" />
+                                                @error('start')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+
+                                                <div class="input-group-append" data-target="#timepicker"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="end">Selesai<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('end') is-invalid @enderror" id="end"
-                                        name="end" required placeholder="contoh: 20.00">
-                                    @error('end')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label>Selesai</label>
+                                            <div class="input-group date" id="timepicker-end" data-target-input="nearest">
+                                                <input type="text" class="form-control datetimepicker-input" @error('end')
+                                                    is-invalid @enderror" id="end" name="end" data-target="#timepicker-end"
+                                                    placeholder="Masukkan jam berakhir" />
+                                                @error('end')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
+
+                                                <div class="input-group-append" data-target="#timepicker-end"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
                                 </div>
+                                <span class="text-danger">*Kosongi kolom 'Selesai' apabila tidak ada jam selesai praktek
+                                    yang spesifik</span>
                             </div>
                         </div>
                     </div>
@@ -145,7 +181,8 @@
     <script src="{{ asset('admin') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-
+    <script src="{{ asset('admin') }}/plugins/moment/moment.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
@@ -204,6 +241,14 @@
             "autoWidth": false,
             "responsive": true,
         });
+
+        //Timepicker
+        $('#timepicker').datetimepicker({
+            format: 'HH:mm:ss',
+        })
+        $('#timepicker-end').datetimepicker({
+            format: 'HH:mm:ss'
+        })
 
     </script>
 @endsection
