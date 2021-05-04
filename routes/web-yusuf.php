@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\QualityController;
 use App\Http\Controllers\Admin\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,14 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::post('add', [ScheduleController::class, 'add'])->name('add');
         Route::post('edit/{id}', [ScheduleController::class, 'edit'])->name('edit');
         Route::get('delete/{id}', [ScheduleController::class, 'delete'])->name('delete');
+    });
+
+    //Route Kualitas Mutu
+    Route::name('kualitas.')->prefix('kualitas')->group(function () {
+        Route::get('/', [QualityController::class, 'indexYear'])->name('index.tahun');
+        Route::post('add', [QualityController::class, 'addYear'])->name('add.tahun');
+        // Route::post('edit/{id}', [ScheduleController::class, 'edit'])->name('edit');
+        Route::get('delete/{id}', [QualityController::class, 'deleteYear'])->name('delete.tahun');
     });
 
 });

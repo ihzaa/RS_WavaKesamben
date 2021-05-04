@@ -127,7 +127,8 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.department.index') }}" class="nav-link">
+                <a href="{{ route('admin.department.index') }}"
+                    class="nav-link {{ str_contains(Route::currentRouteName(), 'department') || str_contains(Route::currentRouteName(), 'jadwal') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-clinic-medical"></i>
                     <p>
                         Klinik Spesialis
@@ -175,6 +176,15 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.kualitas.index.tahun') }}"
+                    class="nav-link {{ str_contains(Route::currentRouteName(), 'kualitas') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-poll"></i>
+                    <p>
+                        Kualitas Mutu
+                    </p>
+                </a>
             </li>
         </ul>
     </nav>
