@@ -180,7 +180,7 @@
                 class="nav-item {{ str_contains(Route::currentRouteName(), 'healthyPromotion') ? 'menu-open' : '' }}">
                 <a href="#"
                     class="nav-link {{ str_contains(Route::currentRouteName(), 'healthyPromotion') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-procedures"></i>
+                    <i class="nav-icon fas fa-info-circle"></i>
                     <p>
                         Promosi Kesehatan
                         <i class="right fas fa-angle-left"></i>
@@ -195,8 +195,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.patientRegistration.registrationMenu.index') }}"
-                            class="nav-link {{ str_contains(Route::currentRouteName(), 'registrationMenu') ? 'active' : '' }}">
+                        <a href="{{ route('admin.healthyPromotion.agendaActivity.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'agendaActivity') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Agenda Kegiatan</p>
                         </a>

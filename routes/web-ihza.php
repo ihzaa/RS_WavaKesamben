@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\FeaturedProductController;
+use App\Http\Controllers\Admin\HealthyPromotion\AgendaActivityController;
 use App\Http\Controllers\Admin\HealthyPromotion\HealthyInfoController;
 use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
@@ -132,6 +133,14 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('edit/{id}', [HealthyInfoController::class, 'getEdit'])->name('edit');
             Route::post('edit/{id}', [HealthyInfoController::class, 'postEdit'])->name('edit.post');
             Route::get('delete/{id}', [HealthyInfoController::class, 'delete'])->name('delete');
+        });
+        Route::name('agendaActivity.')->prefix('agenda-kegiatan')->group(function () {
+            Route::get('/', [AgendaActivityController::class, 'index'])->name('index');
+            Route::get('add', [AgendaActivityController::class, 'getAdd'])->name('add');
+            Route::post('add', [AgendaActivityController::class, 'postAdd'])->name('add.post');
+            Route::get('edit/{id}', [AgendaActivityController::class, 'getEdit'])->name('edit');
+            Route::post('edit/{id}', [AgendaActivityController::class, 'postEdit'])->name('edit.post');
+            Route::get('delete{id}', [AgendaActivityController::class, 'delete'])->name('delete');
         });
     });
 });
