@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\DepartmentDoctor;
-use App\Models\DoctorSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -60,15 +59,6 @@ class DoctorController extends Controller
         $request->file('image')->move($location, $nameUpload);
         $filepath = $location . "/" . $nameUpload;
         $input->image = $filepath;
-
-        //Membuat Jadwal Praktek
-        DoctorSchedule::create([
-            'days' => '',
-            'start' => 0,
-            'end' => 'temp',
-            'department_doctor_id' => $input->id,
-        ]);
-
         $input->save();
 
         return redirect(route('admin.department.doctor.index', ['id' => $id]))->with('icon', 'success')->with('title', 'Berhasil!')->with('text', 'Berhasil menambahkan dokter spesialis');

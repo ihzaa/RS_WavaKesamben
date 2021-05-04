@@ -53,7 +53,13 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->days }}</td>
                                             <td>{{ $item->start }}</td>
-                                            <td>{{ $item->end }}</td>
+                                            <td>
+                                                @if ($item->end != null)
+                                                    {{ $item->end }}
+                                                @else
+                                                    Selesai
+                                                @endif
+                                            </td>
                                             <td class="d-flex">
                                                 <button class="btn btn-sm btn-success mx-auto btn_edit_schedule"
                                                     data-toggle="tooltip" data-placement="top" title="Edit"
