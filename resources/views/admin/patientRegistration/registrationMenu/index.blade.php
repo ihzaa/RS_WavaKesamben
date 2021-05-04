@@ -152,24 +152,6 @@
 
                 })
         })
-        $(document).on('click', '.btn_delete', function() {
-            const id = $(this).data('id');
-            Swal.fire({
-                title: 'Yakin menghapus ?',
-                text: "Anda tidak dapat mengembalikan setelah dihapus!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus!',
-                cancelButtonText: 'Batal.'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
-                }
-            })
-        });
 
     </script>
 @endsection

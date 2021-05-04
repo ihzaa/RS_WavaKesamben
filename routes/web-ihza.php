@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\FeaturedProductController;
+use App\Http\Controllers\Admin\HealthyPromotion\HealthyInfoController;
 use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
 use App\Http\Controllers\Admin\Home\GaleriController;
@@ -120,6 +121,17 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('delete/{id}', [RegistrationMenuController::class, 'delete'])->name('delete');
             Route::get('edit/{id}', [RegistrationMenuController::class, 'getEdit'])->name('edit');
             Route::post('edit/{id}', [RegistrationMenuController::class, 'postEdit'])->name('edit.post');
+        });
+    });
+
+    Route::name('healthyPromotion.')->prefix('promosi-kesehatan')->group(function () {
+        Route::name('healthyInfo.')->prefix('info-kesehatan')->group(function () {
+            Route::get('/', [HealthyInfoController::class, 'index'])->name('index');
+            Route::get('add', [HealthyInfoController::class, 'getAdd'])->name('add');
+            Route::post('add', [HealthyInfoController::class, 'postAdd'])->name('add.post');
+            Route::get('edit/{id}', [HealthyInfoController::class, 'getEdit'])->name('edit');
+            Route::post('edit/{id}', [HealthyInfoController::class, 'postEdit'])->name('edit.post');
+            Route::get('delete/{id}', [HealthyInfoController::class, 'delete'])->name('delete');
         });
     });
 });

@@ -15,6 +15,7 @@ class CreateAgendaActivitiesTable extends Migration
     {
         Schema::create('agenda_activities', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->text('image');
             $table->longText('description')->nullable();
             $table->timestamps();

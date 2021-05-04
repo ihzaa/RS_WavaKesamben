@@ -176,6 +176,39 @@
                     </li>
                 </ul>
             </li>
+            <li
+                class="nav-item {{ str_contains(Route::currentRouteName(), 'healthyPromotion') ? 'menu-open' : '' }}">
+                <a href="#"
+                    class="nav-link {{ str_contains(Route::currentRouteName(), 'healthyPromotion') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-procedures"></i>
+                    <p>
+                        Promosi Kesehatan
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.healthyPromotion.healthyInfo.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'healthyInfo') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Informasi Kesehatan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.patientRegistration.registrationMenu.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'registrationMenu') ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Agenda Kegiatan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../../index3.html" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Testimoni</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
