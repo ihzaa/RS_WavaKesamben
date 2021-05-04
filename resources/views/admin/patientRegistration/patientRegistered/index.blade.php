@@ -1,9 +1,10 @@
 @extends('admin.template.master')
 
-@section('page_title', 'Layanan')
+@section('page_title', 'Menu Pendaftaran')
 
 @section('breadcrumb')
-    <li class="breadcrumb-item active">Layanan</li>
+    <li class="breadcrumb-item active">Pendaftaran Pasien</li>
+    <li class="breadcrumb-item active">Pendaftaran</li>
 @endsection
 
 @section('css_after')
@@ -18,21 +19,22 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <div class="overlay dark" id="card_loading" style="display: none">
+                            <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+                        </div>
                         <div class="card-header">
-                            <h3 class="card-title">List Layanan</h3>
-                            <div class="card-tools">
-                                <a class="btn btn-primary btn-sm" href="{{ route('admin.services.add') }}"><i
-                                        class="fas fa-plus"></i>
-                                    Tambah</a>
-                            </div>
+                            <h3 class="card-title">List Pendaftaran</h3>
                         </div>
                         <div class="card-body">
                             <table id="main_table" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%">No</th>
-                                        <th>Judul</th>
-                                        <th>Deskripsi</th>
+                                        <th>Kode Pendaftaran</th>
+                                        <th>Nama Pendaftar</th>
+                                        <th>Klinik Spesialis</th>
+                                        <th>Nama Dokter</th>
+                                        <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -44,11 +46,18 @@
                                             <td class="desc">@php
                                                 echo strlen(strip_tags($item->description)) > 150 ? substr(strip_tags($item->description), 0, 150) . '...' : strip_tags($item->description);
                                             @endphp</td>
+                                            <td>
+                                                <input type="checkbox" class="isActive"
+                                                    {{ $item->isActive ? 'checked' : '' }} data-bootstrap-switch
+                                                    data-off-color="danger" data-on-color="success" data-on-text="Ya"
+                                                    data-off-text="Tidak" data-id="{{ $item->id }}">
+
+                                            </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a class="btn btn-sm btn-success ml-1 mr-1" data-toggle="tooltip"
                                                         data-placement="top" title="Lihat atau Edit"
-                                                        href="{{ route('admin.services.edit', [$item->id]) }}">
+                                                        href="{{ route('admin.patientRegistration.registrationMenu.edit', [$item->id]) }}">
                                                         <i class="far fa-edit"></i>
                                                     </a>
                                                     <button class="btn btn-sm btn-danger ml-1 btn_delete"
@@ -65,8 +74,11 @@
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Judul</th>
-                                        <th>Deskripsi</th>
+                                        <th>Kode Pendaftaran</th>
+                                        <th>Nama Pendaftar</th>
+                                        <th>Klinik Spesialis</th>
+                                        <th>Nama Dokter</th>
+                                        <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
@@ -84,12 +96,11 @@
     <script src="{{ asset('admin') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script> --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
         const URL = {
-            delete: "{{ route('admin.services.delete', ['id']) }}"
+
         }
 
     </script>
@@ -106,9 +117,6 @@
         });
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
-        })
-        $(document).ready(function() {
-            // lazyload()
         })
         $(document).on('click', '.btn_delete', function() {
             const id = $(this).data('id');

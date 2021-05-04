@@ -49,14 +49,14 @@
                                             <td>
                                                 <a class="venobox" href="{{ asset($item->ktp) }}" data-toggle="tooltip"
                                                     data-placement="top" title="Klik untuk Lihat Gambar">
-                                                    <img src="{{ asset($item->ktp) }}" class="img-fluid lazyload"
+                                                    <img data-src="{{ asset($item->ktp) }}" class="img-fluid lazyload"
                                                         alt="GAMBAR KTP TIDAK VALID!">
                                                 </a>
                                             </td>
                                             <td>
                                                 <a class="venobox" href="{{ asset($item->kk) }}" data-toggle="tooltip"
                                                     data-placement="top" title="Klik untuk Lihat Gambar">
-                                                    <img src="{{ asset($item->kk) }}" class="img-fluid lazyload"
+                                                    <img data-src="{{ asset($item->kk) }}" class="img-fluid lazyload"
                                                         alt="GAMBAR KTP TIDAK VALID!">
                                                 </a>
                                             </td>

@@ -15,6 +15,7 @@ class CreateHealtyInfosTable extends Migration
     {
         Schema::create('healty_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->text('image');
             $table->longText('description')->nullable();
             $table->timestamps();
