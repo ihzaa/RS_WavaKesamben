@@ -211,7 +211,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index3.html" class="nav-link">
+                        <a href="{{ route('admin.healthyPromotion.testimonial.index') }}"
+                            class="nav-link {{ str_contains(Route::currentRouteName(), 'testimonial') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Testimoni</p>
                         </a>
