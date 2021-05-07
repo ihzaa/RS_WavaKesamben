@@ -57,7 +57,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Nama</label>
-                                                <input type="text" class="form-control" placeholder="Nama" name="nama">
+                                                <input type="text" class="form-control" value="{{ old('nama') }}"
+                                                    placeholder="Nama" name="nama">
                                             </div>
                                             <div class="form-group">
                                                 <label>Cuti?</label><br>
@@ -69,7 +70,7 @@
                                     </div>
                                 </div>
                                 <label for="deskripsi">Deskripsi</label>
-                                <textarea id="summernote" name="deskripsi"></textarea>
+                                <textarea id="summernote" name="deskripsi">{{ old('deskripsi') }}</textarea>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">

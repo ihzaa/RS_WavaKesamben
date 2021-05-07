@@ -36,11 +36,12 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Judul</label>
-                                    <input type="text" class="form-control" placeholder="Judul" name="judul">
+                                    <input type="text" class="form-control" placeholder="Judul" value="{{ old('judul') }}"
+                                        name="judul">
                                     <small class="form-text text-muted">Disarankan kurang dari 100 karakter.</small>
                                 </div>
                                 <label for="">Deskripsi</label>
-                                <textarea id="summernote" name="deskripsi"></textarea>
+                                <textarea id="summernote" name="deskripsi">{{ old('deskripsi') }}</textarea>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">

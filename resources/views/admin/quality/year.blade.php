@@ -41,13 +41,20 @@
                                             <hr>
                                         </div>
                                         <span class="progress-description d-flex">
+                                            <button class="btn btn-primary btn-edit btn-sm mx-auto"
+                                                data-id="{{ $item->id }}" data-year="{{ $item->year }}"
+                                                data-toggle="tooltip" data-placement="top" title="Edit Tahun"><i
+                                                    class="fas fa-edit"></i>
+                                            </button>
                                             <a class="btn btn-sm btn-info text-light mx-auto"
-                                                href="{{ route('admin.profile.edit', ['id' => $item->id]) }}">
-                                                <strong><i class="far fa-eye"></i> Lihat</strong>
+                                                href="{{ route('admin.kualitas.index.bulan', ['id' => $item->id]) }}"
+                                                data-toggle="tooltip" data-placement="top" title="Lihat Bulan">
+                                                <strong><i class="far fa-eye"></i></strong>
                                             </a>
                                             <button class="btn btn-sm btn-danger btn-hapus mx-auto"
-                                                data-id="{{ $item->id }}" data-year="{{ $item->year }}"><i
-                                                    class="fa fa-trash"> Hapus</i></button>
+                                                data-id="{{ $item->id }}" data-year="{{ $item->year }}"
+                                                data-toggle="tooltip" data-placement="top" title="Hapus Tahun"><i
+                                                    class="fa fa-trash"></i></button>
                                         </span>
                                     </div>
                                     <!-- /.info-box-content -->
@@ -78,8 +85,9 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
+                            {{-- <input type="number" value="{{ $data['year']->id }}" id="year_id" name="year_id" hidden> --}}
                             <label for="year">Tahun<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('year') is-invalid @enderror" id="year"
+                            <input type="number" class="form-control @error('year') is-invalid @enderror" id="year"
                                 name="year" required placeholder="Masukkan tahun">
                             @error('year')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -133,7 +141,7 @@
     <script>
         const URL = {
             addYear: "{{ route('admin.kualitas.add.tahun') }}",
-            // editQuestion: "{{ route('admin.home.angket.edit.question', ['id']) }}",
+            editYear: "{{ route('admin.kualitas.edit.tahun', ['id']) }}",
             deleteYear: "{{ route('admin.kualitas.delete.tahun', ['id']) }}",
             // getAnsware: "{{ route('admin.home.angket.get.answare', ['id']) }}",
             // addAnsware: "{{ route('admin.home.angket.add.answare', ['id']) }}",
@@ -148,15 +156,15 @@
         $("#btn_tambah_tahun").click(function() {
             $("#form_tahun").attr('action', URL.addYear);
             $("#modal_title").html('Tambah Tahun');
-            $("#tahun").val('')
+            $("#year").val('')
             $("#main_modal").modal('show');
         });
-        // $(".btn_edit_question").click(function() {
-        //     $("#form_pertanyaan").attr('action', URL.editQuestion.replace('id', $(this).data('id')));
-        //     $("#modal_title").html('Edit Pertanyaan');
-        //     $("#pertanyaan").val($(this).data('pertanyaan'))
-        //     $("#main_modal").modal('show');
-        // });
+        $(".btn-edit").click(function() {
+            $("#form_tahun").attr('action', URL.editYear.replace('id', $(this).data('id')));
+            $("#modal_title").html('Edit Tahun');
+            $("#year").val($(this).data('year'))
+            $("#main_modal").modal('show');
+        });
         $(document).on('click', '.btn-hapus', function() {
             const id = $(this).data('id');
             Swal.fire({

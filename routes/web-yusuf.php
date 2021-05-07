@@ -58,8 +58,21 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
     Route::name('kualitas.')->prefix('kualitas')->group(function () {
         Route::get('/', [QualityController::class, 'indexYear'])->name('index.tahun');
         Route::post('add', [QualityController::class, 'addYear'])->name('add.tahun');
-        // Route::post('edit/{id}', [ScheduleController::class, 'edit'])->name('edit');
+        Route::post('edit/{id}', [QualityController::class, 'editYear'])->name('edit.tahun');
         Route::get('delete/{id}', [QualityController::class, 'deleteYear'])->name('delete.tahun');
+
+        //Route Kualitas Mutu Bulan
+        Route::get('{id}/', [QualityController::class, 'indexMonth'])->name('index.bulan');
+        Route::post('{id}/add', [QualityController::class, 'addMonth'])->name('add.bulan');
+        Route::post('edit/{id}/bulan', [QualityController::class, 'editMonth'])->name('edit.bulan');
+        Route::get('delete/{id}/bulan', [QualityController::class, 'deleteMonth'])->name('delete.bulan');
+
+        //Route Data Kualitas Mutu
+        Route::get('{month_id}/data', [QualityController::class, 'indexData'])->name('index.data');
+        Route::post('{month_id}/data/add', [QualityController::class, 'addData'])->name('add.data');
+        Route::post('{month_id}/data/{id}/edit', [QualityController::class, 'editData'])->name('edit.data');
+        Route::get('{month_id}/data/{id}/delete', [QualityController::class, 'deleteData'])->name('delete.data');
+
     });
 
 });

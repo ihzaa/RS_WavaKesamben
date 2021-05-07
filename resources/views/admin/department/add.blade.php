@@ -39,11 +39,12 @@
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Nama Klinik Spesialis</label>
-                                            <input type="text" class="form-control" placeholder="Nama" name="nama">
+                                            <input type="text" class="form-control" placeholder="Nama"
+                                                value="{{ old('nama') }}" name="nama">
                                         </div>
                                         <div class="form-group">
                                             <label for="quotes">Kutipan</label>
-                                            <textarea class="form-control" name="quotes"></textarea>
+                                            <textarea class="form-control" name="quotes">{{ old('quotes') }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-7 d-flex">
@@ -68,7 +69,7 @@
                                     </div>
                                 </div>
                                 <label for="deskripsi">Deskripsi</label>
-                                <textarea id="summernote" name="deskripsi"></textarea>
+                                <textarea id="summernote" name="deskripsi">{{ old('deskripsi') }}</textarea>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer d-flex">
