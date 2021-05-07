@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\HealthyPromotion\AgendaActivityController;
 use App\Http\Controllers\Admin\HealthyPromotion\HealthyInfoController;
+use App\Http\Controllers\Admin\HealthyPromotion\TestimonialController;
 use App\Http\Controllers\Admin\Home\AngketController;
 use App\Http\Controllers\Admin\Home\CarouselController;
 use App\Http\Controllers\Admin\Home\GaleriController;
@@ -141,6 +142,12 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('edit/{id}', [AgendaActivityController::class, 'getEdit'])->name('edit');
             Route::post('edit/{id}', [AgendaActivityController::class, 'postEdit'])->name('edit.post');
             Route::get('delete{id}', [AgendaActivityController::class, 'delete'])->name('delete');
+        });
+        Route::name('testimonial.')->prefix('testimoni')->group(function () {
+            Route::get('/', [TestimonialController::class, 'index'])->name('index');
+            Route::post('add', [TestimonialController::class, 'postAdd'])->name('add.post');
+            Route::post('/{id}/edit', [TestimonialController::class, 'postEdit'])->name('edit.post');
+            Route::get('/{id}/delete', [TestimonialController::class, 'delete'])->name('delete');
         });
     });
 });
