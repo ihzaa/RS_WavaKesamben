@@ -20,7 +20,7 @@ class CarouselController extends Controller
     public function add(Request $request)
     {
         $validated = $request->validate([
-            'foto' => 'image|max:256'
+            'foto' => 'image|max:512'
         ]);
 
         $carousel = Carousel::create([
@@ -50,7 +50,7 @@ class CarouselController extends Controller
         $carousel->description = $request->deskripsi;
         if ($request->file('foto') != "") {
             $validated = $request->validate([
-                'foto' => 'image|max:256'
+                'foto' => 'image|max:512'
             ]);
             $extension = $request->file('foto')->getClientOriginalExtension();
             // File upload location

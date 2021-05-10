@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Home\InstagramController;
 use App\Http\Controllers\Admin\Home\SambutanDirekturController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
+use App\Http\Controllers\Admin\PendaftaranPasien\PatientRegisteredController;
 use App\Http\Controllers\Admin\PendaftaranPasien\RegistrationMenuController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\testingController;
@@ -123,6 +124,12 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('delete/{id}', [RegistrationMenuController::class, 'delete'])->name('delete');
             Route::get('edit/{id}', [RegistrationMenuController::class, 'getEdit'])->name('edit');
             Route::post('edit/{id}', [RegistrationMenuController::class, 'postEdit'])->name('edit.post');
+        });
+
+        Route::name('patientRegistredList.')->prefix('pendaftaran/klinik')->group(function () {
+            Route::get('/', [PatientRegisteredController::class, 'index'])->name('index');
+            Route::get('/detail/registration/{kode}', [PatientRegisteredController::class, 'getDetailRegistrationData'])->name('get.detail');
+            Route::get('download/{id}', [PatientRegisteredController::class, 'downloadFile'])->name('download.file');
         });
     });
 

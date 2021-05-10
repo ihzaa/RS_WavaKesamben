@@ -15,7 +15,7 @@ class CreateDoctorSchedulesTable extends Migration
     {
         Schema::create('doctor_schedules', function (Blueprint $table) {
             $table->id();
-            $table->json('days');
+            $table->string('days');
             $table->time('start');
             $table->time('end')->nullable();
             $table->foreignId('department_doctor_id')->nullable()->constrained()->onDelete('set null');

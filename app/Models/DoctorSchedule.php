@@ -11,7 +11,7 @@ class DoctorSchedule extends Model
     use HasFactory, SoftDeletes;
     protected $guarded = [];
 
-    protected $casts = [
-        'days' => 'array',
-    ];
+    // protected $casts = [
+    //     'days' => 'array',
+    // ];
 }

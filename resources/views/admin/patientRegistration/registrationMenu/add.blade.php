@@ -6,7 +6,7 @@
     <li class="breadcrumb-item active">Pendaftaran Pasien</li>
     <li class="breadcrumb-item active"><a href="{{ route('admin.patientRegistration.registrationMenu.index') }}">Menu
             Pendaftaran</a></li>
-    <li class="breadcrumb-item active">Tambah Menu Pendaftaran</li>
+    <li class="breadcrumb-item active">Tambah</li>
 @endsection
 
 @section('css_after')
