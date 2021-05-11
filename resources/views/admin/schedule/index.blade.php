@@ -236,11 +236,11 @@
         });
         $(".btn_edit_schedule").click(function() {
             $('#days').select2({
-                multiple: false
+                multiple: false,
+                theme: 'bootstrap4'
             });
             $("#form_schedule").attr('action', URL.editSchedule.replace('id', $(this).data('id')));
             $("#modal_title").html('Edit Jadwal Praktek');
-            $('#days').select2().data('select2').$selection.css('height', '38px');
             $('#days').val($(this).data('days'));
             $('#days').trigger('change.select2');
             $("#days").attr('name', 'days')
