@@ -68,6 +68,7 @@
                                         <th>Klinik Spesialis</th>
                                         <th>Nama Dokter</th>
                                         <th>Waktu Praktik</th>
+                                        <th>Waktu Mendaftar</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -81,6 +82,9 @@
                                             <td>{{ $item->spesialis }}</td>
                                             <td>{{ $item->dokter }}</td>
                                             <td>{{ $item->days . ', ' . \Carbon\Carbon::parse($item->start)->format('H:i') . ' - ' . \Carbon\Carbon::parse($item->end)->format('H:i') }}
+                                            </td>
+                                            <td>
+                                                {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('H:i - l, d M Y') }}
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
@@ -104,6 +108,7 @@
                                         <th>Klinik Spesialis</th>
                                         <th>Nama Dokter</th>
                                         <th>Waktu Praktik</th>
+                                        <th>Waktu Mendaftar</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
