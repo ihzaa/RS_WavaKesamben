@@ -11,6 +11,9 @@
 @section('css_after')
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('admin') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -116,8 +119,18 @@
                             <input type="text" hidden class="form-control" id="dokter_id" name="dokter_id" required
                                 value="{{ $data['dokter']->id }}">
                             <label for="days">Hari<span class="text-danger">*</span></label>
-                            <textarea type="text" class="form-control @error('days') is-invalid @enderror" id="days"
-                                name="days" required placeholder="Masukkan hari"></textarea>
+                            <select class="select2" multiple="multiple" data-placeholder="Pilih hari" style="width: 100%;"
+                                @error('days') is-invalid @enderror" id="days" name="days[]" required>
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                                <option value="Jumat">Jumat</option>
+                                <option value="Savtu">Sabtu</option>
+                                <option value="Minggu">Minggu</option>
+                            </select>
+                            {{-- <textarea type="text" class="form-control @error('days') is-invalid @enderror" id="days"
+                                name="days" required placeholder="Masukkan hari"></textarea> --}}
                             @error('days')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -190,7 +203,8 @@
     <script src="{{ asset('admin') }}/plugins/moment/moment.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+    <!-- Select2 -->
+    <script src="{{ asset('admin') }}/plugins/select2/js/select2.full.min.js"></script>
     <script>
         const URL = {
             addSchedule: "{{ route('admin.jadwal.add') }}",
@@ -201,20 +215,35 @@
     </script>
     <script>
         $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
             $('[data-toggle="tooltip"]').tooltip()
         })
         $("#btn_tambah_jadwal").click(function() {
+            $('#days').select2({
+                multiple: true,
+                allowClear: true
+            });
             $("#form_schedule").attr('action', URL.addSchedule);
             $("#modal_title").html('Tambah Jadwal Praktek');
-            $("#days").val('');
+            $("#days").attr('name', 'days[]')
+            // $("#days").val(null);
+            $("#days").val('').trigger('change')
             $("#start").val('');
             $("#end").val('');
             $("#main_modal").modal('show');
         });
         $(".btn_edit_schedule").click(function() {
+            $('#days').select2({
+                multiple: false
+            });
             $("#form_schedule").attr('action', URL.editSchedule.replace('id', $(this).data('id')));
             $("#modal_title").html('Edit Jadwal Praktek');
-            $("#days").val($(this).data('days'))
+            $('#days').select2().data('select2').$selection.css('height', '38px');
+            $('#days').val($(this).data('days'));
+            $('#days').trigger('change.select2');
+            $("#days").attr('name', 'days')
             $("#start").val($(this).data('start'))
             $("#end").val($(this).data('end'))
             $("#main_modal").modal('show');

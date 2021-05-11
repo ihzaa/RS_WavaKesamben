@@ -29,7 +29,7 @@ class DoctorController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:256',
         ]);
 
         if ($request->isLeave == null) {
@@ -76,7 +76,7 @@ class DoctorController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:500',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:256',
         ]);
 
         $doctor = DepartmentDoctor::find($dokter_id);

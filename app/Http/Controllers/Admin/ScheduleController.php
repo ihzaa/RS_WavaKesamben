@@ -23,13 +23,16 @@ class ScheduleController extends Controller
             'days' => 'required',
             'start' => 'required',
         ]);
-
-        DoctorSchedule::create([
-            'days' => $request->days,
-            'start' => $request->start,
-            'end' => $request->end,
-            'department_doctor_id' => $request->dokter_id,
-        ]);
+        // dd($request->days);
+        foreach ($request->days as $d) {
+            // dd(gettype($d));
+            DoctorSchedule::create([
+                'days' => $d,
+                'start' => $request->start,
+                'end' => $request->end,
+                'department_doctor_id' => $request->dokter_id,
+            ]);
+        }
 
         return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil menambahkan!');
     }
