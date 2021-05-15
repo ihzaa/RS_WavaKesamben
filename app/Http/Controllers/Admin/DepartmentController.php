@@ -27,7 +27,7 @@ class DepartmentController extends Controller
         $validated = $request->validate([
             'nama' => 'required',
             'quotes' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:256',
             'deskripsi' => 'required',
         ]);
 
@@ -85,7 +85,7 @@ class DepartmentController extends Controller
         $validated = $request->validate([
             'nama' => 'required',
             'quotes' => 'required',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:500',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:256',
             'deskripsi' => 'required',
         ]);
 

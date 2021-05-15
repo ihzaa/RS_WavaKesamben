@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Route;
  */
 //Admin
 Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(function () {
+    // Dashboard
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('refresh/patient', [DashboardController::class, 'getUnprocessedPatient'])->name('getUnprocessedPatient');
+
     //Route menu profile
     Route::name('profile.')->prefix('profil')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('index');
