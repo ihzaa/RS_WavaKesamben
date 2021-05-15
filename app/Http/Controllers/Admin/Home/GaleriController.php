@@ -18,8 +18,21 @@ class GaleriController extends Controller
 
     public function add($id, Request $request)
     {
+
+        $detail = $request->link;
+        $dom = new \domdocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $iframe = $dom->getelementsbytagname('iframe');
+        foreach ($iframe as $i) {
+            $i->removeattribute('height');
+            $i->removeattribute('width');
+            $i->setAttribute('class', 'galeri_yt');
+        }
+
+
         Galeri::find($id)->update([
-            'link' => $request->link
+            'link' => $dom->savehtml()
         ]);
 
         return response()->json(['ok' => 200]);

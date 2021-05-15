@@ -1,10 +1,12 @@
 <style>
-#navigation li a {
-    font-size: 12px;
-}
+    #navigation li a {
+        font-size: 12px;
+    }
+
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css">
 <div class="header-area ">
-    <div class="header-top_area">
+    {{-- <div class="header-top_area">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-md-6 ">
@@ -30,7 +32,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div id="sticky-header" class="main-header-area">
         <div class="container-fluid px-5">
             <div class="row align-items-center">
@@ -45,51 +47,64 @@
                     <div class="main-menu  d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a class="active" href="index.html">Profil</a></li>
-                                <li><a href="#">Klinik Spesialis</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
+                                <li><a class="active" href="index.html">Profil <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu" id="produk_unggulan_submenu">
+                                        <li><a href="">Sambutan Direktur</a></li>
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
+                                <li><a href="#">Klinik Spesialis</a></li>
                                 <li><a href="#">Produk Unggulan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="produk_unggulan_submenu">
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Layanan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Pendaftaran Pasien <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Kualitas Mutu <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Tim Medis <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
-                                    </ul>
+                                <li><a href="#">Tim Medis</a>
                                 </li>
                                 <li><a href="#">Promosi Kesehatan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Kontak <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="single-blog.html">single-blog</a></li>
+                                        <li class="text-center loadingsubmenu">
+                                            <div class="ld ld-hourglass ld-spin-fast">
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -111,16 +126,14 @@
     fetch("{{ route('getHeaderData') }}")
         .then((resp) => resp.json())
         .then((data) => {
-            console.log($("#produk_unggulan_submenu").html());
             data.featuredProduct.forEach(item => {
                 let tmpUrl = URL.produkUnggulan.replace('id', item.id)
                 tmpUrl = tmpUrl.replace('title', item.title)
-                console.log(tmpUrl);
                 $("#produk_unggulan_submenu").html(
                     $("#produk_unggulan_submenu").html() + '<li><a href="' + tmpUrl +
                     '">' + item.title + '</a></li>')
             })
-            console.log($("#produk_unggulan_submenu").html());
+
         })
 
 </script>

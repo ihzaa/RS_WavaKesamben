@@ -1,78 +1,87 @@
 <div class="footer_top">
     <div class="container">
         <div class="row">
-            <div class="col-xl-4 col-md-6 col-lg-4">
+            <div class="col-xl-5 col-md-6 col-lg-5">
                 <div class="footer_widget">
                     <div class="footer_logo">
-                        <a href="#">
-                            <img src="{{ asset('user') }}/img/footer_logo.png" alt="">
-                        </a>
+                        <h3 class="footer_title">
+                            Agenda Kegiatan
+                        </h3>
                     </div>
-                    <p>
-                        Firmament morning sixth subdue darkness
-                        creeping gathered divide.
-                    </p>
-                    <div class="socail_links">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="ti-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="ti-twitter-alt"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="row">
+                        <div class="col-4"><img class="img-fluid" src="{{ asset('images/default/picture.svg') }}" alt=""></div>
+                        <div class="col-8 py-2">
+                            <p>ini judul ini judul ini judul ini judul ini judul ini judul</p>
+                            <p><small>2.5.2021</small></p>
+                        </div>
                     </div>
 
                 </div>
             </div>
-            <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
+            <div class="col-xl-4 col-md-6 col-lg-4">
                 <div class="footer_widget">
                     <h3 class="footer_title">
-                        Departments
+                        Kontak Kami
                     </h3>
                     <ul>
-                        <li><a href="#">Eye Care</a></li>
-                        <li><a href="#">Skin Care</a></li>
-                        <li><a href="#">Pathology</a></li>
-                        <li><a href="#">Medicine</a></li>
-                        <li><a href="#">Dental</a></li>
-                    </ul>
+                        <li>
+                            <p>RS Wava Husada Kesamben</p>
+                        </li>
+                        <li>
+                            <p>
+                                JL. Kesamben-Jugo No.1 <br>
+                                Kesamben - Blitar <br>
+                                Telp. 0342-331999 <br>
+                                Email : rswavakesamben@gmail.com
+                            </p>
 
-                </div>
-            </div>
-            <div class="col-xl-2 col-md-6 col-lg-2">
-                <div class="footer_widget">
-                    <h3 class="footer_title">
-                        Useful Links
-                    </h3>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#"> Contact</a></li>
-                        <li><a href="#"> Appointment</a></li>
+                        </li>
+                        <li>
+                            <p><br>Rs Wava Husada Kepanjen</p>
+                        </li>
+                        <li>
+                            <p>
+                                JL. Panglima Sudirman No.99A <br>
+                                Kepanjen - Malang 65163 <br>
+                                Telp. 0341-393000 <br>
+                                Fax. 0341-398398 / 398924
+                            </p>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6 col-lg-3">
                 <div class="footer_widget">
                     <h3 class="footer_title">
-                        Address
+                        Sosial Media
                     </h3>
-                    <p>
-                        200, D-block, Green lane USA <br>
-                        +10 367 467 8934 <br>
-                        docmed@contact.com
-                    </p>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="ti-facebook"></i> Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-instagram"></i> Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-youtube"></i> Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope"></i> Email
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-phone"></i> Whatsapp
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
