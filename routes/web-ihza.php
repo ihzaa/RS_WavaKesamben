@@ -113,7 +113,7 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
         Route::name('registrationMenu.')->prefix('menu-registrasi')->group(function () {
             Route::get('/', [RegistrationMenuController::class, 'index'])->name('index');
             Route::get('add', [RegistrationMenuController::class, 'getAdd'])->name('add');
-            Route::post('add', [RegistrationMenuController::class, 'postAdd'])->name('add');
+            Route::post('add', [RegistrationMenuController::class, 'postAdd'])->name('add.post');
             Route::get('change/status/{id}', [RegistrationMenuController::class, 'changeStatus'])->name('changeStatus');
             Route::get('delete/{id}', [RegistrationMenuController::class, 'delete'])->name('delete');
             Route::get('edit/{id}', [RegistrationMenuController::class, 'getEdit'])->name('edit');

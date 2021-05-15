@@ -19,7 +19,7 @@
 
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('admin.patientRegistration.registrationMenu.add') }}" method="POST"
+                    <form action="{{ route('admin.patientRegistration.registrationMenu.add.post') }}" method="POST"
                         enctype="multipart/form-data" id="main_form">
                         <div class="card">
                             <div class="card-header">
