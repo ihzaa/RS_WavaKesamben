@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css">
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="{{ asset('backend') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+        href="{{ asset('admin') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 @endsection
 
 @section('content')
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-danger @if ($data['newPatient']> 0) ld
                         ld-heartbeat @endif" id="box_new_patient">
@@ -25,7 +29,7 @@
                                 <ion-icon id="refresh_new_patient" name="refresh-outline" size="small" class="ml-auto"
                                     style="cursor: pointer"></ion-icon>
                             </h3>
-                            <p>Pasien Baru</p>
+                            <p>Pendaftaran Baru</p>
 
                         </div>
                         <div class="icon">
@@ -34,11 +38,11 @@
                         <div class="overlay dark" id="loading_new_patient" style="display: none;">
                             <i class="fas fa-2x fa-sync-alt fa-spin"></i>
                         </div>
-                        <a href="{{ route('admin.patientRegistration.listPatient.index') }}"
+                        <a href="{{ route('admin.patientRegistration.patientRegistredList.index') }}"
                             class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -49,11 +53,11 @@
                         <div class="icon">
                             <i class="fas fas fa-procedures"></i>
                         </div>
-                        <a href="{{ route('admin.patientRegistration.patientRegistredList.index') }}"
+                        <a href="{{ route('admin.patientRegistration.listPatient.index') }}"
                             class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -68,7 +72,7 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -83,7 +87,7 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -98,7 +102,7 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
@@ -107,24 +111,16 @@
                             <p>Dokter</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-smile-beam"></i>
+                            <i class="fas fa-user-md"></i>
                         </div>
-                        <div class="form-group small-box-footer">
-                            {{-- <label>Minimal (.select2-danger)</label> --}}
-                            <select class="form-control select2 bg-transparent border-transparent"
-                                style="font-size:16px; padding:0px" data-dropdown-css-class="select2-danger"
-                                style="width: 100%;">
-                                <option></option>
-                                @foreach ($data['doctor'] as $i)
-                                    <option data-id="{{ $i->id }}" data-department="{{ $i->department_id }}">
-                                        {{ $i->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <a href="{{ route('admin.department.index') }}" class="small-box-footer">Lihat <i
+                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-md-5 mt-3">
+                <div class="col-md-3 mt-3">
+
+                </div>
+                <div class="col-md-6 mt-3">
                     <h4>Cari Dokter</h4>
                     <div class="form-group">
                         {{-- <label>Minimal (.select2-danger)</label> --}}
@@ -137,6 +133,13 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="chart">
+                        <canvas id="lineChart"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+
                 </div>
             </div>
         </div>
@@ -150,7 +153,11 @@
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="{{ asset('backend') }}/plugins/select2/js/select2.full.min.js"></script>
+    {{-- <script src="{{ asset('admin') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> --}}
+    <!-- Select2 -->
+    <script src="{{ asset('admin') }}/plugins/select2/js/select2.full.min.js"></script>
+    <!-- ChartJS -->
+    <script src="{{ asset('admin') }}/plugins/chart.js/Chart.min.js"></script>
     <script>
         const CONST_URL = {
             refresh: "{{ route('admin.getUnprocessedPatient') }}",
@@ -159,18 +166,57 @@
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2({
+                placeholder: 'Cari dokter',
                 theme: 'bootstrap4'
             })
 
-            // $('#promo').DataTable({
-            //     "paging": true,
-            //     "lengthChange": false,
-            //     "searching": true,
-            //     "ordering": true,
-            //     "info": false,
-            //     "autoWidth": false,
-            //     "responsive": true,
-            // });
+            //Chart JS
+            const cData = JSON.parse(`<?php echo $data['chart_data']; ?>`)
+            const chartData = {
+                labels: cData.label,
+                datasets: [{
+                    label: 'Jumlah Pendaftar (7 hari terakhir)',
+                    data: cData.data,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            };
+
+            //options
+            var options = {
+                responsive: true,
+                title: {
+                    display: true,
+                    position: "top",
+                    text: "Grafik Pendaftaran Pasien",
+                    fontSize: 18,
+                    fontColor: "#111"
+                },
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            beginAtZero: true,
+                            // min: 0,
+                            stepSize: 1
+                        }
+                    }]
+                }
+            }
+            // var ctx = new Chart(document.getElementById("lineChart").getContext("2d")).Line(chartData);
+            //-------------
+            //- LINE CHART -
+            //--------------
+            var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+
+            var lineChart = new Chart(lineChartCanvas, {
+                type: 'line',
+                data: chartData,
+                options: options
+            })
+
+
         });
         $(document).on("click", "#refresh_new_patient", function() {
             $('#loading_new_patient').show();

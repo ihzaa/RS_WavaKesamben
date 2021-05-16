@@ -13,7 +13,7 @@ class ScheduleController extends Controller
     {
         $data = [];
         $data['dokter'] = DepartmentDoctor::find($dokter_id);
-        $data['list'] = DoctorSchedule::all();
+        $data['list'] = DoctorSchedule::where('department_doctor_id', $dokter_id)->get();
         return view('admin.schedule.index', compact('data'));
     }
 

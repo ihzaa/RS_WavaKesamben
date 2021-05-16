@@ -36,5 +36,9 @@ class DatabaseSeeder extends Seeder
         DB::table('galeris')->insert([
             'link' => ''
         ]);
+        //Pasien
+        DB::table('patient_registration_data')->insert([
+            
+        ]);
     }
 }
