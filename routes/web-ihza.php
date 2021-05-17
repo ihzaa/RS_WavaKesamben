@@ -155,8 +155,9 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
 
 Route::name('user.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-
     Route::post('submit/angket', [HomeController::class, 'submitAngket'])->name('submit.angket');
+
+    Route::get('profile/{id}')->name('profile.index');
 
     Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 });

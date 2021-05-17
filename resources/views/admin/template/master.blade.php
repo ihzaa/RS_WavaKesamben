@@ -119,7 +119,6 @@
                 title: "{{ Session::get('title') }}",
                 text: "{{ Session::get('text') }}",
             });
-
         </script>
     @endif
 

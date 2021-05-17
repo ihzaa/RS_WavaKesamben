@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Angket;
 use App\Models\AngketJawaban;
+use App\Models\AngketJawabanPengguna;
 use App\Models\Carousel;
 use App\Models\Galeri;
 use App\Models\GaleriInstagram;
@@ -32,8 +33,13 @@ class HomeController extends Controller
         foreach ($request->all() as $k => $v) {
             if ($k != "_token") {
                 $angket_id = str_replace('pertanyaan_', '', $k);
+                AngketJawabanPengguna::create([
+                    'angket_id' => $angket_id,
+                    'angket_jawaban_id' => $v
+                ]);
             }
         }
-        dd($request->all());
+
+        return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil Mengisi Angket!');
     }
 }
