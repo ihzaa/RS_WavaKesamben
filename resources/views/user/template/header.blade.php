@@ -49,7 +49,8 @@
                             <ul id="navigation">
                                 <li><a class="active">Profil <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="profile_submenu">
-                                        <li><a href="">Sambutan Direktur</a></li>
+                                        <li><a href="{{ route('user.profile.sambutan-direktur') }}">Sambutan
+                                                Direktur</a></li>
                                         <li class="text-center loadingsubmenu">
                                             <div class="ld ld-hourglass ld-spin-fast">
                                             </div>

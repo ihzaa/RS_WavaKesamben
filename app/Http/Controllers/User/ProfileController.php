@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\SambutanDirektur;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -13,6 +14,12 @@ class ProfileController extends Controller
         $data = [];
         $data['item'] = Profile::find($id);
 
-        return view('user.profile', compact('data'));
+        return view('user.profile.profile', compact('data'));
+    }
+    public function sambutanDirektur()
+    {
+        $data = [];
+        $data['item'] = SambutanDirektur::first();
+        return view('user.profile.sambutanDirektur', compact('data'));
     }
 }

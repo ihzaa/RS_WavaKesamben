@@ -158,6 +158,7 @@ Route::name('user.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('submit/angket', [HomeController::class, 'submitAngket'])->name('submit.angket');
 
+    Route::get('profile/sambutan-direktur', [ProfileController::class, 'sambutanDirektur'])->name('profile.sambutan-direktur');
     Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
