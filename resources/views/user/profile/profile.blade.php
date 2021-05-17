@@ -16,7 +16,7 @@
                         <li><i class="fa fa-calendar"></i>
                             {{ \Carbon\Carbon::parse($data['item']->created_at)->format('d.m.Y') }}</li>
                     </ul>
-                    <div class="border_bottom p-1">
+                    <div class="p-1">
                         @php
                             echo $data['item']->description;
                         @endphp

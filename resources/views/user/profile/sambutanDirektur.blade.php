@@ -7,13 +7,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-6 mx-auto">
+                    <div class="col-md-6 mx-auto mb-2">
                         <div class="feature-img">
                             <img class="img-fluid" src="{{ asset($data['item']->image) }}" alt="">
                         </div>
                     </div>
                     <div class="welcome_docmed_info">
-                        <h2>Sambutan {{$data['item']->name}}</h2>
+                        <h2>Sambutan {{ $data['item']->name }}</h2>
 
                     </div>
                     <ul class="blog-info-link mt-3 mb-4 border_bottom p-1">
@@ -21,10 +21,11 @@
                         <li><i class="fa fa-calendar"></i>
                             {{ \Carbon\Carbon::parse($data['item']->updated_at)->format('d.m.Y') }}</li>
                     </ul>
-                    <div class="border_bottom p-1">
+                    <div class="p-1">
                         @php
                             echo $data['item']->description;
                         @endphp
+
                     </div>
                 </div>
             </div>

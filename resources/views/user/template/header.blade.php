@@ -39,7 +39,7 @@
                 <div class="col-xl-2 col-lg-2">
                     <div class="logo">
                         <a href="{{ route('user.home') }}">
-                            <img src="{{ asset('user') }}/img/logo.png" alt="">
+                            <img class="img-fluid" src="{{ asset('images/default/logo-hijau.png') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Klinik Spesialis</a></li>
+                                <li><a href="{{ route('user.specialis.index') }}">Klinik Spesialis</a></li>
                                 <li><a href="#">Produk Unggulan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="produk_unggulan_submenu">
                                         <li class="text-center loadingsubmenu">
@@ -145,6 +145,14 @@
         })
         .finally(() => {
             $(".ld").remove();
+            var menu = $('ul#navigation');
+            if (menu.length) {
+                menu.slicknav({
+                    prependTo: ".mobile_menu",
+                    closedSymbol: '+',
+                    openedSymbol: '-'
+                });
+            };
         })
 
 </script>

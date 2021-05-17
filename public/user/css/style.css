@@ -1318,8 +1318,8 @@ h3 {
 
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .welcome_docmed_area {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 @media (max-width: 767px) {
@@ -2676,8 +2676,8 @@ h3 {
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_department.scss */
 .our_department_area {
   background: #F5FBFF;
-  padding-top: 120px;
-  padding-bottom: 90px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 /* line 5, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_department.scss */
@@ -2916,8 +2916,8 @@ h3 {
 @media (max-width: 767px) {
   /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_experts.scss */
   .expert_doctors_area {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 70px;
+    padding-bottom: 70px;
   }
 }
 

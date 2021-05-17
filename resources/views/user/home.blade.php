@@ -207,7 +207,7 @@
             <div class="row section-top-border">
                 <div class="col-xl-12">
                     <div class="doctors_title mb-55">
-                        <h3>Galeri Instagram</h3>
+                        <h3>Info Kesehatan</h3>
                     </div>
                 </div>
             </div>

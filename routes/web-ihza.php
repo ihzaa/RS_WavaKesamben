@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PatientRegisteredController;
 use App\Http\Controllers\Admin\PendaftaranPasien\RegistrationMenuController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\User\ClinicSpecialisController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileController;
@@ -160,6 +161,11 @@ Route::name('user.')->group(function () {
 
     Route::get('profile/sambutan-direktur', [ProfileController::class, 'sambutanDirektur'])->name('profile.sambutan-direktur');
     Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
+
+    Route::name('specialis.')->prefix('klinik-spesialis')->group(function () {
+        Route::get('/', [ClinicSpecialisController::class, 'index'])->name('index');
+        Route::get('/{id}', [ClinicSpecialisController::class, 'detail'])->name('detail');
+    });
 
     Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 });
