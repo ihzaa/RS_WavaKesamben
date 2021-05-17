@@ -12,6 +12,7 @@ class ProfileController extends Controller
     {
         $data = [];
         $data['item'] = Profile::find($id);
-        
+
+        return view('user.profile', compact('data'));
     }
 }

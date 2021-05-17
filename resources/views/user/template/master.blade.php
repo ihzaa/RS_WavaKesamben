@@ -35,7 +35,7 @@
         <![endif]-->
 
     <!-- header-start -->
-    <header>
+    <header class="shadow ">
         @include('user.template.header')
     </header>
     <!-- header-end -->

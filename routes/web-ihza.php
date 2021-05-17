@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PendaftaranPasien\RegistrationMenuController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -157,7 +158,7 @@ Route::name('user.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('submit/angket', [HomeController::class, 'submitAngket'])->name('submit.angket');
 
-    Route::get('profile/{id}')->name('profile.index');
+    Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 });

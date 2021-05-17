@@ -293,8 +293,8 @@ h3 {
 
 /* line 212, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/theme-default.scss */
 .section-padding {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 /* line 216, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/theme-default.scss */
@@ -6261,5 +6261,7 @@ h6 {
     height: 250px;
     object-fit: cover;
 }
-
+.shadow {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
 /*# sourceMappingURL=style.css.map */

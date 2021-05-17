@@ -38,7 +38,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-2 col-lg-2">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{ route('user.home') }}">
                             <img src="{{ asset('user') }}/img/logo.png" alt="">
                         </a>
                     </div>
@@ -47,8 +47,8 @@
                     <div class="main-menu  d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a class="active" href="index.html">Profil <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu" id="produk_unggulan_submenu">
+                                <li><a class="active">Profil <i class="ti-angle-down"></i></a>
+                                    <ul class="submenu" id="profile_submenu">
                                         <li><a href="">Sambutan Direktur</a></li>
                                         <li class="text-center loadingsubmenu">
                                             <div class="ld ld-hourglass ld-spin-fast">
@@ -121,7 +121,8 @@
 
 <script>
     const URL = {
-        produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}"
+        produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
+        profile: "{{ route('user.profile.index', ['id', 'title' => 'ini_title']) }}"
     }
     fetch("{{ route('getHeaderData') }}")
         .then((resp) => resp.json())
@@ -133,7 +134,16 @@
                     $("#produk_unggulan_submenu").html() + '<li><a href="' + tmpUrl +
                     '">' + item.title + '</a></li>')
             })
-
+            data.profile.forEach(item => {
+                let tmpUrl = URL.profile.replace('id', item.id)
+                tmpUrl = tmpUrl.replace('ini_title', item.title)
+                $("#profile_submenu").html(
+                    $("#profile_submenu").html() + '<li><a href="' + tmpUrl +
+                    '">' + item.title + '</a></li>')
+            })
+        })
+        .finally(() => {
+            $(".ld").remove();
         })
 
 </script>
