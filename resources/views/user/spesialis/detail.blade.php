@@ -86,10 +86,11 @@
 
                                 <div class="single_expert">
                                     <div class="expert_thumb">
-                                        <a href=""><img src="{{ asset($item->image) }}" alt=""></a>
+                                        <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}"><img
+                                                src="{{ asset($item->image) }}" alt=""></a>
                                     </div>
                                     <div class="experts_name text-center">
-                                        <a href="">
+                                        <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}">
                                             <h3>{{ $item->name }}</h3>
                                         </a>
                                         <span>{{ $data['item']->title }}</span>

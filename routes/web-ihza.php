@@ -165,6 +165,7 @@ Route::name('user.')->group(function () {
     Route::name('specialis.')->prefix('klinik-spesialis')->group(function () {
         Route::get('/', [ClinicSpecialisController::class, 'index'])->name('index');
         Route::get('/{id}', [ClinicSpecialisController::class, 'detail'])->name('detail');
+        Route::get('/dokter/{id}', [ClinicSpecialisController::class, 'dokter'])->name('doctor');
     });
 
     Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');

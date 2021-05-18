@@ -123,7 +123,7 @@
 <script>
     const URL = {
         produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
-        profile: "{{ route('user.profile.index', ['id', 'title' => 'ini_title']) }}"
+        profile: "{{ route('user.profile.index', ['id', 'ini_title']) }}"
     }
     fetch("{{ route('getHeaderData') }}")
         .then((resp) => resp.json())
