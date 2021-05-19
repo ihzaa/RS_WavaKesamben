@@ -12,6 +12,11 @@
                         <h3>Klinik Spesialis</h3>
                     </div>
                 </div>
+                @if (count($data['item']) == 0)
+                    <div class="col-md-12">
+                        <h2 class="text-center">Tidak ada data klinik spesialis.</h2>
+                    </div>
+                @endif
             </div>
             <div class="card-columns">
                 @foreach ($data['item'] as $item)

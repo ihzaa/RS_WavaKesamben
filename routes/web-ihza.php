@@ -168,5 +168,5 @@ Route::name('user.')->group(function () {
         Route::get('/dokter/{id}', [ClinicSpecialisController::class, 'dokter'])->name('doctor');
     });
 
-    Route::get('produk-unggulan/{id}/{title}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
+    Route::get('produk-unggulan/{id}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 });

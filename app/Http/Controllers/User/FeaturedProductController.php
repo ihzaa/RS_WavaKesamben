@@ -12,6 +12,7 @@ class FeaturedProductController extends Controller
     {
         $data = array();
         $data['post'] = FeaturedProduct::find($id);
+        $data['list'] = FeaturedProduct::where('id', '!=', $id)->limit(10)->get();
         return view('user.featuredProduct.index', compact('data'));
     }
 }

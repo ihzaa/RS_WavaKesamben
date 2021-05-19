@@ -123,7 +123,7 @@
 <script>
     const URL = {
         produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
-        profile: "{{ route('user.profile.index', ['id', 'ini_title']) }}"
+        profile: "{{ route('user.profile.index', ['id', 'title']) }}"
     }
     fetch("{{ route('getHeaderData') }}")
         .then((resp) => resp.json())
@@ -137,7 +137,7 @@
             })
             data.profile.forEach(item => {
                 let tmpUrl = URL.profile.replace('id', item.id)
-                tmpUrl = tmpUrl.replace('ini_title', item.title)
+                tmpUrl = tmpUrl.replace('title', item.title)
                 $("#profile_submenu").html(
                     $("#profile_submenu").html() + '<li><a href="' + tmpUrl +
                     '">' + item.title + '</a></li>')
