@@ -13,11 +13,11 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PatientRegisteredController;
 use App\Http\Controllers\Admin\PendaftaranPasien\RegistrationMenuController;
-use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\User\ClinicSpecialisController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -166,6 +166,10 @@ Route::name('user.')->group(function () {
         Route::get('/', [ClinicSpecialisController::class, 'index'])->name('index');
         Route::get('/{id}', [ClinicSpecialisController::class, 'detail'])->name('detail');
         Route::get('/dokter/{id}', [ClinicSpecialisController::class, 'dokter'])->name('doctor');
+    });
+
+    Route::name('services.')->prefix('layanan')->group(function () {
+        Route::get('{id}', [ServicesController::class, 'index'])->name('index');
     });
 
     Route::get('produk-unggulan/{id}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');

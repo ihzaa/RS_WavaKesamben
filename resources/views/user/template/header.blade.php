@@ -67,7 +67,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="#">Layanan <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
+                                    <ul class="submenu" id="service_submenu">
                                         <li class="text-center loadingsubmenu">
                                             <div class="ld ld-hourglass ld-spin-fast">
                                             </div>
@@ -123,7 +123,8 @@
 <script>
     const URL = {
         produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
-        profile: "{{ route('user.profile.index', ['id', 'title']) }}"
+        profile: "{{ route('user.profile.index', ['id', 'title']) }}",
+        service: "{{ route('user.services.index', ['id', 'title']) }}"
     }
     fetch("{{ route('getHeaderData') }}")
         .then((resp) => resp.json())
@@ -142,6 +143,14 @@
                     $("#profile_submenu").html() + '<li><a href="' + tmpUrl +
                     '">' + item.title + '</a></li>')
             })
+            data.service.forEach(item => {
+                let tmpUrl = URL.service.replace('id', item.id)
+                tmpUrl = tmpUrl.replace('title', item.title)
+                $("#service_submenu").html(
+                    $("#service_submenu").html() + '<li><a href="' + tmpUrl +
+                    '">' + item.title + '</a></li>')
+            })
+
         })
         .finally(() => {
             $(".ld").remove();
