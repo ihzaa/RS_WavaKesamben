@@ -88,24 +88,9 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="judul">Judul</label>
-                            <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan Judul">
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img id="blah" class="img-fluid" alt="your image" />
-                            </div>
-                            <div class="col-md-8 d-flex">
-                                <div class="form-group col-md-12 my-auto">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="imgInp" name="foto">
-                                        <label class="custom-file-label" for="imgInp" id="label_foto">Pilih Foto</label>
-                                        <small class="form-text text-muted">- Ukuran max 256KB</small>
-                                        <small class="form-text text-muted">- Harus berupa gambar (format: jpg, jpeg, svg,
-                                            png , dll)</small>
-                                    </div>
-                                </div>
-                            </div>
+                            <label for="judul">Bulan</label>
+                            <input type="text" class="form-control" id="month" name="month" placeholder="Masukkan Bulan">
+                            <span class="text-danger">*Contoh : Januari - Maret</span>
                         </div>
                     </div>
                     <div class="modal-footer">
