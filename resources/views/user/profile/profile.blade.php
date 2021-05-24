@@ -7,9 +7,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="welcome_docmed_info">
-                        <h2>{{ $data['item']->title }}</h2>
-
+                    <div class="page_title">
+                        <h3>{{ $data['item']->title }}</h3>
                     </div>
                     <ul class="blog-info-link mt-3 mb-4 border_bottom p-1">
                         {{-- <li><i class="fa fa-user"></i> Travel, Lifestyle</li> --}}

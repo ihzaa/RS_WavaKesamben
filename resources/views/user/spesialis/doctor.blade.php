@@ -12,9 +12,8 @@
                             <img class="img-fluid" src="{{ asset($data['item']->image) }}" alt="">
                         </div>
                     </div>
-                    <div class="welcome_docmed_info">
-                        <h2>{{ $data['item']->name }} | {{ $data['item']->department->title }}</h2>
-
+                    <div class="page_title">
+                        <h3>{{ $data['item']->name }} | {{ $data['item']->department->title }}</h3>
                     </div>
                     <ul class="blog-info-link mt-3 mb-4 border_bottom p-1">
                         {{-- <li><i class="fa fa-user"></i> Travel, Lifestyle</li> --}}

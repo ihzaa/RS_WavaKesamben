@@ -75,7 +75,9 @@
                                     </ul>
                                 </li>
                                 <li><a href="#">Pendaftaran Pasien <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
+                                    <ul class="submenu" id="pendaftaran_submenu">
+                                        <li><a href="{{ route('user.patientRegistration.newPatient') }}">Daftar Pasien
+                                                Baru</a></li>
                                         <li class="text-center loadingsubmenu">
                                             <div class="ld ld-hourglass ld-spin-fast">
                                             </div>
@@ -124,7 +126,8 @@
     const URL = {
         produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
         profile: "{{ route('user.profile.index', ['id', 'title']) }}",
-        service: "{{ route('user.services.index', ['id', 'title']) }}"
+        service: "{{ route('user.services.index', ['id', 'title']) }}",
+        registration: "{{ route('user.patientRegistration.menuRegistration', ['id', 'title']) }}"
     }
     fetch("{{ route('getHeaderData') }}")
         .then((resp) => resp.json())
@@ -150,18 +153,27 @@
                     $("#service_submenu").html() + '<li><a href="' + tmpUrl +
                     '">' + item.title + '</a></li>')
             })
+            data.registration.forEach(item => {
+                let tmpUrl = URL.registration.replace('id', item.id)
+                tmpUrl = tmpUrl.replace('title', item.title)
+                $("#pendaftaran_submenu").html(
+                    $("#pendaftaran_submenu").html() + '<li><a href="' + tmpUrl +
+                    '">' + item.title + '</a></li>')
+            })
 
         })
         .finally(() => {
             $(".ld").remove();
-            var menu = $('ul#navigation');
-            if (menu.length) {
-                menu.slicknav({
-                    prependTo: ".mobile_menu",
-                    closedSymbol: '+',
-                    openedSymbol: '-'
-                });
-            };
+            $(document).ready(function() {
+                var menu = $('ul#navigation');
+                if (menu.length) {
+                    menu.slicknav({
+                        prependTo: ".mobile_menu",
+                        closedSymbol: '+',
+                        openedSymbol: '-'
+                    });
+                };
+            })
         })
 
 </script>

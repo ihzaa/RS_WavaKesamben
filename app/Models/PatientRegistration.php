@@ -10,4 +10,9 @@ class PatientRegistration extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
+
+    public function form()
+    {
+        return $this->hasMany(PatientRegistrationForm::class);
+    }
 }

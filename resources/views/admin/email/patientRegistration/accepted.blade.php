@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Airmail Welcome</title>
+    <title>Pendaftaran Pasien Diterima</title>
     <style type="text/css">
         * {
             margin: 0;
@@ -477,9 +477,9 @@
                                                     <tr>
                                                         <td class="body-signature-cell">
                                                             <p>Terima Kasih,</p>
-                                                            {{-- <p class="body-signature"><img
-                                                                    src="https://www.filepicker.io/api/file/2R9HpqboTPaB4NyF35xt"
-                                                                    alt="Company Name"></p> --}}
+                                                            <p class="body-signature"><img class="center"
+                                                                    src="{{ asset('images/default/logo-hijau.png') }}"
+                                                                    alt="Company Name"></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -513,7 +513,7 @@
                         <a href="{{ env('WA_link') }}" target="_blank">Whatsapp</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                         <span class="footer-group">
                             <a href="{{ env('FB_link') }}" target="_blank">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="{{ env('IG_link') }}" target="_blank">Twitter</a>
+                            <a href="{{ env('IG_link') }}" target="_blank">Instagram</a>
 
                         </span>
                     </div>

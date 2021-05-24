@@ -2,6 +2,13 @@
 
 @section('page_title', 'Klinik Spesialis')
 
+@section('css_after')
+    <style>
+        
+
+    </style>
+@endsection
+
 @section('content')
     <!-- offers_area_start -->
     <div class="our_department_area">
@@ -33,18 +40,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="card">
-                        <div class="single_department">
-                            <div class="department_thumb">
-                                <img src="{{ $item->image }}" alt="">
-                            </div>
-                            <div class="department_content">
-                                <h3><a href="#">{{ $item->quotes }}</a></h3>
-                                <p>{{ $item->description }}</p>
-                                <a href="#" class="learn_more">Learn More</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 @endforeach
             </div>
         </div>

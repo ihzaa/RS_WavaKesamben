@@ -13,9 +13,11 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PasienController;
 use App\Http\Controllers\Admin\PendaftaranPasien\PatientRegisteredController;
 use App\Http\Controllers\Admin\PendaftaranPasien\RegistrationMenuController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\User\ClinicSpecialisController;
 use App\Http\Controllers\User\FeaturedProductController as UserFeaturedProductController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\PatientRegistration;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ServicesController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +41,10 @@ Route::get('email/pasien/acc', function () {
 });
 Route::get('email/pasien/rej', function () {
     return view('admin.email.patientRegistration.rejected');
+});
+
+Route::get('email/pasien/reg', function () {
+    return view('email.registrationClinic');
 });
 
 Route::get('4dm1n/login', [LoginController::class, 'getLogin'])->name('admin.login.get')->middleware('guest');
@@ -170,6 +176,17 @@ Route::name('user.')->group(function () {
 
     Route::name('services.')->prefix('layanan')->group(function () {
         Route::get('{id}', [ServicesController::class, 'index'])->name('index');
+    });
+
+    Route::name('patientRegistration.')->prefix('pendaftaran')->group(function () {
+        Route::get('baru', [PatientRegistration::class, 'newPatient'])->name('newPatient');
+        Route::post('baru', [PatientRegistration::class, 'storeNewPatientRegistrationData'])->name('newPatient.post');
+        Route::get('{id}', [PatientRegistration::class, 'menuRegistration'])->name('menuRegistration');
+        Route::post('{id}', [PatientRegistration::class, 'menuRegistrationPost'])->name('menuRegistration.post');
+
+        Route::get('patient/{nomer}', [PatientRegistration::class, 'getPatientData'])->name('getPatientData');
+        Route::get('getDoctorPerDepartment/{id}', [PatientRegistration::class, 'getDoctorPerDepartment'])->name('getDoctorPerDepartment');
+        Route::get('getDoctorSchedule/{id}', [PatientRegistration::class, 'getDoctorSchedule'])->name('getDoctorSchedule');
     });
 
     Route::get('produk-unggulan/{id}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');

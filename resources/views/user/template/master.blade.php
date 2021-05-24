@@ -26,14 +26,48 @@
     <link rel="stylesheet" href="{{ asset('user') }}/css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
     @yield('css_after')
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3;
+            /* Light grey */
+            border-top: 16px solid #3498db;
+            /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
 
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
 </head>
 
 <body>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
-
+    <div style="
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999;
+        background-color: rgba(122, 117, 117,0.5);
+        " id="page_loader" class="justify-content-center align-items-center">
+        <div class="loader mx-auto justify-content-center align-items-center"></div>
+    </div>
     <!-- header-start -->
     <header class="shadow ">
         @include('user.template.header')

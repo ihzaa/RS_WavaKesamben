@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Jenis Pendaftaran</label>
+                                        <label for="">Klinik Spesialis</label>
                                         <select class="form-control select2" style="width: 100%;" id="spesialis">
                                             <option value="def">Semua</option>
                                             @foreach ($data['listKlinik'] as $item)
