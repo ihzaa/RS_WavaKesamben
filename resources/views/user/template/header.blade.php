@@ -100,6 +100,11 @@
                                             <div class="ld ld-hourglass ld-spin-fast">
                                             </div>
                                         </li>
+                                        <li><a href="{{ route('user.healthyPromotion.healthyInformation.index') }}">Info
+                                                Kesehatan</a></li>
+                                        <li><a href="{{ route('user.healthyPromotion.agendaActivity.index') }}">Agenda
+                                                Kegiatan</a></li>
+                                        <li><a href="">Testimoni</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Kontak <i class="ti-angle-down"></i></a>

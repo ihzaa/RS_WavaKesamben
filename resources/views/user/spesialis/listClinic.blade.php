@@ -4,7 +4,7 @@
 
 @section('css_after')
     <style>
-        
+
 
     </style>
 @endsection
@@ -25,22 +25,24 @@
                     </div>
                 @endif
             </div>
-            <div class="card-columns">
-                @foreach ($data['item'] as $item)
-                    <div class="card single_department">
-                        <img class="card-img-top" src="{{ $item->image }}" alt="Card image cap">
-                        <div class="card-body p-0">
-                            <div class="department_content">
-                                <h3 class="card-title"><a
-                                        href="{{ route('user.specialis.detail', [$item->id, $item->title]) }}">{{ $item->title }}</a>
-                                </h3>
-                                <p class="card-text">{{ $item->quotes }}</p>
-                                <a href="{{ route('user.specialis.detail', [$item->id, $item->title]) }}"
-                                    class="learn_more">Lihat</a>
+            <div class="">
+                <div class="card-columns">
+                    @foreach ($data['item'] as $item)
+                        <div class="card single_department">
+                            <img class="card-img-top" src="{{ $item->image }}" alt="Card image cap">
+                            <div class="card-body p-0">
+                                <div class="department_content">
+                                    <h3 class="card-title"><a
+                                            href="{{ route('user.specialis.detail', [$item->id, $item->title]) }}">{{ $item->title }}</a>
+                                    </h3>
+                                    <p class="card-text">{{ $item->quotes }}</p>
+                                    <a href="{{ route('user.specialis.detail', [$item->id, $item->title]) }}"
+                                        class="learn_more">Lihat</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

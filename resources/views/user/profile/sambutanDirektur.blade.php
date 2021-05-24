@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6 mx-auto mb-2">
-                        <div class="feature-img">
+                        <div class="feature-img text-center">
                             <img class="img-fluid" src="{{ asset($data['item']->image) }}" alt="">
                         </div>
                     </div>

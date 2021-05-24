@@ -21,6 +21,9 @@ use App\Http\Controllers\User\PatientRegistration;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ServicesController;
 use App\Http\Controllers\User\TimMedisController;
+use App\Http\Controllers\User\HealthyPromotion;
+use App\Http\Controllers\User\HealthyPromotion\AgendaActivityController as HealthyPromotionAgendaActivityController;
+use App\Http\Controllers\User\HealthyPromotion\HealthyInformationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -193,4 +196,13 @@ Route::name('user.')->group(function () {
     Route::get('produk-unggulan/{id}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 
     Route::get('tim-medis', [TimMedisController::class, 'index'])->name('timMedis.index');
+
+    Route::name('healthyPromotion.')->prefix('promosi-kesehatan')->group(function () {
+        Route::name('healthyInformation.')->prefix('informasi-kesehatan')->group(function () {
+            Route::get('/', [HealthyInformationController::class, 'index'])->name('index');
+        });
+        Route::name('agendaActivity.')->prefix('agenda-kegiatan')->group(function () {
+            Route::get('/', [HealthyPromotionAgendaActivityController::class, 'index'])->name('index');
+        });
+    });
 });
