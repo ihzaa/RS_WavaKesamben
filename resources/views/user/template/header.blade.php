@@ -92,7 +92,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Tim Medis</a>
+                                <li><a href="{{ route('user.timMedis.index') }}">Tim Medis</a>
                                 </li>
                                 <li><a href="#">Promosi Kesehatan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">

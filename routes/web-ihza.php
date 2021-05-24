@@ -20,6 +20,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PatientRegistration;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\ServicesController;
+use App\Http\Controllers\User\TimMedisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -190,4 +191,6 @@ Route::name('user.')->group(function () {
     });
 
     Route::get('produk-unggulan/{id}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
+
+    Route::get('tim-medis', [TimMedisController::class, 'index'])->name('timMedis.index');
 });

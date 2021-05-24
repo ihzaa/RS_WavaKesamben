@@ -10,4 +10,9 @@ class Department extends Model
 {
     use HasFactory, SoftDeletes;
     protected $guarded = [];
+
+    public function doctors()
+    {
+        return $this->hasMany(DepartmentDoctor::class);
+    }
 }
