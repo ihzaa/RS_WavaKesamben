@@ -255,7 +255,7 @@ h3 {
 .overlay_skyblue::before {
   position: absolute;
   content: "";
-  background-color: #5DB2FF;
+  background-color: var(--teal);
   top: 0;
   left: 0;
   width: 100%;
@@ -448,8 +448,8 @@ h3 {
 /* line 51, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
   background: #fff;
-  color: #009DFF !important;
-  border: 1px solid #009DFF;
+  color: var(--teal) !important;
+  border: 1px solid var(--teal);
 }
 
 /* line 56, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
@@ -488,7 +488,7 @@ h3 {
 /* line 80, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_btn.scss */
 .boxed-btn3-white:hover {
   background: #fff;
-  color: #009DFF !important;
+  color: var(--teal) !important;
   border: 1px solid transparent;
 }
 
@@ -3104,7 +3104,7 @@ h3 {
 
 /* line 36, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_emergency_contact.scss */
 .emergency_bg_1 {
-  background-image: url(../img/banner/emergency-1.png);
+  background-image: url(../img/banner/chart-2.png);
 }
 
 /* line 39, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_emergency_contact.scss */

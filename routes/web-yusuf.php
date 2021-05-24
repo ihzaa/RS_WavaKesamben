@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\QualityController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\User\QualityController as UserQualityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,4 +82,24 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
 
     });
 
+});
+
+Route::name('user.')->group(function () {
+    // Route::get('/', [HomeController::class, 'index'])->name('home');
+    // Route::post('submit/angket', [HomeController::class, 'submitAngket'])->name('submit.angket');
+
+    // Route::get('profile/sambutan-direktur', [ProfileController::class, 'sambutanDirektur'])->name('profile.sambutan-direktur');
+    // Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
+
+    Route::name('quality.')->prefix('kualitas-mutu')->group(function () {
+        Route::get('/', [UserQualityController::class, 'indexYear'])->name('index');
+        // Route::get('/{id}', [ClinicSpecialisController::class, 'detail'])->name('detail');
+        // Route::get('/dokter/{id}', [ClinicSpecialisController::class, 'dokter'])->name('doctor');
+    });
+
+    // Route::name('services.')->prefix('layanan')->group(function () {
+    //     Route::get('{id}', [ServicesController::class, 'index'])->name('index');
+    // });
+
+    // Route::get('produk-unggulan/{id}', [UserFeaturedProductController::class, 'index'])->name('featuredproduct.index');
 });
