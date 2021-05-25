@@ -92,8 +92,9 @@ Route::name('user.')->group(function () {
     // Route::get('profile/{id}', [ProfileController::class, 'index'])->name('profile.index');
 
     Route::name('quality.')->prefix('kualitas-mutu')->group(function () {
-        Route::get('/', [UserQualityController::class, 'indexYear'])->name('index');
-        // Route::get('/{id}', [ClinicSpecialisController::class, 'detail'])->name('detail');
+        Route::get('/', [UserQualityController::class, 'showYear'])->name('index');
+        Route::get('/{id}-{year}', [UserQualityController::class, 'showMonth'])->name('month');
+        Route::get('/{id}-{year}/{month_id}-{month}', [UserQualityController::class, 'showData'])->name('data');
         // Route::get('/dokter/{id}', [ClinicSpecialisController::class, 'dokter'])->name('doctor');
     });
 

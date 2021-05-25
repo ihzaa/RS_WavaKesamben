@@ -84,13 +84,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Kualitas Mutu <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
-                                        <li class="text-center loadingsubmenu">
-                                            <div class="ld ld-hourglass ld-spin-fast">
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <li><a href="{{ route('user.quality.index') }}">Kualitas Mutu</a>
+
                                 </li>
                                 <li><a href="{{ route('user.timMedis.index') }}">Tim Medis</a>
                                 </li>
