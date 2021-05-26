@@ -4,7 +4,7 @@
 @section('css_before')
     <style>
         .nav {
-            justify-content: center !important
+            justify-content: space-evenly !important
         }
 
         .nav-item a {
@@ -67,7 +67,7 @@
                                     <div class="text-center">
                                         <h1>{{ $d->name }}</h1>
                                         <hr>
-                                        <img src="{{ asset($d->image) }}" class="img-fluid" alt="">
+                                        <img data-src="{{ asset($d->image) }}" class="lozad img-fluid" alt="">
                                     </div>
                                 </div>
                             @else
@@ -76,7 +76,7 @@
                                     <div class="text-center">
                                         <h1>{{ $d->name }}</h1>
                                         <hr>
-                                        <img src="{{ asset($d->image) }}" class="img-fluid" alt="">
+                                        <img data-src="{{ asset($d->image) }}" class="lozad img-fluid" alt="">
                                     </div>
                                 </div>
                             @endif
@@ -94,4 +94,12 @@
             </a>
         </div>
     </div>
+@endsection
+@section('js_after')
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <script>
+        const observer = lozad();
+        observer.observe();
+
+    </script>
 @endsection
