@@ -187,7 +187,7 @@
                                         </h5>
                                         <span>
                                             @php
-                                                echo strlen(strip_tags($item->description)) > 300 ? substr(strip_tags($item->description), 0, 300) . '...' : strip_tags($item->description);
+                                                echo strlen(strip_tags($item->description)) > 150 ? substr(strip_tags($item->description), 0, 150) . '...' : strip_tags($item->description);
                                             @endphp
                                         </span>
                                     </div>
@@ -232,7 +232,7 @@
                                         </h5>
                                         <span>
                                             @php
-                                                echo strlen(strip_tags($item->description)) > 300 ? substr(strip_tags($item->description), 0, 300) . '...' : strip_tags($item->description);
+                                                echo strlen(strip_tags($item->description)) > 150 ? substr(strip_tags($item->description), 0, 150) . '...' : strip_tags($item->description);
                                             @endphp
                                         </span>
                                     </div>

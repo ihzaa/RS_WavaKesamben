@@ -2,9 +2,9 @@
 
 @section('page_title', 'Info Kesehatan')
 
-<style>
+    <style>
 
-</style>
+    </style>
 
 @section('content')
     <!--================Blog Area =================-->
@@ -19,7 +19,8 @@
                         @foreach ($data['item'] as $item)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0 img_article_wrapper" src="{{ asset($item->image) }}" style="object-fit: cover" alt="">
+                                    <img class="card-img rounded-0 img_article_wrapper" src="{{ asset($item->image) }}"
+                                        style="object-fit: cover" alt="">
                                     <a href="#" class="blog_item_date">
                                         <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('M') }}</p>
@@ -48,18 +49,20 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="#">
+                            <form action="{{ route('user.healthyPromotion.healthyInformation.index') }}" method="GET"
+                                id="search_form">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <input type="text" required name="keyword" class="form-control" placeholder='Cari Kata Kunci'
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Kata Kunci'"
+                                            value="{{ $data['keyword'] }}">
                                         <div class="input-group-append">
-                                            <button class="btn" type="button"><i class="ti-search"></i></button>
+                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Search</button>
+                                    type="submit">Cari</button>
                             </form>
                         </aside>
 
@@ -152,4 +155,14 @@
         </div>
     </section>
     <!--================Blog Area =================-->
+@endsection
+
+@section('js_after')
+    {{-- <script>
+        $("#search_form").submit(function() {
+            event.preventDefault()
+
+        })
+
+    </script> --}}
 @endsection
