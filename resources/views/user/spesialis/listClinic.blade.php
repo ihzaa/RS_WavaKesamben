@@ -29,7 +29,7 @@
                 <div class="card-columns">
                     @foreach ($data['item'] as $item)
                         <div class="card single_department">
-                            <img class="card-img-top" src="{{ $item->image }}" alt="Card image cap">
+                            <img class="card-img-top lazy" data-src="{{ $item->image }}" alt="Card image cap">
                             <div class="card-body p-0">
                                 <div class="department_content">
                                     <h3 class="card-title"><a
@@ -47,4 +47,11 @@
         </div>
     </div>
     <!-- offers_area_end -->
+@endsection
+
+@section('js_after')
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
+    <script>
+        var lazyLoadInstance = new LazyLoad();
+    </script>
 @endsection

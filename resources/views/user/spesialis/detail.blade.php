@@ -86,8 +86,9 @@
 
                                 <div class="single_expert">
                                     <div class="expert_thumb">
-                                        <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}"><img
-                                                src="{{ asset($item->image) }}" alt=""></a>
+                                        <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}">
+                                            <img class="lazy" data-src="{{ asset($item->image) }}" alt="">
+                                            </a>
                                     </div>
                                     <div class="experts_name text-center">
                                         <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}">
@@ -104,4 +105,11 @@
         </div>
         <!-- expert_doctors_area_end -->
     </section>
+@endsection
+
+@section('js_after')
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
+    <script>
+        var lazyLoadInstance = new LazyLoad();
+    </script>
 @endsection
