@@ -40,14 +40,15 @@
                             @foreach ($data['quality'] as $d)
                                 <li class="nav-item">
                                     @if ($loop->first)
-                                        <a class="nav-link active show" style="font-size: 14px;" id="{{ $d->id }}"
-                                            data-toggle="tab" href="#{{ str_replace(' ', '', $d->name) }}" role="tab"
-                                            aria-controls="{{ str_replace(' ', '', $d->name) }}"
+                                        <a class="nav-link active show" style="font-size: 14px;"
+                                            id="{{ $d->id }}-tab" data-toggle="tab"
+                                            href="#{{ str_replace(' ', '', $d->name) }}-content" role="tab"
+                                            aria-controls="{{ str_replace(' ', '', $d->name) }}-content"
                                             aria-selected="false">{{ $d->name }}</a>
                                     @else
-                                        <a class="nav-link" style="font-size: 14px;" id="{{ $d->id }}"
-                                            data-toggle="tab" href="#{{ str_replace(' ', '', $d->name) }}" role="tab"
-                                            aria-controls="{{ str_replace(' ', '', $d->name) }}"
+                                        <a class="nav-link" style="font-size: 14px;" id="{{ $d->id }}-tab"
+                                            data-toggle="tab" href="#{{ str_replace(' ', '', $d->name) }}-content"
+                                            role="tab" aria-controls="{{ str_replace(' ', '', $d->name) }}-content"
                                             aria-selected="false">{{ $d->name }}</a>
                                     @endif
 
@@ -62,8 +63,8 @@
                     <div class="tab-content" id="myTabContent">
                         @foreach ($data['quality'] as $d)
                             @if ($loop->first)
-                                <div class="tab-pane fade show active" id="{{ str_replace(' ', '', $d->name) }}"
-                                    role="tabpanel" aria-labelledby="{{ $d->id }}">
+                                <div class="tab-pane fade show active" id="{{ str_replace(' ', '', $d->name) }}-content"
+                                    role="tabpanel" aria-labelledby="{{ $d->id }}-tab">
                                     <div class="text-center">
                                         <h1>{{ $d->name }}</h1>
                                         <hr>
@@ -71,8 +72,8 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="tab-pane fade" id="{{ str_replace(' ', '', $d->name) }}" role="tabpanel"
-                                    aria-labelledby="{{ $d->id }}">
+                                <div class="tab-pane fade" id="{{ str_replace(' ', '', $d->name) }}-content"
+                                    role="tabpanel" aria-labelledby="{{ $d->id }}-tab">
                                     <div class="text-center">
                                         <h1>{{ $d->name }}</h1>
                                         <hr>
