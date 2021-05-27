@@ -8,12 +8,12 @@
                             Agenda Kegiatan
                         </h3>
                     </div>
-                    <div class="row">
-                        <div class="col-4"><img class="img-fluid" src="{{ asset('images/default/picture.svg') }}" alt=""></div>
+                    <div class="row" id="footer_agenda_activity_wrapper">
+                        {{-- <div class="col-4" style="max-height: 100px"><img class="img_fit-cover" src="http://127.0.0.1:8000/images/healthy_promotion/agenda_activity/main/2agenda_activity.jpg" alt=""></div>
                         <div class="col-8 py-2">
                             <p>ini judul ini judul ini judul ini judul ini judul ini judul</p>
                             <p><small>2.5.2021</small></p>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>

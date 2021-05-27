@@ -107,7 +107,97 @@
     <script src="{{ asset('user') }}/js/jquery.form.js"></script>
     <script src="{{ asset('user') }}/js/jquery.validate.min.js"></script>
     <script src="{{ asset('user') }}/js/mail-script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const URL = {
+            produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
+            profile: "{{ route('user.profile.index', ['id', 'title']) }}",
+            service: "{{ route('user.services.index', ['id', 'title']) }}",
+            registration: "{{ route('user.patientRegistration.menuRegistration', ['id', 'title']) }}",
+            asset: "{{ asset('') }}"
+            // agendaActivity:
+        }
 
+        const truncateStringWithThreeDots = (data, size = 50) => {
+            return data.length > size ? data.substring(0, size) + '...' : data
+        }
+
+        fetch("{{ route('getHeaderAndFooterData') }}")
+            .then((resp) => resp.json())
+            .then(async (data) => {
+                data.featuredProduct.forEach(item => {
+                    let tmpUrl = URL.produkUnggulan.replace('id', item.id)
+                    tmpUrl = tmpUrl.replace('title', item.title)
+                    $("#produk_unggulan_submenu").html(
+                        $("#produk_unggulan_submenu").html() + '<li><a href="' + tmpUrl +
+                        '">' + item.title + '</a></li>')
+                })
+                data.profile.forEach(item => {
+                    let tmpUrl = URL.profile.replace('id', item.id)
+                    tmpUrl = tmpUrl.replace('title', item.title)
+                    $("#profile_submenu").html(
+                        $("#profile_submenu").html() + '<li><a href="' + tmpUrl +
+                        '">' + item.title + '</a></li>')
+                })
+                data.service.forEach(item => {
+                    let tmpUrl = URL.service.replace('id', item.id)
+                    tmpUrl = tmpUrl.replace('title', item.title)
+                    $("#service_submenu").html(
+                        $("#service_submenu").html() + '<li><a href="' + tmpUrl +
+                        '">' + item.title + '</a></li>')
+                })
+                data.registration.forEach(item => {
+                    let tmpUrl = URL.registration.replace('id', item.id)
+                    tmpUrl = tmpUrl.replace('title', item.title)
+                    $("#pendaftaran_submenu").html(
+                        $("#pendaftaran_submenu").html() + '<li><a href="' + tmpUrl +
+                        '">' + item.title + '</a></li>')
+                })
+
+                const agendaActivityWrapper = "#footer_agenda_activity_wrapper";
+                if (data.agendaActivity.length == 0) {
+                    $(agendaActivityWrapper).html(
+                        `<div class="col"><p class="text-center">Tidak ada data.</p></div>`)
+                } else {
+                    data.agendaActivity.forEach(item => {
+                        // let tmpUrl = URL.registration.replace('id', item.id)
+                        // tmpUrl = tmpUrl.replace('title', item.title)
+                        $(agendaActivityWrapper).html(
+                            $(agendaActivityWrapper).html() +
+                            `
+                                <div class="col-4 py-2" style="max-height:100px;">
+                                <a href="">
+                                    <img  class="img_fit-cover" src="${URL.asset+item.image}" alt=""></div>
+                                </a>
+                        <div class="col-8 py-2">
+                            <a href="#">
+                                <p>${truncateStringWithThreeDots(item.title)}</p>
+                            <p><small>${moment(item.created_at).format("D.M.YYYY")}</small></p>
+                            </a>
+                        </div>
+                        `
+                        )
+                    })
+                }
+
+            })
+            .finally(() => {
+                $(".ld").remove();
+                $(document).ready(function() {
+                    var menu = $('ul#navigation');
+                    if (menu.length) {
+                        menu.slicknav({
+                            prependTo: ".mobile_menu",
+                            closedSymbol: '+',
+                            openedSymbol: '-'
+                        });
+                    };
+                })
+            })
+
+    </script>
     <script src="{{ asset('user') }}/js/main.js"></script>
     @yield('js_after')
 </body>

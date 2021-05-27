@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\HeaderController;
+use App\Http\Controllers\User\HeaderFooterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,4 @@ Route::get('generate', function () {
     echo 'ok';
 });
 
-Route::get('getUserHeader', [HeaderController::class, 'getAllData'])->name('getHeaderData');
+Route::get('getUserHeaderAndFooter', [HeaderFooterController::class, 'getAllData'])->name('getHeaderAndFooterData');
