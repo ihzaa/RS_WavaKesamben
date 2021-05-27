@@ -15,8 +15,8 @@
                         @foreach ($data['item'] as $item)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0 img_article_wrapper" src="{{ asset($item->image) }}"
-                                        alt="">
+                                    <img class="card-img rounded-0 img_article_wrapper img_just_fit-cover" src="{{ asset($item->image) }}"
+                                        alt="" >
                                     <a href="#" class="blog_item_date">
                                         <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('M') }}</p>

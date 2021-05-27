@@ -6319,4 +6319,8 @@ h6 {
     object-position: center;
 }
 
+.img_just_fit-cover{
+    object-fit: cover;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -3,7 +3,7 @@
         <ul class="pagination">
             <li class="page-item {{ $paginator->currentPage() == 1 ? 'disabled' : '' }}">
                 <a href="{{ $paginator->url(1) }}" class="page-link" aria-label="Previous">
-                    <i class="ti-angle-left"></i>
+                    <strong style="font-size: 1.5rem"><</strong>
                 </a>
             </li>
             @for ($i = 1; $i <= $paginator->lastPage(); $i++)
@@ -13,7 +13,7 @@
             @endfor
             <li class="page-item {{ $paginator->currentPage() == $paginator->lastPage() ? 'disabled' : '' }}">
                 <a href="{{ $paginator->url($paginator->currentPage() + 1) }}" class="page-link " aria-label="Next">
-                    <i class="ti-angle-right"></i>
+                    <strong style="font-size: 1.5rem">></strong>
                 </a>
             </li>
         </ul>

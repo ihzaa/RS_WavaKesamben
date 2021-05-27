@@ -116,8 +116,8 @@
             profile: "{{ route('user.profile.index', ['id', 'title']) }}",
             service: "{{ route('user.services.index', ['id', 'title']) }}",
             registration: "{{ route('user.patientRegistration.menuRegistration', ['id', 'title']) }}",
-            asset: "{{ asset('') }}"
-            // agendaActivity:
+            asset: "{{ asset('') }}",
+            agendaActivity: "{{ route('user.healthyPromotion.agendaActivity.detail', ['id', 'title']) }}"
         }
 
         const truncateStringWithThreeDots = (data, size = 50) => {
@@ -162,17 +162,17 @@
                         `<div class="col"><p class="text-center">Tidak ada data.</p></div>`)
                 } else {
                     data.agendaActivity.forEach(item => {
-                        // let tmpUrl = URL.registration.replace('id', item.id)
-                        // tmpUrl = tmpUrl.replace('title', item.title)
+                        let tmpUrl = URL.agendaActivity.replace('id', item.id)
+                        tmpUrl = tmpUrl.replace('title', item.title)
                         $(agendaActivityWrapper).html(
                             $(agendaActivityWrapper).html() +
                             `
                                 <div class="col-4 py-2" style="max-height:100px;">
-                                <a href="">
+                                <a href="${tmpUrl}">
                                     <img  class="img_fit-cover" src="${URL.asset+item.image}" alt=""></div>
                                 </a>
                         <div class="col-8 py-2">
-                            <a href="#">
+                            <a href="${tmpUrl}">
                                 <p>${truncateStringWithThreeDots(item.title)}</p>
                             <p><small>${moment(item.created_at).format("D.M.YYYY")}</small></p>
                             </a>
