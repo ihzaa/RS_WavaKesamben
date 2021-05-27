@@ -4,62 +4,59 @@
 
 @section('content')
     <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
+    <section class="blog_area single-post-area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
-                        @if (count($data['item']) == 0)
-                            <h3 class="text-center my-5">Tidak Ada Agenda Kegiatan.</h3>
-                        @endif
-                        @foreach ($data['item'] as $item)
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0 img_article_wrapper" src="{{ asset($item->image) }}"
-                                        alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
-                                        <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('M') }}</p>
-                                    </a>
-                                </div>
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img">
+                            <img class="img-fluid" src="{{ asset($data['content']->image) }}" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <h2>{{ $data['content']->title }}
+                            </h2>
+                            <ul class="blog-info-link mt-3 mb-4">
+                                <li><a href="{{ route('user.healthyPromotion.agendaActivity.index') }}"><i
+                                            class="fa fa-tags"></i> Agenda Kegiatan</a></li>
+                                <li><a href="#"><i class="fa fa-date"></i>
+                                        {{ \Carbon\Carbon::parse($data['content']->created_at)->translatedFormat('d M Y') }}</a>
+                                </li>
+                            </ul>
+                            @php
+                                echo $data['content']->description;
+                            @endphp
+                        </div>
+                    </div>
+                    <div class="navigation-top">
+                        <div class="navigation-area">
+                            <div class="row">
+                                <div class="col-lg-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                    <div class="detials">
+                                        <a href="{{ route('user.healthyPromotion.agendaActivity.index') }}">
 
-                                <div class="blog_details">
-                                    <a class="d-inline-block"
-                                        href="{{ route('user.healthyPromotion.agendaActivity.detail', ['id' => $item->id, 'title' => $item->title]) }}">
-                                        <h2>{{ $item->title }}</h2>
-                                    </a>
-                                    <p>
-                                        @php
-                                            echo strlen(strip_tags($item->description)) > 200 ? substr(strip_tags($item->description), 0, 200) . '...' : strip_tags($item->description);
-                                        @endphp
-                                    </p>
-                                    {{-- <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul> --}}
+                                            <h4><i class="fa fa-arrow-left"></i> Kembali ke halaman agenda kegiatan</h4>
+                                        </a>
+                                    </div>
                                 </div>
-                            </article>
-                        @endforeach
-                        {{ $data['item']->links('user.template.pagination') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="{{ route('user.healthyPromotion.agendaActivity.index') }}" method="GET"
-                                id="search_form">
+                            <form action="#">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" required name="keyword" class="form-control" placeholder='Cari Kata Kunci'
-                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Kata Kunci'"
-                                            value="{{ $data['keyword'] }}">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                                         <div class="input-group-append">
-                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
+                                            <button class="btn" type="button"><i class="ti-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Cari</button>
+                                    type="submit">Search</button>
                             </form>
                         </aside>
 
@@ -74,7 +71,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('user.healthyPromotion.agendaActivity.index') }}" class="d-flex">
+                                    <a href="#" class="d-flex">
                                         <p>Agenda Kegiatan</p>
                                         <p> ({{ $data['count']->agenda_activities_count }})</p>
                                     </a>
