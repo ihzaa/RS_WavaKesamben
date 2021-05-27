@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User\HealthyPromotion;
 use App\Http\Controllers\Controller;
 use App\Models\AgendaActivity;
 use App\Models\GaleriInstagram;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AgendaActivityController extends Controller
