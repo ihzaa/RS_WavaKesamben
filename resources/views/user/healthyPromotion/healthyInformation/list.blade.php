@@ -2,6 +2,10 @@
 
 @section('page_title', 'Info Kesehatan')
 
+<style>
+
+</style>
+
 @section('content')
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
@@ -9,10 +13,13 @@
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
+                        @if (count($data['item']) == 0)
+                            <h3 class="text-center my-5">Tidak Ada Informasi Kesehatan.</h3>
+                        @endif
                         @foreach ($data['item'] as $item)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="{{ asset($item->image) }}" alt="">
+                                    <img class="card-img rounded-0 img_article_wrapper" src="{{ asset($item->image) }}" style="object-fit: cover" alt="">
                                     <a href="#" class="blog_item_date">
                                         <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('M') }}</p>
@@ -67,7 +74,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex">
+                                    <a href="{{ route('user.healthyPromotion.agendaActivity.index') }}" class="d-flex">
                                         <p>Agenda Kegiatan</p>
                                         <p> ({{ $data['count']->agenda_activities_count }})</p>
                                     </a>

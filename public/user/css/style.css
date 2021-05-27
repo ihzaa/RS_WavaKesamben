@@ -6273,5 +6273,45 @@ h6 {
     text-transform: capitalize;
 }
 
+@media only screen and (min-width: 1200px) {
+    .img_article_wrapper{
+        max-height: 522px;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    .img_article_wrapper{
+        max-height: 436px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .img_article_wrapper{
+        max-height: 494px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .img_article_wrapper{
+        max-height: 365px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .img_article_wrapper{
+        max-height: 378px;
+    }
+}
+
+@media only screen and (max-width: 436px) {
+    .img_article_wrapper{
+        max-height: 290px;
+    }
+}
+
+@media only screen and (max-width: 436px) {
+    .img_article_wrapper{
+        max-height: 290px;
+    }
+}
 
 /*# sourceMappingURL=style.css.map */

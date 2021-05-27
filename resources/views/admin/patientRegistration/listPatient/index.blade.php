@@ -134,6 +134,9 @@
             "info": true,
             "autoWidth": false,
             "responsive": true,
+            'drawCallback': function() {
+                lazyload()
+            }
         });
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
