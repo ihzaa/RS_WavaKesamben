@@ -24,7 +24,8 @@
                                 </div>
 
                                 <div class="blog_details">
-                                    <a class="d-inline-block" href="single-blog.html">
+                                    <a class="d-inline-block"
+                                        href="{{ route('user.healthyPromotion.agendaActivity.detail', ['id' => $item->id, 'title' => $item->title]) }}">
                                         <h2>{{ $item->title }}</h2>
                                     </a>
                                     <p>

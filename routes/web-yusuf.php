@@ -97,7 +97,7 @@ Route::name('user.')->group(function () {
         //     Route::get('/', [HealthyInformationController::class, 'index'])->name('index');
         // });
         Route::name('agendaActivity.')->prefix('agenda-kegiatan')->group(function () {
-            Route::get('/{id}-{title}', [HealthyPromotionAgendaActivityController::class, 'index'])->name('index');
+            Route::get('/{id}-{title}', [HealthyPromotionAgendaActivityController::class, 'detail'])->name('detail');
         });
     });
 });

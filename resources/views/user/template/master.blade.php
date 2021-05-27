@@ -110,6 +110,13 @@
 
     <script src="{{ asset('user') }}/js/main.js"></script>
     @yield('js_after')
+    <script>
+        $(document).ready(function() {
+            // $("img").addClass("img-responsive");
+            $("img").css("max-width", "100%");
+        });
+
+    </script>
 </body>
 
 </html>
