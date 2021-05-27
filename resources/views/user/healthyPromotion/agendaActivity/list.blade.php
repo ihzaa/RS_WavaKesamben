@@ -45,18 +45,20 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form action="#">
+                            <form action="{{ route('user.healthyPromotion.agendaActivity.index') }}" method="GET"
+                                id="search_form">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder='Search Keyword'
-                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                        <input type="text" required name="keyword" class="form-control" placeholder='Cari Kata Kunci'
+                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Kata Kunci'"
+                                            value="{{ $data['keyword'] }}">
                                         <div class="input-group-append">
-                                            <button class="btn" type="button"><i class="ti-search"></i></button>
+                                            <button class="btn" type="submit"><i class="ti-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Search</button>
+                                    type="submit">Cari</button>
                             </form>
                         </aside>
 
