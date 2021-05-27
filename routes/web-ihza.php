@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\FeaturedProductController;
 use App\Http\Controllers\Admin\HealthyPromotion\AgendaActivityController;
 use App\Http\Controllers\Admin\HealthyPromotion\HealthyInfoController;
@@ -54,7 +55,10 @@ Route::post('4dm1n/login', [LoginController::class, 'postLogin'])->name('admin.l
 
 Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(function () {
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
+    Route::name('manageProfile.')->prefix('pengatura-akun')->group(function () {
+        Route::get('/', [AdminProfileController::class, 'index'])->name('index');
+        Route::post('change/password', [AdminProfileController::class, 'changePassword'])->name('changePassword');
+    });
     Route::name('featuredproduct.')->prefix('produk-unggulan')->group(function () {
         Route::get('/', [FeaturedProductController::class, 'index'])->name('index');
         Route::get('add', [FeaturedProductController::class, 'getAdd'])->name('add');
@@ -90,7 +94,7 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
 
         Route::name('galeri.')->prefix('galeri')->group(function () {
             Route::get('/', [GaleriController::class, 'index'])->name('index');
-            Route::post('add/{id}', [GaleriController::class, 'add'])->name('add');
+            Route::post('add', [GaleriController::class, 'add'])->name('add');
             Route::get('remove/{id}', [GaleriController::class, 'remove'])->name('remove');
         });
 

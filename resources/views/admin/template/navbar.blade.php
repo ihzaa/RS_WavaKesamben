@@ -15,7 +15,8 @@
                 {{-- <span class="badge badge-warning navbar-badge">15</span> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">15 Notifications</span>
+                <a href="{{ route('admin.manageProfile.index') }}"><span class="dropdown-item dropdown-footer">Kelola
+                        Akun</span></a>
 
                 <div class="dropdown-divider"></div>
                 <a href="{{ route('admin.logout') }}" class="dropdown-item dropdown-footer">Logout</a>

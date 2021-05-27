@@ -54,7 +54,8 @@
                             <i class="flaticon-first-aid-kit"></i>
                         </div>
                         <h3>Daftar Pasien Baru</h3>
-                        <a href="#" class="mt-auto boxed-btn3-white">Mendaftar</a>
+                        <a href="{{ route('user.patientRegistration.newPatient') }}"
+                            class="mt-auto boxed-btn3-white">Mendaftar</a>
                     </div>
                 </div>
             </div>
@@ -67,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
-                    <div class="welcome_thumb">
+                    <div class="welcome_thumb text-center">
                         <img src="{{ asset($data['sambutan_direktur']->image) }}" alt="">
                     </div>
                 </div>
@@ -81,7 +82,8 @@
                             @endphp
                         </div>
 
-                        <a href="#" class="boxed-btn3-white-2 mt-4">Lihat Selengkapnya</a>
+                        <a href="{{ route('user.profile.sambutan-direktur') }}" class="boxed-btn3-white-2 mt-4">Lihat
+                            Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -91,38 +93,40 @@
 
     {{-- Anket_start --}}
     @if (count($data['angket']) != 0)
-        <div class="container">
-            <div class="section-top-border">
-                <h3 class="mb-30">Angket</h3>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <blockquote class="generic-blockquote">
-                            <form action="{{ route('user.submit.angket') }}" method="POST">
-                                @csrf
-                                @foreach ($data['angket'] as $pertanyaan)
-                                    <div class="mb-2">
-                                        <h4>{{ $pertanyaan->pertanyaan }}</h4>
-                                        @foreach ($data['jawaban_angket'] as $jawaban)
-                                            @if ($jawaban->angket_id == $pertanyaan->id)
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="pertanyaan_{{ $pertanyaan->id }}"
-                                                        id="jawaban_{{ $pertanyaan->id }}_{{ $jawaban->id }}"
-                                                        value="{{ $jawaban->id }}" required>
-                                                    <label class="form-check-label"
-                                                        for="jawaban_{{ $pertanyaan->id }}_{{ $jawaban->id }}">
-                                                        {{ $jawaban->jawaban }}
-                                                    </label>
-                                                </div>
-                                            @endif
-                                        @endforeach
+        <div class="expert_doctors_area py-0">
+            <div class="container">
+                <div class="section-top-border pb-0">
+                    <h3 class="mb-30">Angket</h3>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <blockquote class="generic-blockquote">
+                                <form action="{{ route('user.submit.angket') }}" method="POST">
+                                    @csrf
+                                    @foreach ($data['angket'] as $pertanyaan)
+                                        <div class="mb-2">
+                                            <h4>{{ $pertanyaan->pertanyaan }}</h4>
+                                            @foreach ($data['jawaban_angket'] as $jawaban)
+                                                @if ($jawaban->angket_id == $pertanyaan->id)
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="pertanyaan_{{ $pertanyaan->id }}"
+                                                            id="jawaban_{{ $pertanyaan->id }}_{{ $jawaban->id }}"
+                                                            value="{{ $jawaban->id }}" required>
+                                                        <label class="form-check-label"
+                                                            for="jawaban_{{ $pertanyaan->id }}_{{ $jawaban->id }}">
+                                                            {{ $jawaban->jawaban }}
+                                                        </label>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                    <div class="mt-3 d-flex">
+                                        <button type="submit" class="btn btn-primary ml-auto">Kirim</button>
                                     </div>
-                                @endforeach
-                                <div class="mt-3 d-flex">
-                                    <button type="submit" class="btn btn-primary ml-auto">Kirim</button>
-                                </div>
-                            </form>
-                        </blockquote>
+                                </form>
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,38 +135,59 @@
     {{-- Angket_end --}}
 
     {{-- Galeri Start --}}
-    <div class="container">
+    {{-- <div class="container">
         <div class="section-top-border">
             <h3 class="mb-30">Galeri</h3>
-            <div class="row d-flex justify-content-center">
-                @php
-                    $galeriCount = 0;
-                @endphp
+            <div class="row d-flex justify-content-center owl-carousel">
                 @foreach ($data['galeri'] as $item)
-                    @if ($item->link != null)
-                        <div class="col-md-4 d-flex justify-content-center my-2" style="height: 200px;">
-                            @php
-                                echo $item->link;
-                            @endphp
-                        </div>
-                    @else
+                    <div class="col-md-4 d-flex justify-content-center my-2" style="height: 200px;">
                         @php
-                            $galeriCount++;
+                            echo $item->link;
                         @endphp
-                    @endif
+                    </div>
                 @endforeach
-                @if ($galeriCount == 3)
+                @if (count($data['galeri']) == 0)
                     <h3 class="text-center">Tidak Ada Data Galeri</h3>
                 @endif
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="expert_doctors_area pb-0">
+        <div class="container">
+            <div class="section-top-border">
+                <div class="col-xl-12">
+                    <div class="doctors_title mb-55">
+                        <h3>Galeri</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    @if (count($data['galeri']) == 0)
+                        <h3 class="text-center">Tidak Ada Data Galeri</h3>
+                    @endif
+                    <div class="expert_active owl-carousel">
+                        @foreach ($data['galeri'] as $item)
+                            <div class="single_expert">
+                                <div class="experts_name text-justify">
+                                    @php
+                                        echo $item->link;
+                                    @endphp
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     {{-- Galeri End --}}
 
     <!-- Galeri Instagram Start -->
-    <div class="expert_doctors_area">
+    <div class="expert_doctors_area pb-0">
         <div class="container">
-            <div class="row section-top-border">
+            <div class="section-top-border">
                 <div class="col-xl-12">
                     <div class="doctors_title mb-55">
                         <h3>Galeri Instagram</h3>
@@ -204,7 +229,7 @@
     <!-- Info Kesehatan start -->
     <div class="expert_doctors_area">
         <div class="container">
-            <div class="row section-top-border">
+            <div class="section-top-border">
                 <div class="col-xl-12">
                     <div class="doctors_title mb-55">
                         <h3>Info Kesehatan</h3>
@@ -245,13 +270,6 @@
         </div>
     </div>
     <!-- Info Kesehatan end -->
-@endsection
-
-@section('css_after')
-    <style>
-
-
-    </style>
 @endsection
 
 @section('js_after')

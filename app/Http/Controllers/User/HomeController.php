@@ -22,7 +22,7 @@ class HomeController extends Controller
         $data['sambutan_direktur'] = SambutanDirektur::first();
         $data['angket'] = Angket::all();
         $data['jawaban_angket'] = AngketJawaban::all();
-        $data['galeri'] = Galeri::all();
+        $data['galeri'] = Galeri::orderBy('id', 'desc')->limit(10)->get();
         $data['instagram'] = GaleriInstagram::limit(10)->orderBy('created_at', 'desc')->get();
         $data['info_kesehatan'] = HealtyInfo::limit(10)->orderBy('created_at', 'desc')->get();
         return view('user.home', compact('data'));

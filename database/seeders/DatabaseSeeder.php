@@ -27,18 +27,18 @@ class DatabaseSeeder extends Seeder
             'description' => 'tesss'
         ]);
 
-        DB::table('galeris')->insert([
-            'link' => ''
-        ]);
-        DB::table('galeris')->insert([
-            'link' => ''
-        ]);
-        DB::table('galeris')->insert([
-            'link' => ''
-        ]);
+        // DB::table('galeris')->insert([
+        //     'link' => ''
+        // ]);
+        // DB::table('galeris')->insert([
+        //     'link' => ''
+        // ]);
+        // DB::table('galeris')->insert([
+        //     'link' => ''
+        // ]);
         //Pasien
         DB::table('patient_registration_data')->insert([
-            
+
         ]);
     }
 }

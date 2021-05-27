@@ -6,7 +6,7 @@
     <section class="blog_area single-post-area section-padding pb-2">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                     <div class="page_title">
                         <h3>{{ $data['post']->title }}</h3>
                     </div>
@@ -15,7 +15,7 @@
                         <li><i class="fa fa-calendar"></i>
                             {{ \Carbon\Carbon::parse($data['post']->created_at)->format('d.m.Y') }}</li>
                     </ul>
-                    <div class="border_bottom p-1">
+                    <div class=" @if (count($data['list']) != 0) border_bottom @endif p-2">
                         @php
                             echo $data['post']->description;
                         @endphp

@@ -11,12 +11,12 @@ class GaleriController extends Controller
     public function index()
     {
         $data = [];
-        $data['item'] = Galeri::all();
+        $data['item'] = Galeri::orderBy('id', 'desc')->paginate(10);
 
         return view('admin.home.galeri.index', compact('data'));
     }
 
-    public function add($id, Request $request)
+    public function add(Request $request)
     {
 
         $detail = $request->link;
@@ -31,18 +31,20 @@ class GaleriController extends Controller
         }
 
 
-        Galeri::find($id)->update([
+        Galeri::create([
             'link' => $dom->savehtml()
         ]);
 
-        return response()->json(['ok' => 200]);
+        // return response()->json(['ok' => 200]);
+        return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil Menambahkan!');
     }
 
     public function remove($id)
     {
-        Galeri::find($id)->update([
-            'link' => ''
-        ]);
+        // Galeri::find($id)->update([
+        //     'link' => ''
+        // ]);
+        Galeri::find($id)->delete();
 
         return response()->json(['ok' => 200]);
     }
