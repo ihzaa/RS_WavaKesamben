@@ -37,7 +37,11 @@
                                 <div class="col-md-6 col-lg-3">
                                     <a href="{{ route('user.specialis.doctor', [$doctor->id, $doctor->name]) }}">
                                         <div class="single_expert mb-40">
+                                            @if ($doctor->isLeave == 1)
+                                                <div class="ribbon red mr-3"><span>Cuti</span></div>
+                                            @endif
                                             <div class="expert_thumb">
+
                                                 <img class="lazy" data-src="{{ asset($doctor->image) }}" alt="">
                                             </div>
                                             <div class="experts_name text-center">
@@ -63,5 +67,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
     <script>
         var lazyLoadInstance = new LazyLoad();
+
     </script>
 @endsection

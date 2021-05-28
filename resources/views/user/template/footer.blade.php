@@ -57,12 +57,12 @@
                     </h3>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="{{ env('FB_link') }}">
                                 <i class="ti-facebook"></i> Facebook
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ env('IG_link') }}">
                                 <i class="fa fa-instagram"></i> Instagram
                             </a>
                         </li>
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ env('WA_link') }}">
                                 <i class="fa fa-phone"></i> Whatsapp
                             </a>
                         </li>

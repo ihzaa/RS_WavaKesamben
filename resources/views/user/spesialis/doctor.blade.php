@@ -14,9 +14,16 @@
                     </div>
                     <div class="page_title">
                         <h3>{{ $data['item']->name }} | {{ $data['item']->department->title }}</h3>
+
                     </div>
                     <ul class="blog-info-link mt-3 mb-4 border_bottom p-1">
-                        {{-- <li><i class="fa fa-user"></i> Travel, Lifestyle</li> --}}
+                        <li>
+                            @if ($data['item']->isLeave == 0)
+                                <span class="badge badge-primary mr-0">Aktif</span>
+                            @else
+                                <span class="badge badge-danger">Cuti</span>
+                            @endif
+                        </li>
                         <li><i class="fa fa-calendar"></i>
                             {{ \Carbon\Carbon::parse($data['item']->updated_at)->format('d.m.Y') }}</li>
                     </ul>
