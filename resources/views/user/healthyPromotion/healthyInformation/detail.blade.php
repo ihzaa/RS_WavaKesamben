@@ -2,49 +2,44 @@
 
 @section('page_title', 'Info Kesehatan')
 
-    <style>
-
-    </style>
-
 @section('content')
     <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
+    <section class="blog_area single-post-area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
-                        @if (count($data['item']) == 0)
-                            <h3 class="text-center my-5">Tidak Ada Informasi Kesehatan.</h3>
-                        @endif
-                        @foreach ($data['item'] as $item)
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <img class="card-img rounded-0 img_article_wrapper" src="{{ asset($item->image) }}"
-                                        style="object-fit: cover" alt="">
-                                    <a href="#" class="blog_item_date">
-                                        <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
-                                        <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('M') }}</p>
-                                    </a>
-                                </div>
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img" style="text-align: center;">
+                            <img class="img-fluid" src="{{ asset($data['content']->image) }}" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <h2>{{ $data['content']->title }}
+                            </h2>
+                            <ul class="blog-info-link mt-3 mb-4">
+                                <li><a href="{{ route('user.healthyPromotion.healthyInformation.index') }}">
+                                        <i class="fa fa-tags"></i> Info Kesehatan</a></li>
+                                <li><a href="#"><i class="fa fa-calendar"></i>
+                                        {{ \Carbon\Carbon::parse($data['content']->created_at)->translatedFormat('d M Y') }}</a>
+                                </li>
+                            </ul>
+                            @php
+                                echo $data['content']->description;
+                            @endphp
+                        </div>
+                    </div>
+                    <div class="navigation-top">
+                        <div class="navigation-area">
+                            <div class="row">
+                                <div class="col-lg-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                    <div class="detials">
+                                        <a href="{{ route('user.healthyPromotion.healthyInformation.index') }}">
 
-                                <div class="blog_details">
-                                    <a class="d-inline-block"
-                                        href="{{ route('user.healthyPromotion.healthyInformation.detail', ['id' => $item->id, 'title' => $item->title]) }}">
-                                        <h2>{{ $item->title }}</h2>
-                                    </a>
-                                    <p>
-                                        @php
-                                            echo strlen(strip_tags($item->description)) > 200 ? substr(strip_tags($item->description), 0, 200) . '...' : strip_tags($item->description);
-                                        @endphp
-                                    </p>
-                                    {{-- <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                        <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
-                                    </ul> --}}
+                                            <h4><i class="fa fa-arrow-left"></i> Kembali ke halaman info kesehatan</h4>
+                                        </a>
+                                    </div>
                                 </div>
-                            </article>
-                        @endforeach
-                        {{ $data['item']->links('user.template.pagination') }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -56,7 +51,7 @@
                                     <div class="input-group mb-3">
                                         <input type="text" required name="keyword" class="form-control"
                                             placeholder='Cari Kata Kunci' onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Cari Kata Kunci'" value="{{ $data['keyword'] }}">
+                                            onblur="this.placeholder = 'Cari Kata Kunci'">
                                         <div class="input-group-append">
                                             <button class="btn" type="submit"><i class="ti-search"></i></button>
                                         </div>
@@ -156,14 +151,4 @@
         </div>
     </section>
     <!--================Blog Area =================-->
-@endsection
-
-@section('js_after')
-    {{-- <script>
-        $("#search_form").submit(function() {
-            event.preventDefault()
-
-        })
-
-    </script> --}}
 @endsection

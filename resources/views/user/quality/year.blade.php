@@ -5,14 +5,15 @@
 @section('content')
     <!-- Emergency_contact start -->
     <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="section_title text-center mt-5 mb-55">
-                    <h3>Kualitas Mutu</h3>
+
+        <div class="Emergency_contact mb-55">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mt-5 mb-55">
+                        <h3>Kualitas Mutu</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="Emergency_contact mb-55">
             <div class="conatiner-fluid p-0">
                 <div class="row no-gutters">
                     @foreach ($data['quality'] as $d)

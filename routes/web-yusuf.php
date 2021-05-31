@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\QualityController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\User\HealthyPromotion\AgendaActivityController as HealthyPromotionAgendaActivityController;
+use App\Http\Controllers\User\HealthyPromotion\HealthyInformationController;
+use App\Http\Controllers\User\HealthyPromotion\TestimoniController;
 use App\Http\Controllers\User\QualityController as UserQualityController;
 use Illuminate\Support\Facades\Route;
 
@@ -93,11 +95,14 @@ Route::name('user.')->group(function () {
     });
 
     Route::name('healthyPromotion.')->prefix('promosi-kesehatan')->group(function () {
-        // Route::name('healthyInformation.')->prefix('informasi-kesehatan')->group(function () {
-        //     Route::get('/', [HealthyInformationController::class, 'index'])->name('index');
-        // });
+        Route::name('healthyInformation.')->prefix('informasi-kesehatan')->group(function () {
+            Route::get('/{id}-{title}', [HealthyInformationController::class, 'detail'])->name('detail');
+        });
         Route::name('agendaActivity.')->prefix('agenda-kegiatan')->group(function () {
             Route::get('/{id}-{title}', [HealthyPromotionAgendaActivityController::class, 'detail'])->name('detail');
+        });
+        Route::name('testimoni.')->prefix('testimoni')->group(function () {
+            Route::get('/', [TestimoniController::class, 'index'])->name('index');
         });
     });
 });

@@ -15,8 +15,8 @@
                         @foreach ($data['item'] as $item)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0 img_article_wrapper img_just_fit-cover" src="{{ asset($item->image) }}"
-                                        alt="" >
+                                    <img class="card-img rounded-0 img_article_wrapper img_just_fit-cover"
+                                        src="{{ asset($item->image) }}" alt="">
                                     <a href="#" class="blog_item_date">
                                         <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('M') }}</p>
@@ -50,9 +50,9 @@
                                 id="search_form">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" required name="keyword" class="form-control" placeholder='Cari Kata Kunci'
-                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Kata Kunci'"
-                                            value="{{ $data['keyword'] }}">
+                                        <input type="text" required name="keyword" class="form-control"
+                                            placeholder='Cari Kata Kunci' onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Cari Kata Kunci'" value="{{ $data['keyword'] }}">
                                         <div class="input-group-append">
                                             <button class="btn" type="submit"><i class="ti-search"></i></button>
                                         </div>
@@ -64,7 +64,7 @@
                         </aside>
 
                         <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Promosi Kegiatan</h4>
+                            <h4 class="widget_title">Promosi Kesehatan</h4>
                             <ul class="list cat-list">
                                 <li>
                                     <a href="{{ route('user.healthyPromotion.healthyInformation.index') }}"
