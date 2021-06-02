@@ -201,7 +201,7 @@
                     @endif
                     <div class="expert_active owl-carousel">
                         @foreach ($data['instagram'] as $item)
-                            <a href="">
+                            <a href="{{ route('user.instagram.index', ['id' => $item->id]) }}">
                                 <div class="single_expert">
                                     <div class="expert_thumb">
                                         <img class="img-250" src="{{ asset($item->image) }}" alt="">

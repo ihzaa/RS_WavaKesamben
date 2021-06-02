@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\User\HealthyPromotion\AgendaActivityController as HealthyPromotionAgendaActivityController;
 use App\Http\Controllers\User\HealthyPromotion\HealthyInformationController;
 use App\Http\Controllers\User\HealthyPromotion\TestimoniController;
+use App\Http\Controllers\User\InstagramController;
 use App\Http\Controllers\User\QualityController as UserQualityController;
 use Illuminate\Support\Facades\Route;
 
@@ -92,6 +93,12 @@ Route::name('user.')->group(function () {
         Route::get('/', [UserQualityController::class, 'showYear'])->name('index');
         Route::get('/{id}-{year}', [UserQualityController::class, 'showMonth'])->name('month');
         Route::get('/{id}-{year}/{month_id}-{month}', [UserQualityController::class, 'showData'])->name('data');
+    });
+
+    Route::name('instagram.')->prefix('instagram')->group(function () {
+        Route::get('/{id}', [InstagramController::class, 'detail'])->name('index');
+        // Route::get('/{id}-{year}', [UserQualityController::class, 'showMonth'])->name('month');
+        // Route::get('/{id}-{year}/{month_id}-{month}', [UserQualityController::class, 'showData'])->name('data');
     });
 
     Route::name('healthyPromotion.')->prefix('promosi-kesehatan')->group(function () {

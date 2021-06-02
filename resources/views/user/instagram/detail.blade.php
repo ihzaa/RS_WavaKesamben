@@ -1,6 +1,6 @@
 @extends('user.template.master')
 
-@section('page_title', 'Info Kesehatan')
+@section('page_title', 'Galeri Instagram')
 
 @section('content')
     <!--================Blog Area =================-->
@@ -13,11 +13,11 @@
                             <img class="img-fluid" src="{{ asset($data['content']->image) }}" alt="">
                         </div>
                         <div class="blog_details">
-                            <h2>{{ $data['content']->title }}
+                            {{-- <h2>{{ $data['content']->title }} --}}
                             </h2>
                             <ul class="blog-info-link mt-3 mb-4">
-                                <li><a href="{{ route('user.healthyPromotion.healthyInformation.index') }}">
-                                        <i class="fa fa-tags"></i> Info Kesehatan</a></li>
+                                <li><a href="#">
+                                        <i class="fa fa-tags"></i> Instagram</a></li>
                                 <li><a href="#"><i class="fa fa-calendar"></i>
                                         {{ \Carbon\Carbon::parse($data['content']->created_at)->translatedFormat('d M Y') }}</a>
                                 </li>
@@ -27,24 +27,10 @@
                             @endphp
                         </div>
                     </div>
-                    <div class="navigation-top">
-                        <div class="navigation-area">
-                            <div class="row">
-                                <div class="col-lg-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                    <div class="detials">
-                                        <a href="{{ route('user.healthyPromotion.healthyInformation.index') }}">
-
-                                            <h4><i class="fa fa-arrow-left"></i> Kembali ke halaman info kesehatan</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
+                        {{-- <aside class="single_sidebar_widget search_widget">
                             <form action="{{ route('user.healthyPromotion.healthyInformation.index') }}" method="GET"
                                 id="search_form">
                                 <div class="form-group">
@@ -60,8 +46,19 @@
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                     type="submit">Cari</button>
                             </form>
+                        </aside> --}}
+                        <aside class="single_sidebar_widget instagram_feeds">
+                            <h4 class="widget_title">Galeri Instagram</h4>
+                            <ul class="instagram_row flex-wrap">
+                                @foreach ($data['instagram'] as $item)
+                                    <li>
+                                        <a href="{{ route('user.instagram.index', ['id' => $item->id]) }}">
+                                            <img class="img-fluid" src="{{ asset($item->image) }}" alt="">
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </aside>
-
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Promosi Kesehatan</h4>
                             <ul class="list cat-list">
@@ -101,49 +98,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                        </aside>
-                        {{-- <aside class="single_sidebar_widget tag_cloud_widget">
-                            <h4 class="widget_title">Tag Clouds</h4>
-                            <ul class="list">
-                                <li>
-                                    <a href="#">project</a>
-                                </li>
-                                <li>
-                                    <a href="#">love</a>
-                                </li>
-                                <li>
-                                    <a href="#">technology</a>
-                                </li>
-                                <li>
-                                    <a href="#">travel</a>
-                                </li>
-                                <li>
-                                    <a href="#">restaurant</a>
-                                </li>
-                                <li>
-                                    <a href="#">life style</a>
-                                </li>
-                                <li>
-                                    <a href="#">design</a>
-                                </li>
-                                <li>
-                                    <a href="#">illustration</a>
-                                </li>
-                            </ul>
-                        </aside> --}}
-
-
-                        <aside class="single_sidebar_widget instagram_feeds">
-                            <h4 class="widget_title">Galeri Instagram</h4>
-                            <ul class="instagram_row flex-wrap">
-                                @foreach ($data['instagram'] as $item)
-                                    <li>
-                                        <a href="{{ route('user.instagram.index', ['id' => $item->id]) }}">
-                                            <img class="img-fluid" src="{{ asset($item->image) }}" alt="">
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
                         </aside>
                     </div>
                 </div>

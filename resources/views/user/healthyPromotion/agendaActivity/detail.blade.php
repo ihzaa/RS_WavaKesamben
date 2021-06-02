@@ -79,7 +79,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="d-flex">
+                                    <a href="{{ route('user.healthyPromotion.testimoni.index') }}" class="d-flex">
                                         <p>Testimoni</p>
                                         <p> ({{ $data['count']->testimonials_count }})</p>
                                     </a>
@@ -138,7 +138,7 @@
                             <ul class="instagram_row flex-wrap">
                                 @foreach ($data['instagram'] as $item)
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('user.instagram.index', ['id' => $item->id]) }}">
                                             <img class="img-fluid" src="{{ asset($item->image) }}" alt="">
                                         </a>
                                     </li>
