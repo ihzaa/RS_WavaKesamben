@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\NewPatientRegistrationRequest;
+use App\Jobs\SendEmail;
 use App\Mail\Patient\RegisterToDepartment;
 use App\Models\Department;
 use App\Models\DepartmentDoctor;
@@ -111,12 +112,18 @@ class PatientRegistration extends Controller
         }
 
         $info_dokter = DB::select('SELECT ds.days, ds.start, ds.end, dd.name, d.title FROM doctor_schedules as ds JOIN department_doctors as dd ON ds.department_doctor_id = dd.id JOIN departments as d ON dd.department_id = d.id WHERE ds.id = "' . $request->time . '"');
-        Mail::to($patient->email)->send(new RegisterToDepartment([
+        // Mail::to($patient->email)->send(new RegisterToDepartment([
+        //     'kode_daftar' => $kode_daftar,
+        //     'pasien' => $patient,
+        //     'info_dokter' => $info_dokter[0],
+        //     'waktu' => Carbon::now()->translatedFormat('H:i - l, d M Y')
+        // ]));
+        dispatch(new SendEmail(new RegisterToDepartment([
             'kode_daftar' => $kode_daftar,
             'pasien' => $patient,
             'info_dokter' => $info_dokter[0],
             'waktu' => Carbon::now()->translatedFormat('H:i - l, d M Y')
-        ]));
+        ]), $patient->email));
         return back()->with('icon', 'success')->with('title', 'Pendaftaran anda berhasil!')->with('text', 'Anda akan menerima email kode pendaftaran.');
     }
 

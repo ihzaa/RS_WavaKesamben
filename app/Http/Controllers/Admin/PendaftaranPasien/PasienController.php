@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\PendaftaranPasien;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmail;
 use App\Mail\Patient\AcceptRegistration;
 use App\Mail\Patient\RejectRegistration;
 use App\Models\Patient;
@@ -22,7 +23,8 @@ class PasienController extends Controller
     public function acceptRegistration($id)
     {
         $patient = Patient::find($id);
-        Mail::to($patient->email)->send(new AcceptRegistration($patient));
+        // Mail::to($patient->email)->send(new AcceptRegistration($patient));
+        dispatch(new SendEmail(new AcceptRegistration($patient), $patient->email));
         $patient->accepted = 1;
         $patient->save();
         return redirect(route('admin.patientRegistration.listPatient.index'))->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Pasien telah dikirimkan email nomer kartu!');
@@ -31,7 +33,8 @@ class PasienController extends Controller
     public function rejectRegistration($id)
     {
         $patient = Patient::find($id);
-        Mail::to($patient->email)->send(new RejectRegistration($patient));
+        // Mail::to($patient->email)->send(new RejectRegistration($patient));
+        dispatch(new SendEmail(new RejectRegistration($patient), $patient->email));
         $patient->delete();
 
         return redirect(route('admin.patientRegistration.listPatient.index'))->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Pasien telah dikirimkan email penolakan pendaftaran!');
