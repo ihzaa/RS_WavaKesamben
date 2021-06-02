@@ -163,6 +163,7 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::post('add', [TestimonialController::class, 'postAdd'])->name('add.post');
             Route::post('/{id}/edit', [TestimonialController::class, 'postEdit'])->name('edit.post');
             Route::get('/{id}/delete', [TestimonialController::class, 'delete'])->name('delete');
+            Route::get('/accept/{id}', [TestimonialController::class, 'accept'])->name('accept');
         });
     });
 });
