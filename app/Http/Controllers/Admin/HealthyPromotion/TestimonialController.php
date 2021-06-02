@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\HealthyPromotion;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestimonialController extends Controller
 {
@@ -20,7 +21,9 @@ class TestimonialController extends Controller
     {
         Testimonial::create([
             'name' => $request->nama,
-            'description' => $request->deskripsi
+            'description' => $request->deskripsi,
+            'creator_id' => Auth::user()->id,
+            'is_accepted' => 1
         ]);
 
         return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil Menambahkan!');
@@ -40,5 +43,13 @@ class TestimonialController extends Controller
     {
         Testimonial::find($id)->delete();
         return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil Menghapus!');
+    }
+
+    public function accept($id)
+    {
+        $t = Testimonial::find($id);
+        $t->is_accepted = 1;
+        $t->save();
+        return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil Menerima Testimoni!');
     }
 }

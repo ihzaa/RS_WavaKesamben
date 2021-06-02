@@ -49,19 +49,38 @@
                                             <td>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}
                                             </td>
                                             <td class="text-center">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-success mr-1 btn_edit"
-                                                        data-toggle="tooltip" data-placement="top" title="Lihat atau Edit"
-                                                        data-id="{{ $item->id }}" data-name="{{ $item->name }}"
-                                                        data-desc="{{ $item->description }}">
-                                                        <i class="far fa-edit"></i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-danger ml-1 btn_delete"
-                                                        data-toggle="tooltip" data-placement="top" title="Hapus"
-                                                        data-id="{{ $item->id }}">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </div>
+                                                @if ($item->creator_id != null)
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-sm btn-success mr-1 btn_edit"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Lihat atau Edit" data-id="{{ $item->id }}"
+                                                            data-name="{{ $item->name }}"
+                                                            data-desc="{{ $item->description }}">
+                                                            <i class="far fa-edit"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-danger ml-1 btn_delete"
+                                                            data-toggle="tooltip" data-placement="top" title="Hapus"
+                                                            data-id="{{ $item->id }}">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @else
+                                                    <div class="btn-group">
+                                                        @if ($item->is_accepted == 0)
+                                                            <button class="btn btn-sm btn-success mr-1 btn_accept"
+                                                                data-toggle="tooltip" data-placement="top"
+                                                                title="Terima Testimoni" data-id="{{ $item->id }}">
+                                                                <i class="fas fa-check"></i>
+                                                            </button>
+                                                        @endif
+                                                        <button class="btn btn-sm btn-danger ml-1 btn_delete"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="Tolak dan Hapus" data-id="{{ $item->id }}">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -129,7 +148,8 @@
         const URL = {
             add: "{{ route('admin.healthyPromotion.testimonial.add.post') }}",
             edit: "{{ route('admin.healthyPromotion.testimonial.edit.post', ['id']) }}",
-            delete: "{{ route('admin.healthyPromotion.testimonial.delete', ['id']) }}"
+            delete: "{{ route('admin.healthyPromotion.testimonial.delete', ['id']) }}",
+            accept: "{{ route('admin.healthyPromotion.testimonial.accept', ['id']) }}"
         }
 
     </script>
@@ -191,6 +211,25 @@
                 description: $(this).data('desc')
             })
         });
+
+        $(document).on('click', '.btn_accept', function() {
+            let id = $(this).data('id')
+            Swal.fire({
+                title: 'Yakin menerima testimoni ?',
+                text: "Anda tidak dapat mengembalikan setelah diterima!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Batal.'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    showLoader();
+                    window.location.replace(URL.accept.replace('id', id));
+                }
+            })
+        })
 
     </script>
 @endsection

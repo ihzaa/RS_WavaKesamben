@@ -57,27 +57,27 @@
                     </h3>
                     <ul>
                         <li>
-                            <a href="{{ env('FB_link') }}">
+                            <a href="{{ env('FB_link') }}" target="_blank">
                                 <i class="ti-facebook"></i> Facebook
                             </a>
                         </li>
                         <li>
-                            <a href="{{ env('IG_link') }}">
+                            <a href="{{ env('IG_link') }}" target="_blank">
                                 <i class="fa fa-instagram"></i> Instagram
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#" target="_blank">
                                 <i class="fa fa-youtube"></i> Youtube
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#" target="_blank">
                                 <i class="fa fa-envelope"></i> Email
                             </a>
                         </li>
                         <li>
-                            <a href="{{ env('WA_link') }}">
+                            <a href="{{ env('WA_link') }}" target="_blank">
                                 <i class="fa fa-phone"></i> Whatsapp
                             </a>
                         </li>

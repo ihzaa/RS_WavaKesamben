@@ -17,6 +17,8 @@ class CreateTestimonialsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->unsignedBigInteger('creator_id')->nullable();
+            $table->boolean('is_accepted')->default(0);
             $table->timestamps();
         });
     }
