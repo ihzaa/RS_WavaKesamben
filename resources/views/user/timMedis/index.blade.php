@@ -20,6 +20,9 @@
             </div>
 
             <!-- expert_doctors_area_start -->
+            @if (count($data['department']) == 0)
+            <h2 class="text-center">Tidak Ada Data.</h2>
+            @endif
             @foreach ($data['department'] as $department)
                 <div class="expert_doctors_area doctor_page border_bottom pb-2 pt-4">
                     <div class="container">

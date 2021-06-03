@@ -21,6 +21,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123')
         ]);
 
+        DB::table('admins')->insert([
+            'username' => 'backup',
+            'password' => Hash::make('123321')
+        ]);
+
         DB::table('sambutan_direkturs')->insert([
             'name' => 'test',
             'image' => 'images/default/picture.svg',

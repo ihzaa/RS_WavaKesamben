@@ -1195,7 +1195,7 @@ h3 {
 /* line 248, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .header-top_area {
   padding: 12px 0;
-  background: #F5FBFF;
+  /* background: #F5FBFF; */
 }
 
 @media (max-width: 767px) {
@@ -1574,7 +1574,7 @@ h3 {
 
 /* line 151, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
 .business_expert_area .business_tabs_area {
-  background: #F5FBFF;
+  /* background: #F5FBFF; */
 }
 
 /* line 154, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_about.scss */
@@ -2702,7 +2702,7 @@ h3 {
 
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_department.scss */
 .our_department_area {
-  background: #F5FBFF;
+  /* background: #F5FBFF; */
   padding-top: 70px;
   padding-bottom: 70px;
 }
@@ -2988,7 +2988,7 @@ h3 {
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
-  background: #F5FBFF;
+  /* background: #F5FBFF; */
   padding-top: 16px;
   padding-bottom: 18px;
 }

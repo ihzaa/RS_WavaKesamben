@@ -3,6 +3,7 @@
 @section('page_title', 'Home')
 
 @section('content')
+
     <!-- slider_area_start -->
     <div class="slider_area">
         <div class="slider_active owl-carousel">
