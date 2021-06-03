@@ -10,7 +10,7 @@
         &::before{
             position: absolute;
             left: 0;
-            background: #5DB2FF;
+            background: var(--tosca);
             height: 2px;
             width: 50px;
             content: '';

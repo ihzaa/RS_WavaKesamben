@@ -51,18 +51,18 @@
                     color: #B2B2B2;
                     font-weight: 400;
                     &:hover{
-                        color: #5DB2FF;
-                        border-bottom: 1px solid #5DB2FF
+                        color: var(--tosca);
+                        border-bottom: 1px solid var(--tosca)
                     }
                 }
                 &.doanar{
                     a{
                     font-weight: 500;
                     color: #B2B2B2;
-                    
+
                     &:hover{
-                        color: #5DB2FF;
-                        border-bottom: 1px solid #5DB2FF
+                        color: var(--tosca);
+                        border-bottom: 1px solid var(--tosca)
                     }
                     &.first{
                         margin-bottom: 10px;
@@ -78,7 +78,7 @@
                         color: #BABABA;
                         line-height: 42px;
                         &:hover{
-                            color: #5DB2FF;
+                            color: var(--tosca);
                         }
                     }
                 }
@@ -107,7 +107,7 @@
                     border: none;
                     font-size: 14px;
                     color: #fff;
-                    background: #5DB2FF;
+                    background: var(--tosca);
                     padding: 10px;
                     padding: 0 22px;
                     cursor: pointer;
@@ -134,7 +134,7 @@
                 font-size: 14px;
             }
             a{
-                color: #5DB2FF;
+                color: var(--tosca);
             }
         }
     }

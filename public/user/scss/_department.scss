@@ -26,7 +26,7 @@
                     line-height: 33px;
                     font-weight: 500;
                     &:hover{
-                        color: #5DB2FF;
+                        color: var(--tosca);
                     }
                 }
             }
@@ -38,7 +38,7 @@
                 margin-bottom: 10px;
             }
             a.learn_more{
-                color: #5DB2FF;
+                color: var(--tosca);
                 font-size: 16px;
                 &:hover{
                     text-decoration: underline;

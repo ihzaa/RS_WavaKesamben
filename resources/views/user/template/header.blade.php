@@ -1,11 +1,11 @@
 <style>
     #navigation li a {
-        font-size: 11px;
+        font-size: 12px;
     }
 
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/loadingio/loading.css@v2.0.0/dist/loading.min.css">
-<div class="header-area ">
+<div class="header-area">
     {{-- <div class="header-top_area">
         <div class="container">
             <div class="row">
@@ -35,16 +35,17 @@
     </div> --}}
     <div id="sticky-header" class="main-header-area">
         <div class="container-fluid px-5">
-            <div class="row align-items-center">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-xl-2 col-lg-2">
                     <div class="logo">
                         <a href="{{ route('user.home') }}">
-                            <img class="img-fluid" src="{{ asset('images/default/logo-hijau.png') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('images/default/logo-putih.png') }}"
+                                style="height: 53px" alt="">
                         </a>
                     </div>
                 </div>
                 <div class="col-xl-10 col-lg-10">
-                    <div class="main-menu  d-none d-lg-block">
+                    <div class="main-menu  d-none d-xl-block">
                         <nav>
                             <ul id="navigation">
                                 <li><a class="active">Profil <i class="ti-angle-down"></i></a>
@@ -104,20 +105,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Kontak <i class="ti-angle-down"></i></a>
-                                    <ul class="submenu">
-                                        <li class="text-center loadingsubmenu">
-                                            <div class="ld ld-hourglass ld-spin-fast">
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <li><a href="{{ route('user.contact.index') }}">Kontak</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="mobile_menu d-block d-lg-none"></div>
+                    <div class="mobile_menu d-block d-xl-none"></div>
                 </div>
             </div>
         </div>

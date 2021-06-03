@@ -36,7 +36,7 @@
             <div class="business_tabs_area">
                 <div class="row">
                     <div class="col-xl-12">
-                        <ul class="nav" style="background-color: #01acc6;" id="myTab" role="tablist">
+                        <ul class="nav" style="background-color: #17a2b8;" id="myTab" role="tablist">
                             @foreach ($data['quality'] as $d)
                                 <li class="nav-item">
                                     @if ($loop->first)

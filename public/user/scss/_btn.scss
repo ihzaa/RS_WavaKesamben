@@ -27,12 +27,12 @@
     }
 }
 .boxed-btn3 {
-        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0181f5+0,5db2ff+100 */
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0181f5+0,01acc6+100 */
     background: rgb(1,129,245); /* Old browsers */
     background: -moz-linear-gradient(left,  rgba(1,129,245,1) 0%, rgba(93,178,255,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left,  rgba(1,129,245,1) 0%,rgba(93,178,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right,  rgba(1,129,245,1) 0%,rgba(93,178,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0181f5', endColorstr='#5db2ff',GradientType=1 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0181f5', endColorstr='var(--tosca)',GradientType=1 ); /* IE6-9 */
 	color: #fff;
 	display: inline-block;
 	padding: 18px 44px;
@@ -91,14 +91,14 @@
 }
 
 .boxed-btn3-white-2 {
-	color: #5DB2FF !important;
+	color: var(--tosca) !important;
 	display: inline-block;
     padding: 9px 24px;
 	font-family: $font1;
 	font-size: 15px;
     font-weight: 400;
     border: 0;
-    border: 1px solid #5DB2FF;
+    border: 1px solid var(--tosca);
     @include border-radius(5px);
     // width: 180px;
     text-align: center;
@@ -106,7 +106,7 @@
     @include transition(.5s);
     cursor: pointer;
     &:hover{
-        background: #5DB2FF;
+        background: var(--tosca);
         color: #fff !important;
         border: 1px solid transparent;
     }

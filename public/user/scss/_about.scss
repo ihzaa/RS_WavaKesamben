@@ -69,9 +69,9 @@
             bottom: 0;
             height: 2px;
             width: 50px;
-            background: #5DB2FF;
+            background: var(--tosca);
         }
-            
+
         }
         h3{
             font-weight: 500;
@@ -100,7 +100,7 @@
                 line-height: 28px;
                 i{
                     margin-right: 10px;
-                    color: #5DB2FF;
+                    color: var(--tosca);
                     font-weight: 16px;
                 }
             }
@@ -116,7 +116,7 @@
     .business_info{
         .icon{
             i{
-                background: #5DB2FF;
+                background: var(--tosca);
                 width: 75px;
                 height: 75px;
                 display: inline-block;
@@ -134,11 +134,11 @@
             margin-top: 16px;
             margin-bottom: 14px;
         }
-        p{  
+        p{
             color: #727272;
             line-height: 28px;
             margin-bottom: 0;
-        }   
+        }
     }
     .business_thumb{
         @media #{$mobile_device}{
@@ -171,7 +171,7 @@
                     &.active{
                         background: #fff;
                     }
-                }   
+                }
             }
         }
         #myTab {

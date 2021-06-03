@@ -1,5 +1,5 @@
 .service_area{
-    background: #83C4FF;
+    background: #00c1de;
     .single_service{
         padding: 40px 30px;
         @media #{$tablet_device} {
@@ -38,6 +38,6 @@
         }
     }
     .col-xl-4:nth-child(2) .single_service{
-        background: #5DB2FF;
+        background: var(--tosca);
     }
 }

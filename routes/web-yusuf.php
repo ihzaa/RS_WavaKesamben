@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\QualityController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HealthyPromotion\AgendaActivityController as HealthyPromotionAgendaActivityController;
 use App\Http\Controllers\User\HealthyPromotion\HealthyInformationController;
 use App\Http\Controllers\User\HealthyPromotion\TestimoniController;
@@ -97,10 +98,7 @@ Route::name('user.')->group(function () {
 
     Route::name('instagram.')->prefix('instagram')->group(function () {
         Route::get('/{id}', [InstagramController::class, 'detail'])->name('index');
-        // Route::get('/{id}-{year}', [UserQualityController::class, 'showMonth'])->name('month');
-        // Route::get('/{id}-{year}/{month_id}-{month}', [UserQualityController::class, 'showData'])->name('data');
     });
-
     Route::name('healthyPromotion.')->prefix('promosi-kesehatan')->group(function () {
         Route::name('healthyInformation.')->prefix('informasi-kesehatan')->group(function () {
             Route::get('/{id}-{title}', [HealthyInformationController::class, 'detail'])->name('detail');
@@ -111,5 +109,10 @@ Route::name('user.')->group(function () {
         Route::name('testimoni.')->prefix('testimoni')->group(function () {
             Route::get('/', [TestimoniController::class, 'index'])->name('index');
         });
+    });
+
+    Route::name('contact.')->prefix('kontak-kami')->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('index');
+        Route::post('/add', [ContactController::class, 'addTestimoni'])->name('add');
     });
 });

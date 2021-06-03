@@ -51,7 +51,7 @@
                     // padding-left: 20px;
                     width: 70px;
                 }
-               
+
             }
         }
         .Appointment{
@@ -125,7 +125,7 @@
                         font-family: $font1;
                         position: relative;
                         text-transform:capitalize;
-                        
+
                         @media #{$mid_device} {
                             // padding: 41px 0px 10px 0px;
                             font-size: 15px;
@@ -243,7 +243,7 @@
                 padding: 0;
             }
         }
-        
+
     }
     .header-top_area{
         padding: 12px 0;
@@ -257,10 +257,10 @@
             color: #C7C7C7;
             margin-right: 12px;
             &:hover{
-                color: #5DB2FF;
+                color: var(--tosca);
             }
           }
-      }  
+      }
       .short_contact_list{
           text-align: right;
           @media #{$mobile_device} {
@@ -272,14 +272,14 @@
                   a{
                     font-size: 13px;
                     color: #919191;
-                    margin-left: 50px; 
-                    @media #{$mobile_device} 
+                    margin-left: 50px;
+                    @media #{$mobile_device}
                     {
                         margin-left: 0;
                         margin: 0 5px;
                     }
                     i{
-                        color: #5DB2FF;
+                        color: var(--tosca);
                         margin-right: 7px;
                     }
                   }
