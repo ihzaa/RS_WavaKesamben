@@ -707,13 +707,19 @@ h3 {
   padding: 0;
   width: 95%;
   padding: 0;
-  border-radius: 0px;
+  border-radius: 5px;
   margin-top: 5px;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto;
   top: 11px;
+  z-index: 100 !important;
+
+}
+
+.z-index-1{
+    z-index: 1 !important;
 }
 
 /* line 28, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_slick-nav.scss */
@@ -975,6 +981,8 @@ h3 {
   margin: 0 10px;
 }
 
+
+
 /* line 118, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a {
   color:#fff;
@@ -1096,6 +1104,20 @@ h3 {
   display: none;
 }
 
+.header-area .main-header-area .main-menu ul li .submenu li {
+    margin: 5px;
+  }
+
+  .header-area .main-header-area .main-menu ul li .submenu li:hover {
+    background-color: #14c1db;
+    border-radius: 4px;
+  }
+
+  .header-area .main-header-area .main-menu ul li .submenu li a:hover {
+    color: #fff !important;
+  }
+
+
 /* line 196, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li .submenu li:hover a {
   color: #000;
@@ -1106,6 +1128,7 @@ h3 {
   opacity: 1;
   visibility: visible;
   top: 150%;
+  border-radius: 5px;
 }
 
 /* line 206, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_header.scss */
@@ -2394,7 +2417,7 @@ h3 {
 /* line 122, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */
 .footer .copy-right_text {
   padding-bottom: 30px;
-  background: #000000;
+  background: #013138;
 }
 
 /* line 125, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_footer.scss */

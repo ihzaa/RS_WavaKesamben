@@ -101,10 +101,10 @@ Route::name('user.')->group(function () {
     });
     Route::name('healthyPromotion.')->prefix('promosi-kesehatan')->group(function () {
         Route::name('healthyInformation.')->prefix('informasi-kesehatan')->group(function () {
-            Route::get('/{id}-{title}', [HealthyInformationController::class, 'detail'])->name('detail');
+            Route::get('/{id}', [HealthyInformationController::class, 'detail'])->name('detail');
         });
         Route::name('agendaActivity.')->prefix('agenda-kegiatan')->group(function () {
-            Route::get('/{id}-{title}', [HealthyPromotionAgendaActivityController::class, 'detail'])->name('detail');
+            Route::get('/{id}', [HealthyPromotionAgendaActivityController::class, 'detail'])->name('detail');
         });
         Route::name('testimoni.')->prefix('testimoni')->group(function () {
             Route::get('/', [TestimoniController::class, 'index'])->name('index');

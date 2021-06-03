@@ -32,26 +32,30 @@
                 <div class="col-xl-4 col-md-4">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-electrocardiogram"></i>
+                            {{-- <i class="flaticon-doctor"></i> --}}
+                            {{-- <i class="fi-rr-stethoscope"></i> --}}
+                            <i class="fa fa-user-md my-3" style="font-size: 5rem;"></i>
                         </div>
-                        <h3>Info Dokter</h3>
+                        <h3>Tim Medis</h3>
                         {{-- <p>Clinical excellence must be the priority for any health care service provider.</p> --}}
-                        <a href="#" class="boxed-btn3-white">Lihat Detail</a>
+                        <a href="{{ route('user.timMedis.index') }}" class="boxed-btn3-white">Lihat Detail</a>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-4">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-emergency-call"></i>
+                            {{-- <i class="flaticon-emergency-call"></i> --}}
+                            <i class="fa fa-phone my-3" style="font-size: 5rem;"></i>
                         </div>
                         <h3>IGD 24 Jam</h3>
-                        <a href="#" class="boxed-btn3-white">+10 672 356 3567</a>
+                        <a href="{{ env('WA_link') }}" class="boxed-btn3-white">0813 1951 0008</a>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-4">
                     <div class="single_service">
                         <div class="icon">
-                            <i class="flaticon-first-aid-kit"></i>
+                            {{-- <i class="flaticon-first-aid-kit"></i> --}}
+                            <i class="fa fa-user-plus my-3" style="font-size: 5rem;"></i>
                         </div>
                         <h3>Daftar Pasien Baru</h3>
                         <a href="{{ route('user.patientRegistration.newPatient') }}"
@@ -243,7 +247,8 @@
                     @endif
                     <div class="expert_active owl-carousel">
                         @foreach ($data['info_kesehatan'] as $item)
-                            <a href="">
+                            <a
+                                href="{{ route('user.healthyPromotion.healthyInformation.detail', ['id' => $item->id, 'title' => $item->title]) }}">
                                 <div class="single_expert">
                                     <div class="expert_thumb">
                                         <img class="img-250" src="{{ asset($item->image) }}" alt="">

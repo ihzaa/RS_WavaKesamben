@@ -4,12 +4,14 @@
 
 @section('content')
     <!-- ================ contact section start ================= -->
-    <section class="contact-section">
+    <section class="contact-section pt-5">
         <div class="container">
-            <div class="d-sm-block mb-5 pb-4">
+            <div class="col-xl-12 z-index-1">
                 <div class="section_title text-center mb-55">
                     <h3>Kontak Kami</h3>
                 </div>
+            </div>
+            <div class="d-sm-block mb-5 pb-4">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.533646780913!2d112.36390735054083!3d-8.148864394105573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78965b1809ced3%3A0x908fc5ca191a747b!2sRS.%20WAVA%20HUSADA%20KESAMBEN!5e0!3m2!1sen!2sid!4v1622635632588!5m2!1sen!2sid"
                     width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

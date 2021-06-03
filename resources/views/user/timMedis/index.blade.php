@@ -7,7 +7,7 @@
     <div class="our_department_area">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-12 z-index-1">
                     <div class="section_title text-center mb-55">
                         <h3>Tim Medis</h3>
                     </div>

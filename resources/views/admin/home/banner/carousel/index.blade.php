@@ -153,6 +153,13 @@
 
 
     <script>
+        const URL = {
+            add: "{{ route('admin.home.carousel.add.post') }}",
+            defaultImage: "{{ asset('images/default/picture.svg') }}",
+            basePath: "{{ asset('') }}",
+            edit: "{{ route('admin.home.carousel.edit.post', ['id']) }}",
+            delete: "{{ route('admin.home.carousel.delete') }}"
+        }
         @error('foto')
             Swal.fire({
             icon: "error",
@@ -162,16 +169,9 @@
 
             $("#judul").val("{{ old('judul') }}")
             $("#deskripsi").val("{{ old('deskripsi') }}")
+            $("#modal_form").attr('action', URL.add);
             $("#main_modal").modal("show");
         @enderror
-        const URL = {
-            add: "{{ route('admin.home.carousel.add.post') }}",
-            defaultImage: "{{ asset('images/default/picture.svg') }}",
-            basePath: "{{ asset('') }}",
-            edit: "{{ route('admin.home.carousel.edit.post', ['id']) }}",
-            delete: "{{ route('admin.home.carousel.delete') }}"
-        }
-
     </script>
 
     <script>

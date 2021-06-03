@@ -22,7 +22,7 @@
     <!-- Emergency_contact start -->
     <div class="container">
         <div class="row">
-            <div class="col-xl-12">
+            <div class="col-xl-12 z-index-1">
                 <div class="section_title text-center mt-5 mb-55">
                     <h3>Kualitas Mutu - {{ $data['month'] }} {{ $data['year'] }} </h3>
                 </div>
