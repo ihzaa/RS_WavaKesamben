@@ -54,7 +54,7 @@
                                 id="search_form">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
-                                        <input type="text" required name="keyword" class="form-control"
+                                        <input type="text" name="keyword" class="form-control"
                                             placeholder='Cari Kata Kunci' onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = 'Cari Kata Kunci'" value="{{ $data['keyword'] }}">
                                         <div class="input-group-append">
@@ -99,7 +99,7 @@
                                     <img style="object-fit: cover" src="{{ asset($item->image) }}" width="80" height="80"
                                         alt="post">
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a href="{{route('user.healthyPromotion.healthyInformation.detail',[$item->id])}}">
                                             <h3>{{ $item->title }}</h3>
                                         </a>
                                         <p>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d M Y') }}</p>

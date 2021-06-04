@@ -75,6 +75,20 @@
                                 </a></h3>
                         </div>
                     </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="fa fa-envelope"></i></i></span>
+                        <div class="media-body">
+                            <h3> <a href="{{ env('EMAIL_link') }}" target="_blank"> rswavakesamben@gmail.com
+                            </a></h3>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="fa fa-youtube"></i></span>
+                        <div class="media-body">
+                            <h3><a href="{{ env('YT_link') }}" target="_blank"> RS WAVA HUSADA KESAMBEN
+                            </a></h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

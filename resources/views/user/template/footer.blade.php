@@ -67,12 +67,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="{{ env('YT_link') }}" target="_blank">
                                 <i class="fa fa-youtube"></i> Youtube
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="{{ env('EMAIL_link') }}" target="_blank">
                                 <i class="fa fa-envelope"></i> Email
                             </a>
                         </li>
