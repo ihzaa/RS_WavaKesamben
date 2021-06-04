@@ -184,7 +184,7 @@
             current: "{{ route('admin.patientRegistration.patientRegistredList.index') }}",
             detail: "{{ route('admin.patientRegistration.patientRegistredList.get.detail', ['kode']) }}",
             asset: "{{ asset('/') }}",
-            download: "{{ route('admin.patientRegistration.patientRegistredList.download.file', ['id']) }}"
+            download: "{{ route('admin.patientRegistration.patientRegistredList.download.file', ['__id']) }}"
         }
 
     </script>
@@ -219,7 +219,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
+                    window.location.replace(URL.delete.replace('__id', id));
                 }
             })
         });
@@ -268,7 +268,7 @@
                     for (const i in data.item) {
                         if (data.item[i].type == 'file') {
                             answare +=
-                                `<div class="col-md-3">${data.item[i].name}</div><div class="col-md-9 text-left"><a target="_blank" href="${URL.download.replace('id',data.item[i].id_data)}"><img src="${URL.asset+data.item[i].answare}" style="max-height: 100px" alt="Tidak dapat menampilkan, klik untuk mengunduh"><a/></div>`
+                                `<div class="col-md-3">${data.item[i].name}</div><div class="col-md-9 text-left"><a target="_blank" href="${URL.download.replace('__id',data.item[i].id_data)}"><img src="${URL.asset+data.item[i].answare}" style="max-height: 100px" alt="Tidak dapat menampilkan, klik untuk mengunduh"><a/></div>`
                         } else {
                             answare +=
                                 `<div class="col-md-3">${data.item[i].name}</div><div class="col-md-9">${data.item[i].answare}</div>`

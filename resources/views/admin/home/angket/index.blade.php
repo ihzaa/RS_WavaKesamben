@@ -184,10 +184,10 @@
     <script>
         const URL = {
             addQuestion: "{{ route('admin.home.angket.add.question') }}",
-            editQuestion: "{{ route('admin.home.angket.edit.question', ['id']) }}",
-            deleteQuestion: "{{ route('admin.home.angket.delete.question', ['id']) }}",
-            getAnsware: "{{ route('admin.home.angket.get.answare', ['id']) }}",
-            addAnsware: "{{ route('admin.home.angket.add.answare', ['id']) }}",
+            editQuestion: "{{ route('admin.home.angket.edit.question', ['__id']) }}",
+            deleteQuestion: "{{ route('admin.home.angket.delete.question', ['__id']) }}",
+            getAnsware: "{{ route('admin.home.angket.get.answare', ['__id']) }}",
+            addAnsware: "{{ route('admin.home.angket.add.answare', ['__id']) }}",
             deleteAnsware: "{{ route('admin.home.angket.delete.answare', ['question', 'id']) }}"
         }
 
@@ -203,7 +203,7 @@
             $("#main_modal").modal('show');
         });
         $(".btn_edit_question").click(function() {
-            $("#form_pertanyaan").attr('action', URL.editQuestion.replace('id', $(this).data('id')));
+            $("#form_pertanyaan").attr('action', URL.editQuestion.replace('__id', $(this).data('id')));
             $("#modal_title").html('Edit Pertanyaan');
             $("#pertanyaan").val($(this).data('pertanyaan'))
             $("#main_modal").modal('show');
@@ -222,7 +222,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.deleteQuestion.replace('id', $(this).data('id')));
+                    window.location.replace(URL.deleteQuestion.replace('__id', $(this).data('id')));
                 }
             })
         });
@@ -235,7 +235,7 @@
                 method: 'GET',
                 headers: myHeaders,
             };
-            fetch(URL.getAnsware.replace('id', id), myInit)
+            fetch(URL.getAnsware.replace('__id', id), myInit)
                 .then(resp => resp.json())
                 .then(data => {
                     let tabel = '';
@@ -265,7 +265,7 @@
         let cardId;
         $(".btn_tambah_jawaban").click(function() {
             $("#modal_jawaban").modal('show');
-            $("#form_jawaban").attr('action', URL.addAnsware.replace('id', $(this).data('id')))
+            $("#form_jawaban").attr('action', URL.addAnsware.replace('__id', $(this).data('id')))
             $("#form_jawaban").removeAttr('data-id')
             cardId = $(this).data('id');
         })
@@ -324,7 +324,7 @@
                     $("#card" + card).append(
                         `<div class="overlay dark" id="loading_card${card}"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div>`
                     )
-                    fetch((URL.deleteAnsware.replace('id', id)).replace('question', card))
+                    fetch((URL.deleteAnsware.replace('__id', id)).replace('question', card))
                         .then(resp => resp.json())
                         .then(data => {
                             let tabel = '';

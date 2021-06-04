@@ -141,10 +141,10 @@
     <script>
         const URL = {
             addYear: "{{ route('admin.kualitas.add.tahun') }}",
-            editYear: "{{ route('admin.kualitas.edit.tahun', ['id']) }}",
-            deleteYear: "{{ route('admin.kualitas.delete.tahun', ['id']) }}",
-            // getAnsware: "{{ route('admin.home.angket.get.answare', ['id']) }}",
-            // addAnsware: "{{ route('admin.home.angket.add.answare', ['id']) }}",
+            editYear: "{{ route('admin.kualitas.edit.tahun', ['__id']) }}",
+            deleteYear: "{{ route('admin.kualitas.delete.tahun', ['__id']) }}",
+            // getAnsware: "{{ route('admin.home.angket.get.answare', ['__id']) }}",
+            // addAnsware: "{{ route('admin.home.angket.add.answare', ['__id']) }}",
             // deleteAnsware: "{{ route('admin.home.angket.delete.answare', ['question', 'id']) }}"
         }
 
@@ -160,7 +160,7 @@
             $("#main_modal").modal('show');
         });
         $(".btn-edit").click(function() {
-            $("#form_tahun").attr('action', URL.editYear.replace('id', $(this).data('id')));
+            $("#form_tahun").attr('action', URL.editYear.replace('__id', $(this).data('id')));
             $("#modal_title").html('Edit Tahun');
             $("#year").val($(this).data('year'))
             $("#main_modal").modal('show');
@@ -179,7 +179,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.deleteYear.replace('id', $(this).data('id')));
+                    window.location.replace(URL.deleteYear.replace('__id', $(this).data('id')));
                 }
             })
         });
@@ -192,7 +192,7 @@
         //         method: 'GET',
         //         headers: myHeaders,
         //     };
-        //     fetch(URL.getAnsware.replace('id', id), myInit)
+        //     fetch(URL.getAnsware.replace('__id', id), myInit)
         //         .then(resp => resp.json())
         //         .then(data => {
         //             let tabel = '';
@@ -222,7 +222,7 @@
         // let cardId;
         // $(".btn_tambah_jawaban").click(function() {
         //     $("#modal_jawaban").modal('show');
-        //     $("#form_jawaban").attr('action', URL.addAnsware.replace('id', $(this).data('id')))
+        //     $("#form_jawaban").attr('action', URL.addAnsware.replace('__id', $(this).data('id')))
         //     $("#form_jawaban").removeAttr('data-id')
         //     cardId = $(this).data('id');
         // })
@@ -281,7 +281,7 @@
         //             $("#card" + card).append(
         //                 `<div class="overlay dark" id="loading_card${card}"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div>`
         //             )
-        //             fetch((URL.deleteAnsware.replace('id', id)).replace('question', card))
+        //             fetch((URL.deleteAnsware.replace('__id', id)).replace('question', card))
         //                 .then(resp => resp.json())
         //                 .then(data => {
         //                     let tabel = '';

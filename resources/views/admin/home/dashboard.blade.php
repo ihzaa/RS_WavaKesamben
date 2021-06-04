@@ -242,7 +242,7 @@
         $(document).on('change', '.select2', function() {
             let temp = CONST_URL.doctor
             temp = temp.replace('dokter_id', $(this).find(':selected').data('id'))
-            temp = temp.replace('id', $(this).find(':selected').data('department'))
+            temp = temp.replace('__id', $(this).find(':selected').data('department'))
             window.location.replace(temp)
         });
 

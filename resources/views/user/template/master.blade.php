@@ -112,12 +112,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const URL = {
-            produkUnggulan: "{{ route('user.featuredproduct.index', ['id', 'title']) }}",
-            profile: "{{ route('user.profile.index', ['id', 'title']) }}",
-            service: "{{ route('user.services.index', ['id', 'title']) }}",
-            registration: "{{ route('user.patientRegistration.menuRegistration', ['id', 'title']) }}",
+            produkUnggulan: "{{ route('user.featuredproduct.index', ['__id', 'title']) }}",
+            profile: "{{ route('user.profile.index', ['__id', 'title']) }}",
+            service: "{{ route('user.services.index', ['__id', 'title']) }}",
+            registration: "{{ route('user.patientRegistration.menuRegistration', ['__id', 'title']) }}",
             asset: "{{ asset('') }}",
-            agendaActivity: "{{ route('user.healthyPromotion.agendaActivity.detail', ['id', 'title']) }}"
+            agendaActivity: "{{ route('user.healthyPromotion.agendaActivity.detail', ['__id', 'title']) }}"
         }
 
         const truncateStringWithThreeDots = (data, size = 50) => {
@@ -128,28 +128,28 @@
             .then((resp) => resp.json())
             .then(async (data) => {
                 data.featuredProduct.forEach(item => {
-                    let tmpUrl = URL.produkUnggulan.replace('id', item.id)
+                    let tmpUrl = URL.produkUnggulan.replace('__id', item.id)
                     tmpUrl = tmpUrl.replace('title', item.title)
                     $("#produk_unggulan_submenu").html(
                         $("#produk_unggulan_submenu").html() + '<li><a href="' + tmpUrl +
                         '">' + item.title + '</a></li>')
                 })
                 data.profile.forEach(item => {
-                    let tmpUrl = URL.profile.replace('id', item.id)
+                    let tmpUrl = URL.profile.replace('__id', item.id)
                     tmpUrl = tmpUrl.replace('title', item.title)
                     $("#profile_submenu").html(
                         $("#profile_submenu").html() + '<li><a href="' + tmpUrl +
                         '">' + item.title + '</a></li>')
                 })
                 data.service.forEach(item => {
-                    let tmpUrl = URL.service.replace('id', item.id)
+                    let tmpUrl = URL.service.replace('__id', item.id)
                     tmpUrl = tmpUrl.replace('title', item.title)
                     $("#service_submenu").html(
                         $("#service_submenu").html() + '<li><a href="' + tmpUrl +
                         '">' + item.title + '</a></li>')
                 })
                 data.registration.forEach(item => {
-                    let tmpUrl = URL.registration.replace('id', item.id)
+                    let tmpUrl = URL.registration.replace('__id', item.id)
                     tmpUrl = tmpUrl.replace('title', item.title)
                     $("#pendaftaran_submenu").html(
                         $("#pendaftaran_submenu").html() + '<li><a href="' + tmpUrl +
@@ -162,7 +162,7 @@
                         `<div class="col"><p class="text-center">Tidak ada data.</p></div>`)
                 } else {
                     data.agendaActivity.forEach(item => {
-                        let tmpUrl = URL.agendaActivity.replace('id', item.id)
+                        let tmpUrl = URL.agendaActivity.replace('__id', item.id)
                         tmpUrl = tmpUrl.replace('title', item.title)
                         $(agendaActivityWrapper).html(
                             $(agendaActivityWrapper).html() +

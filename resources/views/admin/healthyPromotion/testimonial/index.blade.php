@@ -147,9 +147,9 @@
     <script>
         const URL = {
             add: "{{ route('admin.healthyPromotion.testimonial.add.post') }}",
-            edit: "{{ route('admin.healthyPromotion.testimonial.edit.post', ['id']) }}",
-            delete: "{{ route('admin.healthyPromotion.testimonial.delete', ['id']) }}",
-            accept: "{{ route('admin.healthyPromotion.testimonial.accept', ['id']) }}"
+            edit: "{{ route('admin.healthyPromotion.testimonial.edit.post', ['__id']) }}",
+            delete: "{{ route('admin.healthyPromotion.testimonial.delete', ['__id']) }}",
+            accept: "{{ route('admin.healthyPromotion.testimonial.accept', ['__id']) }}"
         }
 
     </script>
@@ -181,7 +181,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
+                    window.location.replace(URL.delete.replace('__id', id));
                 }
             })
         });
@@ -206,7 +206,7 @@
         $(document).on("click", ".btn_edit", function() {
             openModal({
                 title: "Edit Testimoni",
-                url: URL.edit.replace('id', $(this).data('id')),
+                url: URL.edit.replace('__id', $(this).data('id')),
                 name: $(this).data('name'),
                 description: $(this).data('desc')
             })
@@ -226,7 +226,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.accept.replace('id', id));
+                    window.location.replace(URL.accept.replace('__id', id));
                 }
             })
         })

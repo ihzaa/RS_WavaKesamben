@@ -193,8 +193,8 @@
 
     <script>
         URL.getPatientData = "{{ route('user.patientRegistration.getPatientData', ['nomer']) }}"
-        URL.getDoctorPerDepartment = "{{ route('user.patientRegistration.getDoctorPerDepartment', ['id']) }}"
-        URL.getDoctorSchedule = "{{ route('user.patientRegistration.getDoctorSchedule', ['id']) }}"
+        URL.getDoctorPerDepartment = "{{ route('user.patientRegistration.getDoctorPerDepartment', ['__id']) }}"
+        URL.getDoctorSchedule = "{{ route('user.patientRegistration.getDoctorSchedule', ['__id']) }}"
 
         $("#cek").click(function() {
             if ($("#nomer").val() != '') {
@@ -236,7 +236,7 @@
                 $("#page_loader").show();
                 let val = $(this).val()
                 if (val != '') {
-                    fetch(URL.getDoctorPerDepartment.replace('id', val))
+                    fetch(URL.getDoctorPerDepartment.replace('__id', val))
                         .then(resp => resp.json())
                         .then(data => {
                             let select2Element = "#dokter"
@@ -260,7 +260,7 @@
                 $("#page_loader").show();
                 let val = $(this).val()
                 if (val != '') {
-                    fetch(URL.getDoctorSchedule.replace('id', val))
+                    fetch(URL.getDoctorSchedule.replace('__id', val))
                         .then(resp => resp.json())
                         .then(data => {
                             let select2Element = "#time"

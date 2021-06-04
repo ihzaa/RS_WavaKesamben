@@ -91,7 +91,7 @@
 
     <script>
         const URL = {
-            delete: "{{ route('admin.home.instagram.delete', ['id']) }}"
+            delete: "{{ route('admin.home.instagram.delete', ['__id']) }}"
         }
 
     </script>
@@ -129,7 +129,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
+                    window.location.replace(URL.delete.replace('__id', id));
                 }
             })
         });

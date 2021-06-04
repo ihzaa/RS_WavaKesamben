@@ -69,10 +69,10 @@
     <!-- service_area_end -->
 
     <!-- welcome_docmed_area_start -->
-    <div class="welcome_docmed_area">
+    <div class="welcome_docmed_area pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-xl-6 col-lg-6">
+                <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-center">
                     <div class="welcome_thumb text-center">
                         <img src="{{ asset($data['sambutan_direktur']->image) }}" alt="">
                     </div>
@@ -256,7 +256,7 @@
                                     </div>
                                     <div class="experts_name p-2 text-justify">
                                         <h3 class="text-center">
-                                            {{ $item->title }}
+                                            {{ strlen($item->title) > 20 ? substr($item->title, 0, 20) . '...' : $item->title }}
                                         </h3>
                                         <h5 class="text-center">
                                             {{ \Carbon\Carbon::parse($item->created_at)->format('d.m.Y') }}

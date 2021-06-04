@@ -156,13 +156,24 @@
     </div>
 @endsection
 
+@section('css_after')
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+@endsection
+
 @section('js_after')
+    <script src="{{ asset('admin') }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
         const URL = {
             add: "{{ route('admin.home.galeri.add') }}",
-            remove: "{{ route('admin.home.galeri.remove', ['id']) }}"
+            remove: "{{ route('admin.home.galeri.remove', ['__id']) }}"
         }
 
     </script>
@@ -209,7 +220,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#card_loading").show();
-                    fetch(URL.remove.replace('id', id))
+                    fetch(URL.remove.replace('__id', id))
                         .then((resp) => resp.json())
                         .finally(() => {
                             $("#card_loading").hide();
@@ -248,6 +259,19 @@
                 return
             }
         })
+
+        $('#main_table').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            // 'drawCallback': function() {
+            //     lazyload()
+            // }
+        });
 
     </script>
 @endsection

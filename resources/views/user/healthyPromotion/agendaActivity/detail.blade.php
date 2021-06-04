@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 posts-list">
-                    <div class="single-post">
+                    <div class="single-post mb-3">
                         <div class="feature-img" style="text-align: center;">
                             <img class="img-fluid" src="{{ asset($data['content']->image) }}" alt="">
                         </div>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="navigation-top">
-                        <div class="navigation-area">
+                        <div class="navigation-area mt-2 pb-3">
                             <div class="row">
                                 <div class="col-lg-12 nav-left flex-row d-flex justify-content-start align-items-center">
                                     <div class="detials">

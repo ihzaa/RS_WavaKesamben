@@ -105,7 +105,7 @@
 
     <script>
         const URL = {
-            delete: "{{ route('admin.healthyPromotion.agendaActivity.delete', ['id']) }}"
+            delete: "{{ route('admin.healthyPromotion.agendaActivity.delete', ['__id']) }}"
         }
 
     </script>
@@ -143,7 +143,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
+                    window.location.replace(URL.delete.replace('__id', id));
                 }
             })
         });

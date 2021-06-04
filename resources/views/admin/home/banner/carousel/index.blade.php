@@ -157,7 +157,7 @@
             add: "{{ route('admin.home.carousel.add.post') }}",
             defaultImage: "{{ asset('images/default/picture.svg') }}",
             basePath: "{{ asset('') }}",
-            edit: "{{ route('admin.home.carousel.edit.post', ['id']) }}",
+            edit: "{{ route('admin.home.carousel.edit.post', ['__id']) }}",
             delete: "{{ route('admin.home.carousel.delete') }}"
         }
         @error('foto')
@@ -225,7 +225,7 @@
             $("#label_foto").html('Pilih Foto Untuk Merubah Gambar Lama')
             $("#imgInp").val('')
             $("#imgInp").removeAttr('required')
-            $("#modal_form").attr('action', URL.edit.replace('id', id));
+            $("#modal_form").attr('action', URL.edit.replace('__id', id));
             $("#main_modal").modal("show");
         });
 

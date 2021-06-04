@@ -23,8 +23,8 @@ class PasienController extends Controller
     public function acceptRegistration($id)
     {
         $patient = Patient::find($id);
-        // Mail::to($patient->email)->send(new AcceptRegistration($patient));
-        dispatch(new SendEmail(new AcceptRegistration($patient), $patient->email));
+        Mail::to($patient->email)->send(new AcceptRegistration($patient));
+        // dispatch(new SendEmail(new AcceptRegistration($patient), $patient->email));
         $patient->accepted = 1;
         $patient->save();
         return redirect(route('admin.patientRegistration.listPatient.index'))->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Pasien telah dikirimkan email nomer kartu!');
@@ -33,8 +33,8 @@ class PasienController extends Controller
     public function rejectRegistration($id)
     {
         $patient = Patient::find($id);
-        // Mail::to($patient->email)->send(new RejectRegistration($patient));
-        dispatch(new SendEmail(new RejectRegistration($patient), $patient->email));
+        Mail::to($patient->email)->send(new RejectRegistration($patient));
+        // dispatch(new SendEmail(new RejectRegistration($patient), $patient->email));
         $patient->delete();
 
         return redirect(route('admin.patientRegistration.listPatient.index'))->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Pasien telah dikirimkan email penolakan pendaftaran!');

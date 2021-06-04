@@ -104,8 +104,8 @@
 
     <script>
         const URL = {
-            changeStatus: "{{ route('admin.patientRegistration.registrationMenu.changeStatus', ['id']) }}",
-            delete: "{{ route('admin.patientRegistration.registrationMenu.delete', ['id']) }}"
+            changeStatus: "{{ route('admin.patientRegistration.registrationMenu.changeStatus', ['__id']) }}",
+            delete: "{{ route('admin.patientRegistration.registrationMenu.delete', ['__id']) }}"
         }
 
     </script>
@@ -137,7 +137,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
+                    window.location.replace(URL.delete.replace('__id', id));
                 }
             })
         });
@@ -146,7 +146,7 @@
         })
         $(document).on('switchChange.bootstrapSwitch', '.isActive', function() {
             $("#card_loading").show()
-            fetch(URL.changeStatus.replace('id', $(this).data('id')))
+            fetch(URL.changeStatus.replace('__id', $(this).data('id')))
                 .then(data => data.json()).then(() => {
                     $("#card_loading").hide()
 

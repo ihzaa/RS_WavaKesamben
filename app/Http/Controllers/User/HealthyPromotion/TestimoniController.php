@@ -9,7 +9,7 @@ class TestimoniController extends Controller
 {
     public function index()
     {
-        $data['item'] = Testimonial::orderBy('id', 'desc')->paginate(5);
+        $data['item'] = Testimonial::where('is_accepted',1)->orderBy('id', 'desc')->paginate(5);
 
         return view('user.healthyPromotion.testimoni.testimoni', compact('data'));
     }

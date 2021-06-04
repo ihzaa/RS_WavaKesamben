@@ -200,7 +200,7 @@
             $("#label_foto").html('Pilih Foto Untuk Merubah Gambar Lama')
             $("#imgInp").val('')
             $("#imgInp").removeAttr('required')
-            $("#modal_form").attr('action', URL.edit.replace('month_id', $(this).data('month_id')).replace('id', $(
+            $("#modal_form").attr('action', URL.edit.replace('month_id', $(this).data('month_id')).replace('__id', $(
                 this).data('id')));
             $("#main_modal").modal("show");
         });

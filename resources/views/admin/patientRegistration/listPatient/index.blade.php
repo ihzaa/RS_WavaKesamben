@@ -119,8 +119,8 @@
 
     <script>
         const URL = {
-            accept: "{{ route('admin.patientRegistration.listPatient.accept.registration', ['id']) }}",
-            reject: "{{ route('admin.patientRegistration.listPatient.reject.registration', ['id']) }}"
+            accept: "{{ route('admin.patientRegistration.listPatient.accept.registration', ['__id']) }}",
+            reject: "{{ route('admin.patientRegistration.listPatient.reject.registration', ['__id']) }}"
         }
 
     </script>
@@ -166,18 +166,18 @@
 
         $(document).on('click', '.btn_acc', function() {
             let id = $(this).data('id')
-            sendMail(URL.accept.replace('id', id), 'Yakin Menerima Pendaftaran?')
+            sendMail(URL.accept.replace('__id', id), 'Yakin Menerima Pendaftaran?')
         });
 
         $(document).on('click', '.btn_resend', function() {
             let id = $(this).data('id')
-            sendMail(URL.accept.replace('id', id), 'Yakin Mengirim Ulang Email?')
+            sendMail(URL.accept.replace('__id', id), 'Yakin Mengirim Ulang Email?')
 
         });
 
         $(document).on('click', '.btn_rej', function() {
             let id = $(this).data('id')
-            sendMail(URL.reject.replace('id', id), 'Yakin Menolak Pendaftaran?')
+            sendMail(URL.reject.replace('__id', id), 'Yakin Menolak Pendaftaran?')
 
         })
 

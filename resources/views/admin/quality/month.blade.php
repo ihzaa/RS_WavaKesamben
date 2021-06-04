@@ -112,9 +112,9 @@
 
     <script>
         const URL = {
-            addMonth: "{{ route('admin.kualitas.add.bulan', ['id']) }}",
-            editMonth: "{{ route('admin.kualitas.edit.bulan', ['id']) }}",
-            deleteMonth: "{{ route('admin.kualitas.delete.bulan', ['id']) }}"
+            addMonth: "{{ route('admin.kualitas.add.bulan', ['__id']) }}",
+            editMonth: "{{ route('admin.kualitas.edit.bulan', ['__id']) }}",
+            deleteMonth: "{{ route('admin.kualitas.delete.bulan', ['__id']) }}"
         }
 
     </script>
@@ -124,13 +124,13 @@
         })
 
         $("#btn_tambah_bulan").click(function() {
-            $("#form_bulan").attr('action', URL.addMonth.replace('id', $(this).data('year')));
+            $("#form_bulan").attr('action', URL.addMonth.replace('__id', $(this).data('year')));
             $("#modal_title").html('Tambah Bulan');
             $("#month").val('')
             $("#main_modal").modal('show');
         });
         $(".btn-edit").click(function() {
-            $("#form_bulan").attr('action', URL.editMonth.replace('id', $(this).data('id')));
+            $("#form_bulan").attr('action', URL.editMonth.replace('__id', $(this).data('id')));
             $("#modal_title").html('Edit Bulan');
             $("#month").val($(this).data('month'))
             $("#main_modal").modal('show');
@@ -150,7 +150,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.deleteMonth.replace('id', $(this).data('id')));
+                    window.location.replace(URL.deleteMonth.replace('__id', $(this).data('id')));
                 }
             })
         });

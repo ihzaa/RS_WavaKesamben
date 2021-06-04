@@ -89,7 +89,7 @@
 
     <script>
         const URL = {
-            delete: "{{ route('admin.services.delete', ['id']) }}"
+            delete: "{{ route('admin.services.delete', ['__id']) }}"
         }
 
     </script>
@@ -124,7 +124,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.delete.replace('id', id));
+                    window.location.replace(URL.delete.replace('__id', id));
                 }
             })
         });

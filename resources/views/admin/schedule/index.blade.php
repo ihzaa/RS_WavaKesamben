@@ -208,8 +208,8 @@
     <script>
         const URL = {
             addSchedule: "{{ route('admin.jadwal.add') }}",
-            editSchedule: "{{ route('admin.jadwal.edit', ['id']) }}",
-            deleteSchedule: "{{ route('admin.jadwal.delete', ['id']) }}"
+            editSchedule: "{{ route('admin.jadwal.edit', ['__id']) }}",
+            deleteSchedule: "{{ route('admin.jadwal.delete', ['__id']) }}"
         }
 
     </script>
@@ -239,7 +239,7 @@
                 multiple: false,
                 theme: 'bootstrap4'
             });
-            $("#form_schedule").attr('action', URL.editSchedule.replace('id', $(this).data('id')));
+            $("#form_schedule").attr('action', URL.editSchedule.replace('__id', $(this).data('id')));
             $("#modal_title").html('Edit Jadwal Praktek');
             $('#days').val($(this).data('days'));
             $('#days').trigger('change.select2');
@@ -262,7 +262,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     showLoader();
-                    window.location.replace(URL.deleteSchedule.replace('id', $(this).data('id')));
+                    window.location.replace(URL.deleteSchedule.replace('__id', $(this).data('id')));
                 }
             })
         });
