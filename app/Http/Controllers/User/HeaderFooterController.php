@@ -19,7 +19,7 @@ class HeaderFooterController extends Controller
         $data['featuredProduct'] = FeaturedProduct::get(['id', 'title']);
         $data['profile'] = Profile::get(['id', 'title']);
         $data['service'] = Service::get(['id', 'title']);
-        $data['registration'] = PatientRegistration::get(['id', 'title']);
+        $data['registration'] = PatientRegistration::where('isActive','1')->get(['id', 'title']);
 
         // footer
         $data['agendaActivity'] = AgendaActivity::orderBy('id','desc')->limit(4)->get();

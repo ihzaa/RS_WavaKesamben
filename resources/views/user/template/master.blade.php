@@ -123,8 +123,13 @@
         const truncateStringWithThreeDots = (data, size = 50) => {
             return data.length > size ? data.substring(0, size) + '...' : data
         }
+        var noCacheHeader = new Headers();
+        noCacheHeader.append('pragma', 'no-cache');
+        noCacheHeader.append('cache-control', 'no-cache');
 
-        fetch("{{ route('getHeaderAndFooterData') }}")
+        fetch("{{ route('getHeaderAndFooterData') }}", {
+                headers: noCacheHeader
+            })
             .then((resp) => resp.json())
             .then(async (data) => {
                 data.featuredProduct.forEach(item => {

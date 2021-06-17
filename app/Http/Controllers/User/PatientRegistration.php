@@ -12,6 +12,7 @@ use App\Models\DoctorSchedule;
 use App\Models\Patient;
 use App\Models\PatientRegistration as ModelsPatientRegistration;
 use App\Models\PatientRegistrationData;
+use App\Models\PatientRegistrationFormAnsware;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -77,6 +78,14 @@ class PatientRegistration extends Controller
             $kode_daftar = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, 6);
             $isExist = PatientRegistrationData::where('kode_daftar', $kode_daftar)->count();
         } while ($isExist != 0);
+        $prd = PatientRegistrationData::create([
+            'kode_daftar' => $kode_daftar,
+            'patient_registration_id' => $id,
+            'patient_id' => $patient->id,
+            'department_id' => $request->spesialis,
+            'department_doctor_id' => $request->dokter,
+            'doctor_schedule_id' => $request->time
+        ]);
         foreach ($form->form as $item) {
             if ($item->type == 'file') {
                 //UPLOAD
@@ -87,44 +96,34 @@ class PatientRegistration extends Controller
                 // Upload file
                 $request->file($item->id)->move($location, $nameUpload);
                 $filepath = $location . "/" . $nameUpload;
-                PatientRegistrationData::create([
-                    'kode_daftar' => $kode_daftar,
+                PatientRegistrationFormAnsware::create([
                     'answare' => $filepath,
-                    'patient_registration_id' => $id,
                     'patient_registration_form_id' => $item->id,
-                    'patient_id' => $patient->id,
-                    'department_id' => $request->spesialis,
-                    'department_doctor_id' => $request->dokter,
-                    'doctor_schedule_id' => $request->time
+                    'patient_registration_data_id' => $prd->id
                 ]);
             } else {
-                PatientRegistrationData::create([
-                    'kode_daftar' => $kode_daftar,
+                PatientRegistrationFormAnsware::create([
                     'answare' => $request[$item->id],
-                    'patient_registration_id' => $id,
                     'patient_registration_form_id' => $item->id,
-                    'patient_id' => $patient->id,
-                    'department_id' => $request->spesialis,
-                    'department_doctor_id' => $request->dokter,
-                    'doctor_schedule_id' => $request->time
+                    'patient_registration_data_id' => $prd->id
                 ]);
             }
         }
 
-        $info_dokter = DB::select('SELECT ds.days, ds.start, ds.end, dd.name, d.title FROM doctor_schedules as ds JOIN department_doctors as dd ON ds.department_doctor_id = dd.id JOIN departments as d ON dd.department_id = d.id WHERE ds.id = "' . $request->time . '"');
-        Mail::to($patient->email)->send(new RegisterToDepartment([
-            'kode_daftar' => $kode_daftar,
-            'pasien' => $patient,
-            'info_dokter' => $info_dokter[0],
-            'waktu' => Carbon::now()->translatedFormat('H:i - l, d M Y')
-        ]));
+        // $info_dokter = DB::select('SELECT ds.days, ds.start, ds.end, dd.name, d.title FROM doctor_schedules as ds JOIN department_doctors as dd ON ds.department_doctor_id = dd.id JOIN departments as d ON dd.department_id = d.id WHERE ds.id = "' . $request->time . '"');
+        // Mail::to($patient->email)->send(new RegisterToDepartment([
+        //     'kode_daftar' => $kode_daftar,
+        //     'pasien' => $patient,
+        //     'info_dokter' => $info_dokter[0],
+        //     'waktu' => Carbon::now()->translatedFormat('H:i - l, d M Y')
+        // ]));
         // dispatch(new SendEmail(new RegisterToDepartment([
         //     'kode_daftar' => $kode_daftar,
         //     'pasien' => $patient,
         //     'info_dokter' => $info_dokter[0],
         //     'waktu' => Carbon::now()->translatedFormat('H:i - l, d M Y')
         // ]), $patient->email));
-        return back()->with('icon', 'success')->with('title', 'Pendaftaran anda berhasil!')->with('text', 'Anda akan menerima email kode pendaftaran.');
+        return back()->with('icon', 'success')->with('title', 'Pendaftaran anda berhasil!')->with('text', 'Anda akan menerima email jika admin telah memverifikasi pendaftaran anda.');
     }
 
     public function getPatientData($nomer)

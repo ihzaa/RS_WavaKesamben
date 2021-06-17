@@ -16,9 +16,8 @@ class CreatePatientRegistrationDataTable extends Migration
         Schema::create('patient_registration_data', function (Blueprint $table) {
             $table->id();
             $table->string('kode_daftar');
-            $table->text('answare');
+            $table->boolean('is_accept')->default(0);
             $table->foreignId('patient_registration_id')->constrained();
-            $table->foreignId('patient_registration_form_id')->constrained();
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('department_id')->constrained();
             $table->foreignId('department_doctor_id')->constrained();

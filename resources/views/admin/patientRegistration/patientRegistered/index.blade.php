@@ -144,7 +144,6 @@
                         <div class="col-md-12">
                             <hr>
                             <h5> Detail Pasien</h5>
-                            <hr>
                         </div>
                         <div class="col-md-3">Nomer Kartu</div>
                         <div class="col-md-9" id="nomer_kartu"></div>
@@ -154,14 +153,18 @@
                         <div class="col-md-9" id="nomer_telfon"></div>
                         <div class="col-md-12">
                             <hr>
-                            Detail Form Pendaftaran
-                            <hr>
+                            <h5>Detail Form Pendaftaran</h5>
                         </div>
                     </div>
                     <div class="row" id="detail_form_pendaftaran">
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <div id="action_button">
+                        <button class="btn btn-primary" id="accept_registration_button">Terima Pendaftaran</button>
+                        <button class="btn btn-danger" id="reject_registration_button">Tolak dan Hapus Data
+                            Pendaftaran</button>
+                    </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
@@ -184,7 +187,10 @@
             current: "{{ route('admin.patientRegistration.patientRegistredList.index') }}",
             detail: "{{ route('admin.patientRegistration.patientRegistredList.get.detail', ['kode']) }}",
             asset: "{{ asset('/') }}",
-            download: "{{ route('admin.patientRegistration.patientRegistredList.download.file', ['__id']) }}"
+            download: "{{ route('admin.patientRegistration.patientRegistredList.download.file', ['__id']) }}",
+            accept: "{{ route('admin.patientRegistration.patientRegistredList.accept', ['__kode']) }}",
+            reject: "{{ route('admin.patientRegistration.patientRegistredList.reject', ['__kode']) }}"
+
         }
 
     </script>
@@ -248,38 +254,86 @@
             fetch(URL.detail.replace('kode', kode))
                 .then((resp) => resp.json())
                 .then(data => {
-                    $("#kode").html(`(${data.relasi.kode_daftar})`)
-                    $("#jenis").html(data.relasi.tipe)
-                    $("#modal_spesialis").html(data.relasi.spesialis)
-                    $("#dokter").html(data.relasi.dokter)
+                    $("#kode").html(`(${data.main_info.kode_daftar})`)
+                    $("#jenis").html(data.main_info.menu_name)
+                    $("#modal_spesialis").html(data.main_info.department_name)
+                    $("#dokter").html(data.main_info.doctor_name)
+                    $("#accept_registration_button").attr("data-id", data.main_info.kode_daftar);
+                    $("#reject_registration_button").attr("data-id", data.main_info.kode_daftar);
                     let time = '';
-                    if (data.relasi.end == null) {
-                        time = data.relasi.days + ', ' + moment(data.relasi.start, "HH:mm:ss").format("HH:mm") +
+                    if (data.main_info.end == null) {
+                        time = data.main_info.days + ', ' + moment(data.main_info.start, "HH:mm:ss").format(
+                                "HH:mm") +
                             ' - selesai'
                     } else {
-                        time = data.relasi.days + ', ' + moment(data.relasi.start, "HH:mm:ss").format("HH:mm") +
-                            ' - ' + moment(data.relasi.end, "HH:mm:ss").format("HH:mm")
+                        time = data.main_info.days + ', ' + moment(data.main_info.start, "HH:mm:ss").format(
+                                "HH:mm") +
+                            ' - ' + moment(data.main_info.end, "HH:mm:ss").format("HH:mm")
                     }
                     $("#waktu").html(time)
-                    $("#nomer_kartu").html(data.pasien.nomer)
-                    $("#nama_pasien").html(data.pasien.name)
-                    $("#nomer_telfon").html(data.pasien.phone)
+                    $("#nomer_kartu").html(data.main_info.nomer)
+                    $("#nama_pasien").html(data.main_info.patient_name)
+                    $("#nomer_telfon").html(data.main_info.phone)
                     let answare = ""
-                    for (const i in data.item) {
-                        if (data.item[i].type == 'file') {
+                    for (const i in data.detail) {
+                        if (data.detail[i].type == 'file') {
                             answare +=
-                                `<div class="col-md-3">${data.item[i].name}</div><div class="col-md-9 text-left"><a target="_blank" href="${URL.download.replace('__id',data.item[i].id_data)}"><img src="${URL.asset+data.item[i].answare}" style="max-height: 100px" alt="Tidak dapat menampilkan, klik untuk mengunduh"><a/></div>`
+                                `<div class="col-md-3">${data.detail[i].name}</div><div class="col-md-9 text-left"><a target="_blank" href="${URL.download.replace('__id',data.detail[i].id_data)}"><img src="${URL.asset+data.detail[i].answare}" style="max-height: 100px" alt="Tidak dapat menampilkan, klik untuk mengunduh"><a/></div>`
                         } else {
                             answare +=
-                                `<div class="col-md-3">${data.item[i].name}</div><div class="col-md-9">${data.item[i].answare}</div>`
+                                `<div class="col-md-3">${data.detail[i].name}</div><div class="col-md-9">${data.detail[i].answare}</div>`
                         }
                     }
                     $("#detail_form_pendaftaran").html(answare)
+                    if (data.main_info.is_accept) {
+                        $("#action_button").hide()
+                    } else {
+                        $("#action_button").show()
+                    }
                 }).then(() => {
                     $('#modal_detail').modal('show')
                     $("#main_loading").hide()
 
                 })
+        })
+
+        $(document).on('click', '#accept_registration_button', function() {
+            const kode = $(this).data('id');
+            Swal.fire({
+                title: 'Yakin menerima pendaftaran pasien?',
+                text: "Anda tidak dapat mengembalikan setelah menyetujui!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Batal.'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    showLoader();
+                    window.location.replace(URL.accept.replace('__kode', kode));
+                }
+            })
+        })
+
+        $(document).on('click', '#reject_registration_button', function() {
+            const kode = $(this).data('id');
+            Swal.fire({
+                title: 'Yakin menolak pendaftaran pasien?',
+                text: "Anda tidak dapat mengembalikan setelah menyetujui!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Batal.'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    showLoader();
+                    window.location.replace(URL.reject.replace('__kode', kode));
+
+                }
+            })
         })
 
     </script>

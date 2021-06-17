@@ -210,7 +210,6 @@
                             icon: "success",
                             title: "Nomer Kartu Ditemukan!",
                         });
-                        console.log(data.data);
                         $("#nomerHidden").val(data.data.nomer)
                         $('#name').val(data.data.name)
                         $("#email").val(data.data.email)

@@ -21,9 +21,8 @@
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <div>
-            <img class="animation__shake" src="{{ asset('admin') }}/dist/img/user2-160x160.jpg" alt="AdminLTELogo"
-                height="60" width="60">
-            Loading...
+            <img class="animation__shake" src="{{ asset('images/default/logo-hijau.png') }}" alt="AdminLTELogo"
+                height="60">
         </div>
     </div>
     <!-- Site wrapper -->

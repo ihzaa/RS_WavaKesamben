@@ -138,6 +138,8 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
             Route::get('/', [PatientRegisteredController::class, 'index'])->name('index');
             Route::get('/detail/registration/{kode}', [PatientRegisteredController::class, 'getDetailRegistrationData'])->name('get.detail');
             Route::get('download/{id}', [PatientRegisteredController::class, 'downloadFile'])->name('download.file');
+            Route::get('accept/{kode}', [PatientRegisteredController::class, 'acceptDepartmentRegistration'])->name('accept');
+            Route::get('reject/{kode}', [PatientRegisteredController::class, 'rejectDepartmentRegistration'])->name('reject');
         });
     });
 
