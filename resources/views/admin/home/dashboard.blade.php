@@ -17,6 +17,33 @@
 @endsection
 
 @section('content')
+    <hr>
+    <div class="col-md-12 d-flex justify-content-around mb-3">
+        <div class="form-group col-md-6">
+            <h4>Cari Dokter</h4>
+            {{-- <label>Minimal (.select2-danger)</label> --}}
+            <select class="doctor form-control select2" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                <option></option>
+                @foreach ($data['doctor'] as $i)
+                    <option data-id="{{ $i->id }}" data-department="{{ $i->department_id }}">
+                        {{ $i->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <h4>Cari Code pendaftaran hari ini</h4>
+            {{-- <label>Minimal (.select2-danger)</label> --}}
+            <select class="patient-reg form-control select2" data-dropdown-css-class="select2-danger" style="width: 100%;">
+                <option></option>
+                @foreach ($data['patient_registration'] as $i)
+                    <option data-id="{{ $i->id }}">
+                        {{ $i->kode_daftar }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -117,28 +144,16 @@
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-md-3 mt-3">
+                <div class="col-md-2 mt-3">
 
                 </div>
-                <div class="col-md-6 mt-3">
-                    <h4>Cari Dokter</h4>
-                    <div class="form-group">
-                        {{-- <label>Minimal (.select2-danger)</label> --}}
-                        <select class="form-control select2" data-dropdown-css-class="select2-danger" style="width: 100%;">
-                            <option></option>
-                            @foreach ($data['doctor'] as $i)
-                                <option data-id="{{ $i->id }}" data-department="{{ $i->department_id }}">
-                                    {{ $i->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div class="col-md-8 mt-3">
                     <div class="chart">
                         <canvas id="lineChart"
-                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            style="min-height: 250px; height: 250px; max-height: 300px; max-width: 100%;"></canvas>
                     </div>
                 </div>
-                <div class="col-md-3 mt-3">
+                <div class="col-md-2 mt-3">
 
                 </div>
             </div>
@@ -161,12 +176,17 @@
     <script>
         const CONST_URL = {
             refresh: "{{ route('admin.getUnprocessedPatient') }}",
-            doctor: "{{ route('admin.department.doctor.edit', ['id', 'dokter_id']) }}"
+            doctor: "{{ route('admin.department.doctor.edit', ['id', 'dokter_id']) }}",
+            patient: "{{ route('admin.department.doctor.edit', ['id', 'reg_id']) }}"
         }
         $(function() {
             //Initialize Select2 Elements
-            $('.select2').select2({
+            $('.doctor').select2({
                 placeholder: 'Cari dokter',
+                theme: 'bootstrap4'
+            })
+            $('.patient-reg').select2({
+                placeholder: 'Cari kode daftar',
                 theme: 'bootstrap4'
             })
 
@@ -239,10 +259,16 @@
                 });
         })
 
-        $(document).on('change', '.select2', function() {
+        $(document).on('change', '.doctor', function() {
             let temp = CONST_URL.doctor
             temp = temp.replace('dokter_id', $(this).find(':selected').data('id'))
             temp = temp.replace('__id', $(this).find(':selected').data('department'))
+            window.location.replace(temp)
+        });
+
+        $(document).on('change', '.patient-reg', function() {
+            let temp = CONST_URL.patient
+            temp = temp.replace('reg_id', $(this).find(':selected').data('id'))
             window.location.replace(temp)
         });
 

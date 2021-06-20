@@ -279,10 +279,19 @@
 
         //Timepicker
         $('#timepicker').datetimepicker({
-            format: 'HH:mm:ss',
+            format: 'HH:mm:ss'
         })
         $('#timepicker-end').datetimepicker({
             format: 'HH:mm:ss'
+        })
+
+        $('#form_schedule').on('submit', function() {
+            if ($('#timepicker-end').datetimepicker('date')) {
+                if ($('#timepicker').datetimepicker('date') > $('#timepicker-end').datetimepicker('date')) {
+                    event.preventDefault();
+                    Swal.fire('Kesalahan input', 'Waktu berakhir tidak boleh sebelum waktu mulai', 'error')
+                }
+            }
         })
 
     </script>

@@ -8,6 +8,7 @@ use App\Models\DepartmentDoctor;
 use App\Models\FeaturedProduct;
 use App\Models\Patient;
 use App\Models\PatientRegistration;
+use App\Models\PatientRegistrationData;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,7 @@ class DashboardController extends Controller
         $data['total_service'] = Service::count();
         $data['total_doctor'] = DepartmentDoctor::count();
         $data['doctor'] = DepartmentDoctor::all();
-        // $data['getChartData'] =
+        $data['patient_registration'] = PatientRegistrationData::whereDate('created_at', Carbon::today())->get();
 
         $chartData = DB::select('select d.DATE, coalesce(COUNT(id), 0) AS TOTAL
       from (select DATE(NOW()) as DATE union all
