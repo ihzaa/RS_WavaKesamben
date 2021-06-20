@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>
-                            Pendaftaran hanya dapat dilakukan 1 hari sebelumnya. Informasi pendaftaran akan dikirimkan
+                            Pendaftaran hanya dapat dilakukan di hari yang sama. Informasi pendaftaran akan dikirimkan
                             melalui email yang sama saat melakukan pendaftaran pasien.
                         </p>
                         <p>
@@ -66,21 +66,21 @@
                                 <div class="form-group">
                                     <label for="name" class="text-dark">Nama Lengkap</label>
                                     <input value="" name="name" type="text" class="form-control " id="name"
-                                        placeholder="Nama Lengkap" readonly>
+                                        placeholder="Nama Lengkap Otomatis Terisi Setelah Menekan Tombol Cek Nomer Kartu" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email" class="text-dark">Email</label>
                                     <input value="" name="email" type="email" class="form-control" id="email"
-                                        placeholder="Email" readonly>
+                                        placeholder="Email Otomatis Terisi Setelah Menekan Tombol Cek Nomer Kartu" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone" class="text-dark">Nomer Telfon</label>
                                     <input name="phone" type="number" min="0" class="form-control" id="phone"
-                                        placeholder="Nomer Telfon" readonly>
+                                        placeholder="Nomer Telfon Otomatis Terisi Setelah Menekan Tombol Cek Nomer Kartu" readonly>
                                 </div>
                             </div>
                         </div>

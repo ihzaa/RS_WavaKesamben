@@ -162,7 +162,10 @@ class PatientRegistration extends Controller
             'Jumat' => 'Sabtu',
             'Sabtu' => 'Minggu'
         ];
-        $data = DoctorSchedule::where('department_doctor_id', $id)->where('days', $days[Carbon::now()->translatedFormat('l')])->orWhere('days', Carbon::now()->translatedFormat('l'))->get();
+        // untuk jadwal besok dan hari ini
+        // $data = DoctorSchedule::where('department_doctor_id', $id)->where('days', $days[Carbon::now()->translatedFormat('l')])->orWhere('days', Carbon::now()->translatedFormat('l'))->get();
+        // untuk jadwal hari ini saja
+        $data = DoctorSchedule::where('department_doctor_id', $id)->where('days', Carbon::now()->translatedFormat('l'))->get();
 
         return response()->json([
             'message' => 'success',
