@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class PatientRegisteredController extends Controller
 {
@@ -23,8 +24,6 @@ class PatientRegisteredController extends Controller
     {
 
         $query = 'SELECT prd.kode_daftar, pr.title as tipe, p.name as pasien , dep.title as spesialis, depd.name as dokter, ds.days,ds.start,ds.end, prd.created_at as created_at FROM `patient_registration_data` as prd JOIN patient_registrations as pr ON prd.patient_registration_id = pr.id JOIN patients as p ON prd.patient_id = p.id JOIN departments as dep ON prd.department_id = dep.id JOIN department_doctors as depd ON prd.department_doctor_id = depd.id JOIN doctor_schedules as ds ON prd.doctor_schedule_id = ds.id ';
-
-
 
         $data = [];
         $data['category'] = [
@@ -45,6 +44,12 @@ class PatientRegisteredController extends Controller
         $data['listKlinik'] = Department::orderBy('title')->get();
         $data['listTipe'] = PatientRegistration::orderBy('title')->get();
         return view('admin.patientRegistration.patientRegistered.index', compact('data'));
+    }
+
+    public function indexWithOpenModal(Request $request)
+    {
+        Session::flash('kode_daftar', $request->kode);
+        return redirect(route('admin.patientRegistration.patientRegistredList.index'));
     }
 
     public function getDetailRegistrationData($kode)
@@ -95,10 +100,9 @@ class PatientRegisteredController extends Controller
         foreach ($answare as $a) {
             if (strpos($a->answare, 'images/patient') !== false) {
                 File::delete($a->answare);
-
             }
         }
-        PatientRegistrationFormAnsware::where('patient_registration_data_id',$pendaftaran->id)->delete();
+        PatientRegistrationFormAnsware::where('patient_registration_data_id', $pendaftaran->id)->delete();
         $pendaftaran->delete();
         return back()->with('icon', 'success')->with('title', 'Berhasil')->with('text', 'Berhasil Menolak dan Menghapus Data Pendaftaran!');
     }

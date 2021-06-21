@@ -192,7 +192,6 @@
             reject: "{{ route('admin.patientRegistration.patientRegistredList.reject', ['__kode']) }}"
 
         }
-
     </script>
 
     <script>
@@ -297,6 +296,63 @@
                 })
         })
 
+        @if (Session::get('kode_daftar'))
+            function showModal(){
+            let kode = "{{ Session::get('kode_daftar') }}"
+            $("#main_loading").show()
+            fetch(URL.detail.replace('kode', kode))
+            .then((resp) => resp.json())
+            .then(data => {
+            $("#kode").html(`(${data.main_info.kode_daftar})`)
+            $("#jenis").html(data.main_info.menu_name)
+            $("#modal_spesialis").html(data.main_info.department_name)
+            $("#dokter").html(data.main_info.doctor_name)
+            $("#accept_registration_button").attr("data-id", data.main_info.kode_daftar);
+            $("#reject_registration_button").attr("data-id", data.main_info.kode_daftar);
+            let time = '';
+            if (data.main_info.end == null) {
+            time = data.main_info.days + ', ' + moment(data.main_info.start, "HH:mm:ss").format(
+            "HH:mm") +
+            ' - selesai'
+            } else {
+            time = data.main_info.days + ', ' + moment(data.main_info.start, "HH:mm:ss").format(
+            "HH:mm") +
+            ' - ' + moment(data.main_info.end, "HH:mm:ss").format("HH:mm")
+            }
+            $("#waktu").html(time)
+            $("#nomer_kartu").html(data.main_info.nomer)
+            $("#nama_pasien").html(data.main_info.patient_name)
+            $("#nomer_telfon").html(data.main_info.phone)
+            let answare = ""
+            for (const i in data.detail) {
+            if (data.detail[i].type == 'file') {
+            answare +=
+            `<div class="col-md-3">${data.detail[i].name}</div>
+            <div class="col-md-9 text-left"><a target="_blank"
+                    href="${URL.download.replace('__id',data.detail[i].id_data)}"><img src="${URL.asset+data.detail[i].answare}"
+                        style="max-height: 100px" alt="Tidak dapat menampilkan, klik untuk mengunduh"><a /></div>`
+            } else {
+            answare +=
+            `<div class="col-md-3">${data.detail[i].name}</div>
+            <div class="col-md-9">${data.detail[i].answare}</div>`
+            }
+            }
+            $("#detail_form_pendaftaran").html(answare)
+            if (data.main_info.is_accept) {
+            $("#action_button").hide()
+            } else {
+            $("#action_button").show()
+            }
+            }).then(() => {
+            $('#modal_detail').modal('show')
+            $("#main_loading").hide()
+
+            })
+            }
+            showModal();
+        @endif
+
+
         $(document).on('click', '#accept_registration_button', function() {
             const kode = $(this).data('id');
             Swal.fire({
@@ -335,6 +391,5 @@
                 }
             })
         })
-
     </script>
 @endsection

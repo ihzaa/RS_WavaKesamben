@@ -37,7 +37,7 @@
             <select class="patient-reg form-control select2" data-dropdown-css-class="select2-danger" style="width: 100%;">
                 <option></option>
                 @foreach ($data['patient_registration'] as $i)
-                    <option data-id="{{ $i->id }}">
+                    <option data-id="{{ $i->kode_daftar }}">
                         {{ $i->kode_daftar }}
                     </option>
                 @endforeach
@@ -176,8 +176,8 @@
     <script>
         const CONST_URL = {
             refresh: "{{ route('admin.getUnprocessedPatient') }}",
-            doctor: "{{ route('admin.department.doctor.edit', ['id', 'dokter_id']) }}",
-            patient: "{{ route('admin.department.doctor.edit', ['id', 'reg_id']) }}"
+            doctor: "{{ route('admin.department.doctor.edit', ['__id', 'dokter_id']) }}",
+            patient: "{{ route('admin.patientRegistration.patientRegistredList.indexOpenModal', [ 'kode'=>'__reg_id']) }}"
         }
         $(function() {
             //Initialize Select2 Elements
@@ -268,7 +268,7 @@
 
         $(document).on('change', '.patient-reg', function() {
             let temp = CONST_URL.patient
-            temp = temp.replace('reg_id', $(this).find(':selected').data('id'))
+            temp = temp.replace('__reg_id', $(this).find(':selected').data('id'))
             window.location.replace(temp)
         });
 

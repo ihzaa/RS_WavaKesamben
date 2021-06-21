@@ -136,6 +136,7 @@ Route::name('admin.')->prefix('4dm1n')->middleware(['auth:admin'])->group(functi
 
         Route::name('patientRegistredList.')->prefix('pendaftaran/klinik')->group(function () {
             Route::get('/', [PatientRegisteredController::class, 'index'])->name('index');
+            Route::get('/openModal',[PatientRegisteredController::class, 'indexWithOpenModal'])->name('indexOpenModal');
             Route::get('/detail/registration/{kode}', [PatientRegisteredController::class, 'getDetailRegistrationData'])->name('get.detail');
             Route::get('download/{id}', [PatientRegisteredController::class, 'downloadFile'])->name('download.file');
             Route::get('accept/{kode}', [PatientRegisteredController::class, 'acceptDepartmentRegistration'])->name('accept');
