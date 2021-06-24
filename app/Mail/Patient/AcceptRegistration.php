@@ -29,7 +29,7 @@ class AcceptRegistration extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_USERNAME'))->subject('Pemberitahuan Pendaftaran Diterima')
+        return $this->subject('Pemberitahuan Pendaftaran Diterima')
             ->view('admin.email.patientRegistration.accepted');
     }
 }

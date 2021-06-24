@@ -29,7 +29,7 @@ class RejectRegistration extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_USERNAME'))->subject('Pemberitahuan Pendaftaran Ditolak')
+        return $this->subject('Pemberitahuan Pendaftaran Ditolak')
             ->view('admin.email.patientRegistration.rejected');
     }
 }
