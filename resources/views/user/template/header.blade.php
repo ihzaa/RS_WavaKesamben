@@ -1,6 +1,6 @@
 <style>
     #navigation li a {
-        font-size: 12px;
+        font-size: 11px;
     }
 
 </style>
@@ -48,7 +48,8 @@
                     <div class="main-menu  d-none d-xl-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a class="{{strpos(Route::currentRouteName(), 'profile.') ? 'active' : ''}}">Profil <i class="ti-angle-down"></i></a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'profile.') ? 'active' : '' }}">Profil
+                                        <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="profile_submenu">
                                         <li><a href="{{ route('user.profile.sambutan-direktur') }}">Sambutan
                                                 Direktur</a></li>
@@ -58,7 +59,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'specialis.') ? 'active' : ''}}" href="{{ route('user.specialis.index') }}">Klinik Spesialis</a></li>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'specialis.') ? 'active' : '' }}"
+                                        href="{{ route('user.specialis.index') }}">Klinik Spesialis</a></li>
                                 <li><a href="#">Produk Unggulan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="produk_unggulan_submenu">
                                         <li class="text-center loadingsubmenu">
@@ -67,7 +69,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'services.') ? 'active' : ''}}" href="#">Layanan <i class="ti-angle-down"></i></a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'services.') ? 'active' : '' }}"
+                                        href="#">Layanan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="service_submenu">
                                         <li class="text-center loadingsubmenu">
                                             <div class="ld ld-hourglass ld-spin-fast">
@@ -75,7 +78,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'patientRegistration.') ? 'active' : ''}}" href="#">Pendaftaran Pasien <i class="ti-angle-down"></i></a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'patientRegistration.') ? 'active' : '' }}"
+                                        href="#">Pendaftaran Pasien <i class="ti-angle-down"></i></a>
                                     <ul class="submenu" id="pendaftaran_submenu">
                                         <li><a href="{{ route('user.patientRegistration.newPatient') }}">Daftar Pasien
                                                 Baru</a></li>
@@ -85,12 +89,15 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'quality.') ? 'active' : ''}}" href="{{ route('user.quality.index') }}">Kualitas Mutu</a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'quality.') ? 'active' : '' }}"
+                                        href="{{ route('user.quality.index') }}">Kualitas Mutu</a>
 
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'timMedis.') ? 'active' : ''}}" href="{{ route('user.timMedis.index') }}">Tim Medis</a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'timMedis.') ? 'active' : '' }}"
+                                        href="{{ route('user.timMedis.index') }}">Tim Medis</a>
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'healthyPromotion.') ? 'active' : ''}}" href="#">Promosi Kesehatan <i class="ti-angle-down"></i></a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'healthyPromotion.') ? 'active' : '' }}"
+                                        href="#">Promosi Kesehatan <i class="ti-angle-down"></i></a>
                                     <ul class="submenu">
                                         <li class="text-center loadingsubmenu">
                                             <div class="ld ld-hourglass ld-spin-fast">
@@ -105,7 +112,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a class="{{strpos(Route::currentRouteName(), 'contact.') ? 'active' : ''}}" href="{{ route('user.contact.index') }}">Kontak</a>
+                                <li><a class="{{ strpos(Route::currentRouteName(), 'contact.') ? 'active' : '' }}"
+                                        href="{{ route('user.contact.index') }}">Kontak</a>
                                 </li>
                             </ul>
                         </nav>

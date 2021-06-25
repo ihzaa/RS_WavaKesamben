@@ -13,6 +13,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('admin') }}/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
+    <link rel="icon" href="{{ asset('admin') }}/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset('admin') }}/dist/css/adminlte.min.css">
     @yield('css_after')
 </head>
@@ -118,6 +119,7 @@
                 title: "{{ Session::get('title') }}",
                 text: "{{ Session::get('text') }}",
             });
+
         </script>
     @endif
 
