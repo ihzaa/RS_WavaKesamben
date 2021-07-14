@@ -16,7 +16,8 @@
         </div>
     </div>
     <!-- offers_area_end -->
-    <div class="bradcam_area bradcam_overlay" style="background-image: url('{{ asset($data['item']->image) }}')">
+    {{-- <div class="bradcam_area bradcam_overlay" style="background-image: url('{{ asset($data['item']->image) }}')"> --}}
+    <div class="bradcam_area bradcam_overlay">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -30,6 +31,9 @@
     <section class="blog_area single-post-area section-padding pt-4">
         <div class="container">
             <div class="row">
+                <div class="col-md-12 d-flex my-2">
+                    <img src="{{ asset($data['item']->image) }}" alt="" class="img-fluid mx-auto">
+                </div>
                 <div class="col-md-12">
                     <div class="border_bottom p-1">
                         <h3>Tentang {{ $data['item']->title }}</h3>
@@ -88,7 +92,7 @@
                                     <div class="expert_thumb">
                                         <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}">
                                             <img class="lazy" data-src="{{ asset($item->image) }}" alt="">
-                                            </a>
+                                        </a>
                                     </div>
                                     <div class="experts_name text-center">
                                         <a href="{{ route('user.specialis.doctor', [$item->id, $item->name]) }}">
