@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('user') }}/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset('user') }}/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
     @yield('css_before')
     <!-- CSS here -->

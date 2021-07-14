@@ -28,7 +28,7 @@ class RejectRegisterToDepartment extends Mailable
      */
     public function build()
     {
-        return $this->from(env('MAIL_USERNAME'))->subject('Pemberitahuan Pendaftaran Spesialis')
+        return $this->from(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'))->subject('Pemberitahuan Pendaftaran Spesialis')
             ->view('email.rejectRegistrationClinic');
     }
 }
