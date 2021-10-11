@@ -112,7 +112,7 @@ class DepartmentController extends Controller
         //UPLOAD GAMBAR DI KONTEN KALAU ADA
         foreach ($images as $k => $img) {
             $data = $img->getattribute('src');
-            if ($data[0] != '/') {
+            if ($data[0] != 'h') {
                 list($type, $data) = explode(';', $data);
                 list(, $data) = explode(',', $data);
                 $data = base64_decode($data);
